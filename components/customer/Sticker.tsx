@@ -36,6 +36,12 @@ export function StickerBody({ sticker }: { sticker: Sticker }) {
           </div>
         </div>
       );
+    case "image":
+      // 이미지 스티커: text 필드에 이미지 URL
+      return (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img className={s.stImage} src={sticker.text} alt="" draggable={false} />
+      );
     case "priceCard":
       return (
         <div className={s.stPriceCard}>

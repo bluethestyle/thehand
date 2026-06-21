@@ -65,7 +65,7 @@ create table if not exists public.thehand_stickers (
   id        text primary key,
   page_id   text not null references public.thehand_pages(id) on delete cascade,
   kind      text not null
-              check (kind in ('ribbon','circle','pill','badge','priceCard','text')),
+              check (kind in ('ribbon','circle','pill','badge','priceCard','image','text')),
   text      text not null default '',
   sub_text  text,
   lines     jsonb,

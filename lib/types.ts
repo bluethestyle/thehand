@@ -67,6 +67,7 @@ export type StickerKind =
   | "pill" // 캡슐 (잔술만 가능)
   | "badge" // 솔리드 사각라운드 뱃지 (NEW/일시 품절/추천)
   | "priceCard" // 흰 카드 + 가격 라인
+  | "image" // 업로드 이미지 스티커 (text 필드에 이미지 URL 저장)
   | "text"; // 자유 텍스트
 
 export interface StickerLine {

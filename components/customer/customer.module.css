@@ -638,6 +638,12 @@
   font-size: 14px;
   font-weight: 800;
 }
+.stImage {
+  display: block;
+  width: 140px;
+  height: auto;
+  border-radius: 8px;
+}
 .stPriceCard {
   background: #fff;
   border-radius: 10px;
