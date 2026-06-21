@@ -6,6 +6,7 @@ import { browserClient } from "@/lib/supabase";
 import { PageShell, type DeckNav, type DeckTab } from "./PageShell";
 import type { MenuPage } from "@/lib/types";
 import { MenuPageView } from "./pages/MenuPageView";
+import { NihonshuView } from "./pages/NihonshuView";
 import { ImagePageView } from "./pages/ImagePageView";
 import { TasteMapView } from "./pages/TasteMapView";
 import { CoverView, NoticeView } from "./pages/MiscViews";
@@ -201,7 +202,7 @@ export function MenuDeck({
                 nav={nav}
                 branding={data.branding}
                 showTitleBand={
-                  rp.source.type === "menu" ||
+                  (rp.source.type === "menu" && rp.source.categoryKey !== "nihonshu") ||
                   rp.source.type === "map" ||
                   rp.source.type === "notice"
                 }
@@ -230,6 +231,7 @@ function PageBody({ rp, data }: { rp: RenderedPage; data: MenuData }) {
     case "cover":
       return <CoverView page={page} logoUrl={data.branding.logoUrl} />;
     case "menu":
+      if (page.categoryKey === "nihonshu") return <NihonshuView rendered={rp} />;
       return (
         <MenuPageView
           rendered={rp}
