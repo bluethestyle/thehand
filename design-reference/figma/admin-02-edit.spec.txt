@@ -1,0 +1,109 @@
+=== svg/admin-02-edit.svg ===
+viewBox: 0 0 768 900
+
+-- colors (count) --
+stroke:#D8D3C9:35  #8B8478:28  #fff:26  #3A3631:24  #EDEAE2:5  #C8902F:4  #B5AFA3:3  #F6F4EF:1  #FFFFFF:1  #2B2722:1  #E2A04F:1  #B0402A:1
+
+-- shapes (rect/line/circle/text), y-sorted --
+{"t":"rect","x":0,"y":0,"w":768,"h":900,"rx":0,"fill":"#F6F4EF","stroke":null,"sw":null}
+{"t":"rect","x":0,"y":0,"w":768,"h":52,"rx":0,"fill":"#FFFFFF","stroke":null,"sw":null}
+{"t":"rect","x":24,"y":14,"w":24,"h":24,"rx":6,"fill":"#2B2722","stroke":null,"sw":null}
+{"t":"text","x":36,"y":31,"fill":"#E2A04F","content":"手"}
+{"t":"text","x":58,"y":31,"fill":"#3A3631","content":"더핸드 관리"}
+{"t":"text","x":744,"y":31,"fill":"#8B8478","content":"PIN 재설정 · 로그아웃"}
+{"t":"line","x1":0,"y1":52,"x2":768,"y2":52,"stroke":"#D8D3C9","sw":"1","dash":null}
+{"t":"text","x":24,"y":76,"fill":"#8B8478","content":"메뉴 관리  ›  스이게이 코우이쿠"}
+{"t":"rect","x":580,"y":84,"w":76,"h":30,"rx":15,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":664,"y":84,"w":80,"h":30,"rx":15,"fill":"#C8902F","stroke":null,"sw":null}
+{"t":"text","x":618,"y":103,"fill":"#3A3631","content":"숨김 보관"}
+{"t":"text","x":704,"y":103,"fill":"#fff","content":"저장"}
+{"t":"text","x":24,"y":106,"fill":"#3A3631","content":"메뉴 수정"}
+{"t":"rect","x":24,"y":126,"w":720,"h":168,"rx":10,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"text","x":40,"y":152,"fill":"#3A3631","content":"기본 정보"}
+{"t":"text","x":40,"y":174,"fill":"#8B8478","content":"메뉴명"}
+{"t":"text","x":386,"y":174,"fill":"#8B8478","content":"산지 (현)"}
+{"t":"text","x":562,"y":174,"fill":"#8B8478","content":"양조장"}
+{"t":"rect","x":40,"y":180,"w":330,"h":34,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":386,"y":180,"w":160,"h":34,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":562,"y":180,"w":142,"h":34,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"text","x":51,"y":202,"fill":"#3A3631","content":"스이게이 코우이쿠"}
+{"t":"text","x":397,"y":202,"fill":"#3A3631","content":"고치"}
+{"t":"text","x":573,"y":202,"fill":"#3A3631","content":"스이게이주조"}
+{"t":"text","x":40,"y":234,"fill":"#8B8478","content":"분류"}
+{"t":"text","x":256,"y":234,"fill":"#8B8478","content":"등급"}
+{"t":"text","x":472,"y":234,"fill":"#8B8478","content":"태그"}
+{"t":"rect","x":40,"y":240,"w":200,"h":34,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":256,"y":240,"w":200,"h":34,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":472,"y":240,"w":232,"h":34,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"text","x":51,"y":262,"fill":"#3A3631","content":"니혼슈 ▾"}
+{"t":"text","x":267,"y":262,"fill":"#3A3631","content":"준마이긴죠 ▾"}
+{"t":"text","x":483,"y":262,"fill":"#3A3631","content":"도쿠리·잔술만  ♨아츠캉  +"}
+{"t":"rect","x":24,"y":310,"w":720,"h":150,"rx":10,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"text","x":40,"y":336,"fill":"#3A3631","content":"설명 · 코멘트"}
+{"t":"text","x":40,"y":358,"fill":"#8B8478","content":"메뉴 설명"}
+{"t":"rect","x":40,"y":364,"w":640,"h":34,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"text","x":51,"y":386,"fill":"#3A3631","content":"쌀의 또렷한 감칠맛과 은은한 긴죠향, 깔끔한 산미가 특징."}
+{"t":"text","x":40,"y":418,"fill":"#8B8478","content":"소믈리에 코멘트 (선택)"}
+{"t":"text","x":456,"y":418,"fill":"#8B8478","content":"추천 페어링 (선택)"}
+{"t":"rect","x":40,"y":424,"w":400,"h":34,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":456,"y":424,"w":248,"h":34,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"text","x":51,"y":446,"fill":"#B5AFA3","content":"비워두면 표시되지 않아요"}
+{"t":"text","x":467,"y":446,"fill":"#B5AFA3","content":"예: 오뎅·전골"}
+{"t":"rect","x":24,"y":476,"w":720,"h":256,"rx":10,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"text","x":40,"y":502,"fill":"#3A3631","content":"판매 단위 · 용량 · 가격"}
+{"t":"text","x":728,"y":502,"fill":"#8B8478","content":"단위별로 켜고 끄세요"}
+{"t":"line","x1":40,"y1":520,"x2":704,"y2":520,"stroke":"#D8D3C9","sw":"1","dash":null}
+{"t":"rect","x":170,"y":529,"w":90,"h":28,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":310,"y":529,"w":120,"h":28,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":40,"y":534,"w":34,"h":18,"rx":9,"fill":"#C8902F","stroke":null,"sw":null}
+{"t":"circle","cx":65,"cy":543,"r":7,"fill":"#fff","stroke":"#D8D3C9"}
+{"t":"text","x":88,"y":547,"fill":"#3A3631","content":"잔술"}
+{"t":"text","x":238,"y":548,"fill":"#3A3631","content":"100"}
+{"t":"text","x":266,"y":548,"fill":"#8B8478","content":"㎖"}
+{"t":"text","x":418,"y":548,"fill":"#3A3631","content":"16,000"}
+{"t":"text","x":444,"y":548,"fill":"#8B8478","content":"원"}
+{"t":"text","x":704,"y":548,"fill":"#8B8478","content":"…"}
+{"t":"line","x1":40,"y1":566,"x2":704,"y2":566,"stroke":"#D8D3C9","sw":"1","dash":null}
+{"t":"rect","x":170,"y":575,"w":90,"h":28,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":310,"y":575,"w":120,"h":28,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":40,"y":580,"w":34,"h":18,"rx":9,"fill":"#C8902F","stroke":null,"sw":null}
+{"t":"circle","cx":65,"cy":589,"r":7,"fill":"#fff","stroke":"#D8D3C9"}
+{"t":"text","x":88,"y":593,"fill":"#3A3631","content":"도쿠리"}
+{"t":"text","x":238,"y":594,"fill":"#3A3631","content":"300"}
+{"t":"text","x":266,"y":594,"fill":"#8B8478","content":"㎖"}
+{"t":"text","x":418,"y":594,"fill":"#3A3631","content":"45,500"}
+{"t":"text","x":444,"y":594,"fill":"#8B8478","content":"원"}
+{"t":"text","x":704,"y":594,"fill":"#8B8478","content":"…"}
+{"t":"line","x1":40,"y1":612,"x2":704,"y2":612,"stroke":"#D8D3C9","sw":"1","dash":null}
+{"t":"rect","x":170,"y":621,"w":90,"h":28,"rx":6,"fill":"#EDEAE2","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":310,"y":621,"w":120,"h":28,"rx":6,"fill":"#EDEAE2","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":40,"y":626,"w":34,"h":18,"rx":9,"fill":"#EDEAE2","stroke":"#D8D3C9","sw":"1"}
+{"t":"circle","cx":49,"cy":635,"r":7,"fill":"#fff","stroke":"#D8D3C9"}
+{"t":"text","x":88,"y":639,"fill":"#8B8478","content":"보틀"}
+{"t":"text","x":238,"y":640,"fill":"#8B8478","content":"720"}
+{"t":"text","x":266,"y":640,"fill":"#8B8478","content":"㎖"}
+{"t":"text","x":418,"y":640,"fill":"#8B8478","content":"—"}
+{"t":"text","x":444,"y":640,"fill":"#8B8478","content":"원"}
+{"t":"text","x":704,"y":640,"fill":"#8B8478","content":"…"}
+{"t":"line","x1":40,"y1":658,"x2":704,"y2":658,"stroke":"#D8D3C9","sw":"1","dash":null}
+{"t":"rect","x":40,"y":670,"w":250,"h":30,"rx":15,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"text","x":165,"y":689,"fill":"#3A3631","content":"+ 판매 단위 추가 (예: 작은 병 300㎖)"}
+{"t":"rect","x":24,"y":720,"w":330,"h":128,"rx":10,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":370,"y":720,"w":374,"h":128,"rx":10,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"text","x":40,"y":746,"fill":"#3A3631","content":"보틀 사진"}
+{"t":"text","x":386,"y":746,"fill":"#3A3631","content":"상태"}
+{"t":"rect","x":40,"y":758,"w":56,"h":74,"rx":8,"fill":"#EDEAE2","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":386,"y":763,"w":34,"h":18,"rx":9,"fill":"#EDEAE2","stroke":"#D8D3C9","sw":"1"}
+{"t":"circle","cx":395,"cy":772,"r":7,"fill":"#fff","stroke":"#D8D3C9"}
+{"t":"text","x":432,"y":776,"fill":"#3A3631","content":"일시 품절"}
+{"t":"text","x":560,"y":776,"fill":"#8B8478","content":"변경 이력 보기 ›"}
+{"t":"text","x":110,"y":780,"fill":"#8B8478","content":"탭하여 업로드"}
+{"t":"rect","x":386,"y":795,"w":34,"h":18,"rx":9,"fill":"#C8902F","stroke":null,"sw":null}
+{"t":"text","x":110,"y":798,"fill":"#B5AFA3","content":"권장: 세로형, 배경 제거"}
+{"t":"text","x":68,"y":800,"fill":"#8B8478","content":"+"}
+{"t":"circle","cx":411,"cy":804,"r":7,"fill":"#fff","stroke":"#D8D3C9"}
+{"t":"text","x":432,"y":808,"fill":"#3A3631","content":"메뉴판에 표시"}
+{"t":"text","x":24,"y":876,"fill":"#8B8478","content":"삭제는 복구할 수 없어요 —"}
+{"t":"text","x":177,"y":876,"fill":"#B0402A","content":"이 메뉴 삭제"}
+
+-- text rows (outline glyph clusters): y | font≈h | x-range | color | glyphs --

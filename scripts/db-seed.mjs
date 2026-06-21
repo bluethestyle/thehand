@@ -3,7 +3,7 @@
  * 실행: npm run db:seed  (= node --env-file=.env.local scripts/db-seed.mjs)
  * REST + service_role 사용(스키마는 이미 적용되어 있어야 함).
  */
-import { SEED_ITEMS, SEED_PAGES, DEFAULT_DENSITY } from "../data/seed.ts";
+import { SEED_ITEMS, SEED_PAGES, DEFAULT_DENSITY, SEED_ORIGINS } from "../data/seed.ts";
 
 const URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -17,7 +17,9 @@ const n = (v) => (v === undefined ? null : v);
 const itemRow = (it) => ({
   id: it.id, category_key: it.categoryKey, band_key: n(it.bandKey), name: it.name,
   brewery: n(it.brewery), grade: n(it.grade), region: n(it.region), style: n(it.style),
-  description: n(it.description), polish: n(it.polish), smv: n(it.smv), acidity: n(it.acidity),
+  description: n(it.description), ingredient: n(it.ingredient), sommelier: n(it.sommelier),
+  pairing: n(it.pairing), origin_note: n(it.originNote), half_price: n(it.halfPrice),
+  polish: n(it.polish), smv: n(it.smv), acidity: n(it.acidity),
   abv: n(it.abv), price_glass: n(it.priceGlass), price_tokkuri: n(it.priceTokkuri),
   price_bottle: n(it.priceBottle), status: it.status, badge: n(it.badge),
   featured: !!it.featured, heatable: !!it.heatable, flag_note: n(it.flagNote),
@@ -53,5 +55,12 @@ async function upsert(table, rows, onConflict = "id") {
 await upsert("thehand_items", SEED_ITEMS.map(itemRow));
 await upsert("thehand_pages", SEED_PAGES.map(pageRow));
 await upsert("thehand_stickers", SEED_PAGES.flatMap(stickerRows));
-await upsert("thehand_settings", [{ key: "density", value: DEFAULT_DENSITY }], "key");
+await upsert(
+  "thehand_settings",
+  [
+    { key: "density", value: DEFAULT_DENSITY },
+    { key: "origins", value: SEED_ORIGINS },
+  ],
+  "key"
+);
 console.log("✅ 시드 → 라이브 DB 동기화 완료");

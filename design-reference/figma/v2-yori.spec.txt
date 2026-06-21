@@ -1,0 +1,75 @@
+=== svg/v2-yori.svg ===
+viewBox: 0 0 768 868
+
+-- colors (count) --
+#2D3436:20  #9A8F80:12  stroke:#EDE8E0:9  #5C564E:9  #C8902F:3  stroke:#D8D0C4:2  #FBF1DC:2  #A9761C:2  #FDFCFB:1  #636E72:1  #E2F1EE:1  #1F7A6E:1  #F39C12:1  #F5F1EC:1  #B26B00:1
+
+-- shapes (rect/line/circle/text), y-sorted --
+{"t":"rect","x":0,"y":0,"w":768,"h":868,"rx":0,"fill":"#FDFCFB","stroke":null,"sw":null}
+{"t":"text","x":384,"y":44,"fill":"#9A8F80","content":"THE HAND"}
+{"t":"line","x1":289,"y1":72,"x2":343,"y2":72,"stroke":"#D8D0C4","sw":"1","dash":null}
+{"t":"line","x1":425,"y1":72,"x2":479,"y2":72,"stroke":"#D8D0C4","sw":"1","dash":null}
+{"t":"text","x":384,"y":78,"fill":"#2D3436","content":"料理"}
+{"t":"text","x":384,"y":104,"fill":"#636E72","content":"제철 재료로 그날그날 · ½ 표시는 하프 사이즈 가능"}
+{"t":"text","x":28,"y":138,"fill":"#C8902F","content":"메인"}
+{"t":"line","x1":28,"y1":146,"x2":740,"y2":146,"stroke":"#EDE8E0","sw":"1","dash":null}
+{"t":"rect","x":337,"y":163,"w":36,"h":16,"rx":8,"fill":"#FBF1DC","stroke":null,"sw":null}
+{"t":"text","x":28,"y":175,"fill":"#2D3436","content":"숙성 광어 사시미"}
+{"t":"text","x":191,"y":175,"fill":"#9A8F80","content":"(광어 국내산(양식))"}
+{"t":"text","x":355,"y":175,"fill":"#A9761C","content":"추천"}
+{"t":"text","x":740,"y":176,"fill":"#2D3436","content":"38,000"}
+{"t":"text","x":740,"y":192,"fill":"#9A8F80","content":"½ 하프 20,000"}
+{"t":"text","x":28,"y":197,"fill":"#5C564E","content":"5일 저온 숙성으로 끌어올린 감칠맛."}
+{"t":"line","x1":28,"y1":208,"x2":740,"y2":208,"stroke":"#EDE8E0","sw":"1","dash":null}
+{"t":"text","x":28,"y":237,"fill":"#2D3436","content":"제철 모둠 니기리 (5pc)"}
+{"t":"text","x":293,"y":237,"fill":"#9A8F80","content":"(쌀 국내산)"}
+{"t":"text","x":740,"y":238,"fill":"#2D3436","content":"24,000"}
+{"t":"text","x":28,"y":259,"fill":"#5C564E","content":"그날 들어온 생선으로 쥐는 다섯 점."}
+{"t":"line","x1":28,"y1":270,"x2":740,"y2":270,"stroke":"#EDE8E0","sw":"1","dash":null}
+{"t":"rect","x":336.5,"y":287,"w":36,"h":16,"rx":8,"fill":"#FBF1DC","stroke":null,"sw":null}
+{"t":"text","x":28,"y":299,"fill":"#2D3436","content":"와규 수비드 스테이크"}
+{"t":"text","x":225,"y":299,"fill":"#9A8F80","content":"(소고기 호주산)"}
+{"t":"text","x":354.5,"y":299,"fill":"#A9761C","content":"추천"}
+{"t":"text","x":740,"y":300,"fill":"#2D3436","content":"42,000"}
+{"t":"text","x":28,"y":321,"fill":"#5C564E","content":"저온 조리 후 토치로 마무리. 와사비 소금과."}
+{"t":"line","x1":28,"y1":332,"x2":740,"y2":332,"stroke":"#EDE8E0","sw":"1","dash":null}
+{"t":"text","x":28,"y":361,"fill":"#2D3436","content":"가지모찌"}
+{"t":"text","x":106,"y":361,"fill":"#9A8F80","content":"(가지 국내산)"}
+{"t":"text","x":740,"y":362,"fill":"#2D3436","content":"16,000"}
+{"t":"text","x":28,"y":383,"fill":"#5C564E","content":"튀긴 가지와 모찌, 가다랑어포를 듬뿍."}
+{"t":"text","x":28,"y":418,"fill":"#C8902F","content":"추가 안주"}
+{"t":"line","x1":28,"y1":426,"x2":740,"y2":426,"stroke":"#EDE8E0","sw":"1","dash":null}
+{"t":"text","x":28,"y":455,"fill":"#2D3436","content":"모둠 튀김"}
+{"t":"text","x":123,"y":455,"fill":"#9A8F80","content":"(새우 베트남산)"}
+{"t":"text","x":740,"y":456,"fill":"#2D3436","content":"18,000"}
+{"t":"text","x":28,"y":477,"fill":"#5C564E","content":"제철 채소와 새우의 바삭한 덴푸라."}
+{"t":"line","x1":28,"y1":488,"x2":740,"y2":488,"stroke":"#EDE8E0","sw":"1","dash":null}
+{"t":"text","x":28,"y":517,"fill":"#2D3436","content":"이나니와 붓가케 우동"}
+{"t":"text","x":740,"y":518,"fill":"#2D3436","content":"14,000"}
+{"t":"text","x":28,"y":539,"fill":"#5C564E","content":"가늘고 매끈한 면을 차갑게."}
+{"t":"line","x1":28,"y1":550,"x2":740,"y2":550,"stroke":"#EDE8E0","sw":"1","dash":null}
+{"t":"text","x":28,"y":579,"fill":"#2D3436","content":"매실소스 가지볶음"}
+{"t":"text","x":191,"y":579,"fill":"#9A8F80","content":"(가지 국내산)"}
+{"t":"text","x":740,"y":580,"fill":"#2D3436","content":"13,000"}
+{"t":"text","x":28,"y":601,"fill":"#5C564E","content":"새콤달콤 매실 소스에 볶은 가지."}
+{"t":"text","x":28,"y":636,"fill":"#C8902F","content":"계절 메뉴"}
+{"t":"line","x1":28,"y1":644,"x2":740,"y2":644,"stroke":"#EDE8E0","sw":"1","dash":null}
+{"t":"rect","x":240,"y":661,"w":36,"h":16,"rx":8,"fill":"#E2F1EE","stroke":null,"sw":null}
+{"t":"text","x":28,"y":673,"fill":"#2D3436","content":"여름 냉소바"}
+{"t":"text","x":140,"y":673,"fill":"#9A8F80","content":"(메밀 중국산)"}
+{"t":"text","x":258,"y":673,"fill":"#1F7A6E","content":"계절"}
+{"t":"text","x":740,"y":674,"fill":"#2D3436","content":"15,000"}
+{"t":"text","x":28,"y":695,"fill":"#5C564E","content":"시원한 가다랑어 육수에 즐기는 메밀."}
+{"t":"line","x1":28,"y1":706,"x2":740,"y2":706,"stroke":"#EDE8E0","sw":"1","dash":null}
+{"t":"rect","x":223,"y":723,"w":47,"h":16,"rx":8,"fill":"#F39C12","stroke":null,"sw":null}
+{"t":"text","x":28,"y":735,"fill":"#2D3436","content":"한치 숙회"}
+{"t":"text","x":123,"y":735,"fill":"#9A8F80","content":"(한치 국내산)"}
+{"t":"text","x":246.5,"y":735,"fill":"#2D3436","content":"NEW"}
+{"t":"text","x":740,"y":736,"fill":"#2D3436","content":"26,000"}
+{"t":"text","x":740,"y":752,"fill":"#9A8F80","content":"½ 하프 14,000"}
+{"t":"text","x":28,"y":757,"fill":"#5C564E","content":"쫄깃한 한치를 살짝 데쳐 초장과."}
+{"t":"rect","x":28,"y":784,"w":712,"h":40,"rx":10,"fill":"#F5F1EC","stroke":null,"sw":null}
+{"t":"text","x":384,"y":809,"fill":"#B26B00","content":"알레르기가 있으시면 주문 전 직원에게 꼭 문의해 주세요"}
+{"t":"text","x":384,"y":842,"fill":"#9A8F80","content":"∗ 자세한 원산지 표기는 메뉴판 마지막 「원산지 표기」 페이지를 확인해 주세요 ∗"}
+
+-- text rows (outline glyph clusters): y | font≈h | x-range | color | glyphs --

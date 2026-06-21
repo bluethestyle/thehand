@@ -5,11 +5,14 @@ import { buildRenderedPages, fontScale } from "@/lib/menu";
 import { browserClient } from "@/lib/supabase";
 import { PageShell, type DeckNav, type DeckTab } from "./PageShell";
 import type { MenuPage } from "@/lib/types";
-import { MenuPageView } from "./pages/MenuPageView";
 import { NihonshuView } from "./pages/NihonshuView";
+import { ShochuView } from "./pages/ShochuView";
+import { YoriView } from "./pages/YoriView";
+import { OriginNoticeView } from "./pages/OriginNoticeView";
+import { ClassicHeader } from "./pages/ClassicHeader";
 import { ImagePageView } from "./pages/ImagePageView";
 import { TasteMapView } from "./pages/TasteMapView";
-import { CoverView, NoticeView } from "./pages/MiscViews";
+import { CoverView } from "./pages/MiscViews";
 import { RegionMapView } from "./pages/RegionMapView";
 import { AdminGate } from "./AdminGate";
 import s from "./customer.module.css";
@@ -201,11 +204,7 @@ export function MenuDeck({
                 page={rp.source}
                 nav={nav}
                 branding={data.branding}
-                showTitleBand={
-                  (rp.source.type === "menu" && rp.source.categoryKey !== "nihonshu") ||
-                  rp.source.type === "map" ||
-                  rp.source.type === "notice"
-                }
+                chromeless={rp.source.type !== "cover"}
               >
                 <PageBody rp={rp} data={data} />
               </PageShell>
@@ -227,28 +226,36 @@ function tabLabel(p: MenuPage): string {
 
 function PageBody({ rp, data }: { rp: RenderedPage; data: MenuData }) {
   const page = rp.source;
+  const bands = page.categoryKey ? data.bands[page.categoryKey] : undefined;
   switch (page.type) {
     case "cover":
       return <CoverView page={page} logoUrl={data.branding.logoUrl} />;
     case "menu":
-      if (page.categoryKey === "nihonshu") return <NihonshuView rendered={rp} />;
-      return (
-        <MenuPageView
-          rendered={rp}
-          bands={page.categoryKey ? data.bands[page.categoryKey] : undefined}
-        />
-      );
+      if (page.categoryKey === "nihonshu") return <NihonshuView rendered={rp} bands={bands} />;
+      if (page.categoryKey === "shochu") return <ShochuView rendered={rp} />;
+      // 요리 + 기타(음료 등) — 카테고리밴드 단가격 리스트
+      return <YoriView rendered={rp} bands={bands} />;
     case "image":
     case "event":
-      return <ImagePageView page={page} />;
+      return (
+        <>
+          <ClassicHeader ja={page.sectionTag} ko={page.title ?? ""} subtitle={page.subtitle} />
+          <ImagePageView page={page} />
+        </>
+      );
     case "map":
-      return page.mapKind === "region" ? (
-        <RegionMapView items={data.items} />
-      ) : (
-        <TasteMapView items={data.items} />
+      return (
+        <>
+          <ClassicHeader ja={page.sectionTag} ko={page.title ?? ""} subtitle={page.subtitle} />
+          {page.mapKind === "region" ? (
+            <RegionMapView items={data.items} />
+          ) : (
+            <TasteMapView items={data.items} />
+          )}
+        </>
       );
     case "notice":
-      return <NoticeView />;
+      return <OriginNoticeView page={page} origins={data.origins} />;
     default:
       return null;
   }

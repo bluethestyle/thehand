@@ -22,12 +22,14 @@ export function PageShell({
   nav,
   branding,
   showTitleBand,
+  chromeless,
   children,
 }: {
   page: MenuPage;
   nav: DeckNav;
   branding?: Branding;
   showTitleBand?: boolean;
+  chromeless?: boolean; // 피그마 클래식 헤더 화면: 글로벌 다크헤더·탭 숨김
   children: React.ReactNode;
 }) {
   // 표지는 크롬 없이 풀블리드 — 탭/화살표로 다음(메뉴)으로
@@ -57,21 +59,23 @@ export function PageShell({
 
   return (
     <div className={s.frame} style={{ position: "relative" }}>
-      <header className={s.header}>
-        {branding?.logoUrl ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img className={s.logoImg} src={branding.logoUrl} alt="THE HAND" />
-        ) : (
-          <div className={s.logoMark}>手</div>
-        )}
-        <div className={s.logoText}>
-          <span className={s.brand}>THE HAND</span>
-          <span className={s.brandSub}>사케 바 · 디지털 메뉴판</span>
-        </div>
-        {page.sectionTag && <span className={s.sectionTag}>{page.sectionTag}</span>}
-      </header>
+      {!chromeless && (
+        <header className={s.header}>
+          {branding?.logoUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img className={s.logoImg} src={branding.logoUrl} alt="THE HAND" />
+          ) : (
+            <div className={s.logoMark}>手</div>
+          )}
+          <div className={s.logoText}>
+            <span className={s.brand}>THE HAND</span>
+            <span className={s.brandSub}>사케 바 · 디지털 메뉴판</span>
+          </div>
+          {page.sectionTag && <span className={s.sectionTag}>{page.sectionTag}</span>}
+        </header>
+      )}
 
-      {nav.tabs.length > 1 && (
+      {!chromeless && nav.tabs.length > 1 && (
         <nav className={s.tabBar} aria-label="메뉴 섹션">
           {nav.tabs.map((t) => (
             <button
@@ -85,7 +89,7 @@ export function PageShell({
         </nav>
       )}
 
-      {showTitleBand && (page.title || page.subtitle) && (
+      {!chromeless && showTitleBand && (page.title || page.subtitle) && (
         <div className={s.titleBand}>
           {page.title && <h2>{page.title}</h2>}
           {page.subtitle && <p>{page.subtitle}</p>}

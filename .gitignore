@@ -25,3 +25,4 @@ design-reference/shots/
 
 # TypeScript incremental build info
 *.tsbuildinfo
+design-reference/figma/*.png

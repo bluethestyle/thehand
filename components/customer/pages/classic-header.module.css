@@ -1,0 +1,57 @@
+/* 피그마 v2 클래식 헤더 — 크림 배경, 중앙 정렬 */
+.head {
+  text-align: center;
+  padding: 22px 24px 14px;
+  border-bottom: 1px solid #ede8e0;
+}
+.brand {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.36em;
+  text-indent: 0.36em; /* 마지막 자간 보정 → 시각적 중앙 */
+  color: #9a8f80;
+}
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 10px;
+}
+.rule {
+  width: 54px;
+  height: 1px;
+  background: #d8d0c4;
+}
+.title {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0;
+  font-weight: 700;
+}
+.ja {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #2d3436;
+}
+.ko {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #8a7f6e;
+}
+.jaSolo {
+  font-family: var(--font-serif);
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #2d3436;
+}
+.sub {
+  margin: 12px 0 0;
+  font-size: 12px;
+  color: #636e72;
+}

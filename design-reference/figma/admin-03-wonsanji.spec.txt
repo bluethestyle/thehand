@@ -1,0 +1,120 @@
+=== svg/admin-03-wonsanji.svg ===
+viewBox: 0 0 768 810
+
+-- colors (count) --
+stroke:#D8D3C9:31  #fff:22  #3A3631:20  #8B8478:20  #EDEAE2:16  #B5AFA3:8  #B0402A:8  #C8902F:2  #F6F4EF:1  #FFFFFF:1  #2B2722:1  #E2A04F:1  #5C564E:1
+
+-- shapes (rect/line/circle/text), y-sorted --
+{"t":"rect","x":0,"y":0,"w":768,"h":810,"rx":0,"fill":"#F6F4EF","stroke":null,"sw":null}
+{"t":"rect","x":0,"y":0,"w":768,"h":52,"rx":0,"fill":"#FFFFFF","stroke":null,"sw":null}
+{"t":"rect","x":24,"y":14,"w":24,"h":24,"rx":6,"fill":"#2B2722","stroke":null,"sw":null}
+{"t":"text","x":36,"y":31,"fill":"#E2A04F","content":"手"}
+{"t":"text","x":58,"y":31,"fill":"#3A3631","content":"더핸드 관리"}
+{"t":"text","x":744,"y":31,"fill":"#8B8478","content":"PIN 재설정 · 로그아웃"}
+{"t":"line","x1":0,"y1":52,"x2":768,"y2":52,"stroke":"#D8D3C9","sw":"1","dash":null}
+{"t":"text","x":66.5,"y":84,"fill":"#8B8478","content":"메뉴 관리"}
+{"t":"text","x":164,"y":84,"fill":"#8B8478","content":"페이지·순서"}
+{"t":"text","x":248.5,"y":84,"fill":"#3A3631","content":"원산지"}
+{"t":"text","x":333,"y":84,"fill":"#8B8478","content":"공지·이벤트"}
+{"t":"text","x":430.5,"y":84,"fill":"#8B8478","content":"영업 정보"}
+{"t":"rect","x":227,"y":92,"w":43,"h":3,"rx":1.5,"fill":"#C8902F","stroke":null,"sw":null}
+{"t":"rect","x":664,"y":114,"w":80,"h":30,"rx":15,"fill":"#C8902F","stroke":null,"sw":null}
+{"t":"rect","x":568,"y":114,"w":88,"h":30,"rx":15,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"text","x":24,"y":126,"fill":"#3A3631","content":"원산지 표기"}
+{"t":"text","x":704,"y":133,"fill":"#fff","content":"저장"}
+{"t":"text","x":612,"y":133,"fill":"#8B8478","content":"미리보기"}
+{"t":"text","x":24,"y":146,"fill":"#8B8478","content":"손님 메뉴판 맨 마지막 페이지에 표시됩니다 · 변경 즉시 반영"}
+{"t":"rect","x":24,"y":164,"w":720,"h":506,"rx":10,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"text","x":40,"y":186,"fill":"#8B8478","content":"재료"}
+{"t":"text","x":260,"y":186,"fill":"#8B8478","content":"원산지"}
+{"t":"line","x1":40,"y1":194,"x2":704,"y2":194,"stroke":"#D8D3C9","sw":"1","dash":null}
+{"t":"rect","x":70,"y":205,"w":170,"h":28,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":260,"y":205,"w":330,"h":28,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":604,"y":207,"w":58,"h":24,"rx":12,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"circle","cx":690,"cy":219,"r":11,"fill":"#EDEAE2","stroke":null}
+{"t":"text","x":633,"y":223,"fill":"#8B8478","content":"국내산"}
+{"t":"text","x":690,"y":223,"fill":"#B0402A","content":"✕"}
+{"t":"text","x":81,"y":224,"fill":"#3A3631","content":"쌀"}
+{"t":"text","x":271,"y":224,"fill":"#3A3631","content":"국내산"}
+{"t":"text","x":46,"y":225,"fill":"#B5AFA3","content":"≡"}
+{"t":"line","x1":40,"y1":244,"x2":704,"y2":244,"stroke":"#D8D3C9","sw":"1","dash":null}
+{"t":"rect","x":70,"y":255,"w":170,"h":28,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":260,"y":255,"w":330,"h":28,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":604,"y":257,"w":58,"h":24,"rx":12,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"circle","cx":690,"cy":269,"r":11,"fill":"#EDEAE2","stroke":null}
+{"t":"text","x":633,"y":273,"fill":"#8B8478","content":"국내산"}
+{"t":"text","x":690,"y":273,"fill":"#B0402A","content":"✕"}
+{"t":"text","x":81,"y":274,"fill":"#3A3631","content":"광어"}
+{"t":"text","x":271,"y":274,"fill":"#3A3631","content":"국내산(양식)"}
+{"t":"text","x":46,"y":275,"fill":"#B5AFA3","content":"≡"}
+{"t":"line","x1":40,"y1":294,"x2":704,"y2":294,"stroke":"#D8D3C9","sw":"1","dash":null}
+{"t":"rect","x":70,"y":305,"w":170,"h":28,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":260,"y":305,"w":330,"h":28,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":604,"y":307,"w":58,"h":24,"rx":12,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"circle","cx":690,"cy":319,"r":11,"fill":"#EDEAE2","stroke":null}
+{"t":"text","x":633,"y":323,"fill":"#8B8478","content":"국내산"}
+{"t":"text","x":690,"y":323,"fill":"#B0402A","content":"✕"}
+{"t":"text","x":81,"y":324,"fill":"#3A3631","content":"한치"}
+{"t":"text","x":271,"y":324,"fill":"#3A3631","content":"국내산"}
+{"t":"text","x":46,"y":325,"fill":"#B5AFA3","content":"≡"}
+{"t":"line","x1":40,"y1":344,"x2":704,"y2":344,"stroke":"#D8D3C9","sw":"1","dash":null}
+{"t":"rect","x":70,"y":355,"w":170,"h":28,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":260,"y":355,"w":330,"h":28,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":604,"y":357,"w":58,"h":24,"rx":12,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"circle","cx":690,"cy":369,"r":11,"fill":"#EDEAE2","stroke":null}
+{"t":"text","x":633,"y":373,"fill":"#8B8478","content":"국내산"}
+{"t":"text","x":690,"y":373,"fill":"#B0402A","content":"✕"}
+{"t":"text","x":81,"y":374,"fill":"#3A3631","content":"소고기(와규)"}
+{"t":"text","x":271,"y":374,"fill":"#3A3631","content":"호주산"}
+{"t":"text","x":46,"y":375,"fill":"#B5AFA3","content":"≡"}
+{"t":"line","x1":40,"y1":394,"x2":704,"y2":394,"stroke":"#D8D3C9","sw":"1","dash":null}
+{"t":"rect","x":70,"y":405,"w":170,"h":28,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":260,"y":405,"w":330,"h":28,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":604,"y":407,"w":58,"h":24,"rx":12,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"circle","cx":690,"cy":419,"r":11,"fill":"#EDEAE2","stroke":null}
+{"t":"text","x":633,"y":423,"fill":"#8B8478","content":"국내산"}
+{"t":"text","x":690,"y":423,"fill":"#B0402A","content":"✕"}
+{"t":"text","x":81,"y":424,"fill":"#3A3631","content":"새우"}
+{"t":"text","x":271,"y":424,"fill":"#3A3631","content":"베트남산"}
+{"t":"text","x":46,"y":425,"fill":"#B5AFA3","content":"≡"}
+{"t":"line","x1":40,"y1":444,"x2":704,"y2":444,"stroke":"#D8D3C9","sw":"1","dash":null}
+{"t":"rect","x":70,"y":455,"w":170,"h":28,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":260,"y":455,"w":330,"h":28,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":604,"y":457,"w":58,"h":24,"rx":12,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"circle","cx":690,"cy":469,"r":11,"fill":"#EDEAE2","stroke":null}
+{"t":"text","x":633,"y":473,"fill":"#8B8478","content":"국내산"}
+{"t":"text","x":690,"y":473,"fill":"#B0402A","content":"✕"}
+{"t":"text","x":81,"y":474,"fill":"#3A3631","content":"메밀"}
+{"t":"text","x":271,"y":474,"fill":"#3A3631","content":"중국산"}
+{"t":"text","x":46,"y":475,"fill":"#B5AFA3","content":"≡"}
+{"t":"line","x1":40,"y1":494,"x2":704,"y2":494,"stroke":"#D8D3C9","sw":"1","dash":null}
+{"t":"rect","x":70,"y":505,"w":170,"h":28,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":260,"y":505,"w":330,"h":28,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":604,"y":507,"w":58,"h":24,"rx":12,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"circle","cx":690,"cy":519,"r":11,"fill":"#EDEAE2","stroke":null}
+{"t":"text","x":633,"y":523,"fill":"#8B8478","content":"국내산"}
+{"t":"text","x":690,"y":523,"fill":"#B0402A","content":"✕"}
+{"t":"text","x":81,"y":524,"fill":"#3A3631","content":"배추김치"}
+{"t":"text","x":271,"y":524,"fill":"#3A3631","content":"배추 국내산 · 고춧가루 중국산"}
+{"t":"text","x":46,"y":525,"fill":"#B5AFA3","content":"≡"}
+{"t":"line","x1":40,"y1":544,"x2":704,"y2":544,"stroke":"#D8D3C9","sw":"1","dash":null}
+{"t":"rect","x":70,"y":555,"w":170,"h":28,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":260,"y":555,"w":330,"h":28,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":604,"y":557,"w":58,"h":24,"rx":12,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"circle","cx":690,"cy":569,"r":11,"fill":"#EDEAE2","stroke":null}
+{"t":"text","x":633,"y":573,"fill":"#8B8478","content":"국내산"}
+{"t":"text","x":690,"y":573,"fill":"#B0402A","content":"✕"}
+{"t":"text","x":81,"y":574,"fill":"#3A3631","content":"가지"}
+{"t":"text","x":271,"y":574,"fill":"#3A3631","content":"국내산"}
+{"t":"text","x":46,"y":575,"fill":"#B5AFA3","content":"≡"}
+{"t":"line","x1":40,"y1":594,"x2":704,"y2":594,"stroke":"#D8D3C9","sw":"1","dash":null}
+{"t":"rect","x":40,"y":608,"w":200,"h":32,"rx":16,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"text","x":140,"y":628,"fill":"#8B8478","content":"+ 행 추가"}
+{"t":"text","x":260,"y":628,"fill":"#8B8478","content":"행을 끌어 표시 순서 변경"}
+{"t":"rect","x":24,"y":684,"w":720,"h":76,"rx":10,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"text","x":40,"y":708,"fill":"#3A3631","content":"하단 각주 문구"}
+{"t":"rect","x":40,"y":720,"w":640,"h":28,"rx":6,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"text","x":51,"y":739,"fill":"#5C564E","content":"∗ 수급 상황에 따라 원산지가 변경될 수 있으며, 변경 시 즉시 수정 표기합니다 ∗"}
+{"t":"text","x":24,"y":784,"fill":"#8B8478","content":"법정 의무 표기 항목(쌀·김치류·축산물 등)은 삭제 시 경고가 표시됩니다"}
+
+-- text rows (outline glyph clusters): y | font≈h | x-range | color | glyphs --

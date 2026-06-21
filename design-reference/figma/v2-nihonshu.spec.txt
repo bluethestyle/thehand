@@ -1,0 +1,231 @@
+=== svg/v2-nihonshu.svg ===
+viewBox: 0 0 768 1656
+
+-- colors (count) --
+#9A8F80:50  #2D3436:41  #636E72:37  #8A7F6E33:27  #5C564E:18  #F5F1EC:13  stroke:#D8D0C4:11  #B5AB99:9  #8E8576:9  #C0560F:8  stroke:#EDE8E0:6  #C9BFB0:5  stroke:#E0D9CC:4  #FBF1DC:4  #B07A1E:4  #C84B31:2  #8A7F6E:2  #1F8A8C:2  #FDFCFB:1  #E0962E:1  rgba(243,156,18,0.42):1  #FFFFFF:1
+
+-- shapes (rect/line/circle/text), y-sorted --
+{"t":"rect","x":0,"y":0,"w":768,"h":1656,"rx":0,"fill":"#FDFCFB","stroke":null,"sw":null}
+{"t":"text","x":384,"y":44,"fill":"#9A8F80","content":"THE HAND"}
+{"t":"line","x1":289,"y1":72,"x2":343,"y2":72,"stroke":"#D8D0C4","sw":"1","dash":null}
+{"t":"line","x1":425,"y1":72,"x2":479,"y2":72,"stroke":"#D8D0C4","sw":"1","dash":null}
+{"t":"text","x":384,"y":78,"fill":"#2D3436","content":"日本酒"}
+{"t":"text","x":384,"y":104,"fill":"#636E72","content":"전국 8개 지역에서 온 사케"}
+{"t":"line","x1":28,"y1":124,"x2":740,"y2":124,"stroke":"#EDE8E0","sw":"1","dash":null}
+{"t":"text","x":28,"y":156,"fill":"#2D3436","content":"준마이 다이긴죠"}
+{"t":"text","x":170,"y":156,"fill":"#9A8F80","content":"純米大吟醸"}
+{"t":"text","x":740,"y":156,"fill":"#9A8F80","content":"정미보합 50% 이하 · 가장 화려한 향"}
+{"t":"line","x1":28,"y1":168,"x2":740,"y2":168,"stroke":"#E0D9CC","sw":"1.5","dash":null}
+{"t":"rect","x":28,"y":184,"w":50,"h":104,"rx":8,"fill":"#F5F1EC","stroke":"#D8D0C4","sw":"1"}
+{"t":"rect","x":110,"y":194,"w":135.5,"h":11,"rx":0,"fill":"rgba(243,156,18,0.42)","stroke":null,"sw":null}
+{"t":"text","x":94,"y":202,"fill":"#E0962E","content":"★"}
+{"t":"text","x":112,"y":202,"fill":"#2D3436","content":"에미시키 몬순"}
+{"t":"text","x":249.1,"y":202,"fill":"#636E72","content":"(후쿠시마)"}
+{"t":"text","x":94,"y":222,"fill":"#8E8576","content":"에미시키"}
+{"t":"text","x":605,"y":222,"fill":"#636E72","content":"잔술"}
+{"t":"text","x":665,"y":222,"fill":"#636E72","content":"도쿠리"}
+{"t":"text","x":725,"y":222,"fill":"#636E72","content":"보틀"}
+{"t":"text","x":605,"y":233,"fill":"#9A8F80","content":"100㎖"}
+{"t":"text","x":665,"y":233,"fill":"#9A8F80","content":"300㎖"}
+{"t":"text","x":725,"y":233,"fill":"#9A8F80","content":"720㎖"}
+{"t":"text","x":53,"y":241,"fill":"#B5AB99","content":"보틀"}
+{"t":"text","x":94,"y":244,"fill":"#5C564E","content":"트로피컬한 향과 달콤함, 바나나·망고 같은 열대과실의 화려함."}
+{"t":"text","x":605,"y":248,"fill":"#2D3436","content":"18,500"}
+{"t":"text","x":665,"y":248,"fill":"#2D3436","content":"53,000"}
+{"t":"text","x":725,"y":248,"fill":"#2D3436","content":"106,000"}
+{"t":"rect","x":94,"y":256,"w":440,"h":30,"rx":8,"fill":"#F5F1EC","stroke":null,"sw":null}
+{"t":"rect","x":104,"y":263,"w":46,"h":15,"rx":4,"fill":"#FBF1DC","stroke":null,"sw":null}
+{"t":"text","x":127,"y":274,"fill":"#B07A1E","content":"소믈리에"}
+{"t":"text","x":158,"y":275,"fill":"#5C564E","content":"사케가 처음이라면 자신 있게 권하는 한 잔이에요."}
+{"t":"circle","cx":166,"cy":304,"r":1.5,"fill":"#C9BFB0","stroke":null}
+{"t":"text","x":94,"y":308,"fill":"#9A8F80","content":"추천 페어링"}
+{"t":"text","x":174,"y":308,"fill":"#5C564E","content":"크림치즈·제철 과일"}
+{"t":"text","x":94,"y":332,"fill":"#9A8F80","content":"정미보합 50% · 일본주도 비공개 · 산도 비공개 · 도수 17%"}
+{"t":"line","x1":28,"y1":340,"x2":740,"y2":340,"stroke":"#EDE8E0","sw":"1","dash":null}
+{"t":"rect","x":28,"y":356,"w":50,"h":104,"rx":8,"fill":"#F5F1EC","stroke":"#D8D0C4","sw":"1"}
+{"t":"text","x":94,"y":374,"fill":"#2D3436","content":"자쿠 나카도리"}
+{"t":"text","x":231.1,"y":374,"fill":"#636E72","content":"(미에)"}
+{"t":"text","x":94,"y":394,"fill":"#8E8576","content":"시미즈세이자부로"}
+{"t":"text","x":605,"y":394,"fill":"#636E72","content":"잔술"}
+{"t":"text","x":665,"y":394,"fill":"#636E72","content":"도쿠리"}
+{"t":"text","x":725,"y":394,"fill":"#636E72","content":"보틀"}
+{"t":"text","x":605,"y":405,"fill":"#9A8F80","content":"100㎖"}
+{"t":"text","x":665,"y":405,"fill":"#9A8F80","content":"300㎖"}
+{"t":"text","x":725,"y":405,"fill":"#9A8F80","content":"720㎖"}
+{"t":"text","x":53,"y":413,"fill":"#B5AB99","content":"보틀"}
+{"t":"text","x":94,"y":416,"fill":"#5C564E","content":"가장 맑고 깨끗한 나카도리. 실크 같은 감촉과 화려한 긴죠향."}
+{"t":"text","x":605,"y":420,"fill":"#2D3436","content":"22,500"}
+{"t":"text","x":665,"y":420,"fill":"#2D3436","content":"65,000"}
+{"t":"text","x":725,"y":420,"fill":"#2D3436","content":"130,000"}
+{"t":"rect","x":94,"y":428,"w":440,"h":30,"rx":8,"fill":"#F5F1EC","stroke":null,"sw":null}
+{"t":"rect","x":104,"y":435,"w":46,"h":15,"rx":4,"fill":"#FBF1DC","stroke":null,"sw":null}
+{"t":"text","x":127,"y":446,"fill":"#B07A1E","content":"소믈리에"}
+{"t":"text","x":158,"y":447,"fill":"#5C564E","content":"와인잔에 차갑게. 향이 두 배로 열려요."}
+{"t":"text","x":94,"y":482,"fill":"#9A8F80","content":"정미보합 50% · 일본주도 +1 · 산도 1.6 · 도수 16%"}
+{"t":"line","x1":28,"y1":490,"x2":740,"y2":490,"stroke":"#EDE8E0","sw":"1","dash":null}
+{"t":"rect","x":28,"y":506,"w":50,"h":104,"rx":8,"fill":"#F5F1EC","stroke":"#D8D0C4","sw":"1"}
+{"t":"rect","x":356.5,"y":507,"w":76,"h":22,"rx":11,"fill":"#C84B31","stroke":null,"sw":null}
+{"t":"text","x":394.5,"y":522,"fill":"#FFFFFF","content":"일시 품절"}
+{"t":"text","x":94,"y":524,"fill":"#2D3436","content":"치요무스비 고우리키"}
+{"t":"text","x":289,"y":524,"fill":"#636E72","content":"(돗토리)"}
+{"t":"text","x":94,"y":544,"fill":"#8E8576","content":"치요무스비"}
+{"t":"text","x":605,"y":544,"fill":"#636E72","content":"잔술"}
+{"t":"text","x":665,"y":544,"fill":"#636E72","content":"도쿠리"}
+{"t":"text","x":725,"y":544,"fill":"#636E72","content":"보틀"}
+{"t":"text","x":605,"y":555,"fill":"#9A8F80","content":"100㎖"}
+{"t":"text","x":665,"y":555,"fill":"#9A8F80","content":"300㎖"}
+{"t":"text","x":725,"y":555,"fill":"#9A8F80","content":"720㎖"}
+{"t":"text","x":53,"y":563,"fill":"#B5AB99","content":"보틀"}
+{"t":"text","x":94,"y":566,"fill":"#5C564E","content":"숙성될수록 깊어지는 맛, 강력하고 또렷한 감칠맛. 차게."}
+{"t":"text","x":605,"y":570,"fill":"#2D3436","content":"14,500"}
+{"t":"text","x":665,"y":570,"fill":"#2D3436","content":"41,000"}
+{"t":"text","x":725,"y":570,"fill":"#2D3436","content":"82,000"}
+{"t":"text","x":94,"y":588,"fill":"#9A8F80","content":"정미보합 50% · 일본주도 +6 · 산도 1.6 · 도수 16%"}
+{"t":"text","x":28,"y":660,"fill":"#2D3436","content":"준마이 긴죠"}
+{"t":"text","x":137,"y":660,"fill":"#9A8F80","content":"純米吟醸"}
+{"t":"text","x":740,"y":660,"fill":"#9A8F80","content":"정미보합 60% 이하 · 향과 맛의 균형"}
+{"t":"line","x1":28,"y1":672,"x2":740,"y2":672,"stroke":"#E0D9CC","sw":"1.5","dash":null}
+{"t":"rect","x":28,"y":688,"w":50,"h":104,"rx":8,"fill":"#F5F1EC","stroke":"#D8D0C4","sw":"1"}
+{"t":"text","x":289,"y":701,"fill":"#C84B31","content":"NEW"}
+{"t":"text","x":94,"y":706,"fill":"#2D3436","content":"키노에네 준마이긴죠"}
+{"t":"text","x":319,"y":706,"fill":"#636E72","content":"(치바)"}
+{"t":"text","x":94,"y":726,"fill":"#8E8576","content":"이이누마혼케"}
+{"t":"text","x":605,"y":726,"fill":"#636E72","content":"잔술"}
+{"t":"text","x":665,"y":726,"fill":"#636E72","content":"도쿠리"}
+{"t":"text","x":725,"y":726,"fill":"#636E72","content":"보틀"}
+{"t":"text","x":605,"y":737,"fill":"#9A8F80","content":"100㎖"}
+{"t":"text","x":665,"y":737,"fill":"#9A8F80","content":"300㎖"}
+{"t":"text","x":725,"y":737,"fill":"#9A8F80","content":"720㎖"}
+{"t":"text","x":53,"y":745,"fill":"#B5AB99","content":"보틀"}
+{"t":"text","x":94,"y":748,"fill":"#5C564E","content":"청사과의 상큼함과 약한 탄산감으로 목넘김이 좋은 사케."}
+{"t":"text","x":605,"y":752,"fill":"#2D3436","content":"12,000"}
+{"t":"text","x":665,"y":752,"fill":"#2D3436","content":"34,500"}
+{"t":"text","x":725,"y":752,"fill":"#2D3436","content":"69,000"}
+{"t":"circle","cx":166,"cy":764,"r":1.5,"fill":"#C9BFB0","stroke":null}
+{"t":"text","x":94,"y":768,"fill":"#9A8F80","content":"추천 페어링"}
+{"t":"text","x":174,"y":768,"fill":"#5C564E","content":"튀김·가벼운 사시미"}
+{"t":"text","x":94,"y":792,"fill":"#9A8F80","content":"정미보합 65% · 일본주도 ±0 · 산도 1.4 · 도수 16%"}
+{"t":"line","x1":28,"y1":804,"x2":740,"y2":804,"stroke":"#EDE8E0","sw":"1","dash":null}
+{"t":"rect","x":28,"y":820,"w":50,"h":104,"rx":8,"fill":"#F5F1EC","stroke":"#D8D0C4","sw":"1"}
+{"t":"text","x":94,"y":838,"fill":"#2D3436","content":"스이게이 코우이쿠"}
+{"t":"text","x":269.7,"y":838,"fill":"#636E72","content":"(고치)"}
+{"t":"text","x":94,"y":858,"fill":"#8E8576","content":"스이게이주조"}
+{"t":"text","x":605,"y":858,"fill":"#636E72","content":"잔술"}
+{"t":"text","x":665,"y":858,"fill":"#636E72","content":"도쿠리"}
+{"t":"text","x":725,"y":858,"fill":"#636E72","content":"보틀"}
+{"t":"text","x":605,"y":869,"fill":"#9A8F80","content":"100㎖"}
+{"t":"text","x":665,"y":869,"fill":"#9A8F80","content":"300㎖"}
+{"t":"text","x":725,"y":869,"fill":"#9A8F80","content":"720㎖"}
+{"t":"text","x":53,"y":877,"fill":"#B5AB99","content":"보틀"}
+{"t":"text","x":94,"y":880,"fill":"#5C564E","content":"쌀의 또렷한 감칠맛과 은은한 긴죠향, 깔끔한 산미가 특징."}
+{"t":"text","x":605,"y":884,"fill":"#2D3436","content":"16,000"}
+{"t":"text","x":665,"y":884,"fill":"#2D3436","content":"45,500"}
+{"t":"text","x":725,"y":884,"fill":"#2D3436","content":"—"}
+{"t":"rect","x":733,"y":895,"w":16,"h":3,"rx":2,"fill":"#8A7F6E","stroke":null,"sw":null}
+{"t":"text","x":94,"y":902,"fill":"#9A8F80","content":"정미보합 50% · 일본주도 +7 · 산도 1.8 · 도수 16%"}
+{"t":"text","x":729,"y":904,"fill":"#8A7F6E","content":"도쿠리·잔술만"}
+{"t":"line","x1":28,"y1":936,"x2":740,"y2":936,"stroke":"#EDE8E0","sw":"1","dash":null}
+{"t":"rect","x":28,"y":952,"w":50,"h":104,"rx":8,"fill":"#F5F1EC","stroke":"#D8D0C4","sw":"1"}
+{"t":"text","x":94,"y":970,"fill":"#2D3436","content":"이요카기야 무여과"}
+{"t":"text","x":269.7,"y":970,"fill":"#636E72","content":"(에히메)"}
+{"t":"text","x":94,"y":990,"fill":"#8E8576","content":"카기야"}
+{"t":"text","x":605,"y":990,"fill":"#636E72","content":"잔술"}
+{"t":"text","x":665,"y":990,"fill":"#636E72","content":"도쿠리"}
+{"t":"text","x":725,"y":990,"fill":"#636E72","content":"보틀"}
+{"t":"text","x":605,"y":1001,"fill":"#9A8F80","content":"100㎖"}
+{"t":"text","x":665,"y":1001,"fill":"#9A8F80","content":"300㎖"}
+{"t":"text","x":725,"y":1001,"fill":"#9A8F80","content":"720㎖"}
+{"t":"text","x":53,"y":1009,"fill":"#B5AB99","content":"보틀"}
+{"t":"text","x":94,"y":1012,"fill":"#5C564E","content":"쌀의 감칠맛을 살린 폭넓은 맛. 데워 마셔도 좋은 식중주."}
+{"t":"text","x":605,"y":1016,"fill":"#2D3436","content":"13,500"}
+{"t":"text","x":665,"y":1016,"fill":"#2D3436","content":"38,500"}
+{"t":"text","x":725,"y":1016,"fill":"#2D3436","content":"77,000"}
+{"t":"rect","x":733,"y":1027,"w":16,"h":3,"rx":2,"fill":"#C0560F","stroke":null,"sw":null}
+{"t":"circle","cx":166,"cy":1028,"r":1.5,"fill":"#C9BFB0","stroke":null}
+{"t":"text","x":94,"y":1032,"fill":"#9A8F80","content":"추천 페어링"}
+{"t":"text","x":174,"y":1032,"fill":"#5C564E","content":"구운 생선·조림"}
+{"t":"text","x":729,"y":1036,"fill":"#C0560F","content":"♨ 데움(아츠캉) 가능"}
+{"t":"text","x":94,"y":1056,"fill":"#9A8F80","content":"정미보합 50% · 일본주도 +4 · 산도 1.7 · 도수 15.5%"}
+{"t":"text","x":28,"y":1106,"fill":"#2D3436","content":"준마이"}
+{"t":"text","x":87.5,"y":1106,"fill":"#9A8F80","content":"純米"}
+{"t":"text","x":740,"y":1106,"fill":"#9A8F80","content":"쌀·누룩·물로만 빚은 감칠맛"}
+{"t":"line","x1":28,"y1":1118,"x2":740,"y2":1118,"stroke":"#E0D9CC","sw":"1.5","dash":null}
+{"t":"rect","x":28,"y":1134,"w":50,"h":104,"rx":8,"fill":"#F5F1EC","stroke":"#D8D0C4","sw":"1"}
+{"t":"text","x":94,"y":1152,"fill":"#2D3436","content":"하쿠주로 아카즈라"}
+{"t":"text","x":269.7,"y":1152,"fill":"#636E72","content":"(효고)"}
+{"t":"text","x":94,"y":1172,"fill":"#8E8576","content":"하쿠주로"}
+{"t":"text","x":605,"y":1172,"fill":"#636E72","content":"잔술"}
+{"t":"text","x":665,"y":1172,"fill":"#636E72","content":"도쿠리"}
+{"t":"text","x":725,"y":1172,"fill":"#636E72","content":"보틀"}
+{"t":"text","x":605,"y":1183,"fill":"#9A8F80","content":"100㎖"}
+{"t":"text","x":665,"y":1183,"fill":"#9A8F80","content":"300㎖"}
+{"t":"text","x":725,"y":1183,"fill":"#9A8F80","content":"720㎖"}
+{"t":"text","x":53,"y":1191,"fill":"#B5AB99","content":"보틀"}
+{"t":"text","x":94,"y":1194,"fill":"#5C564E","content":"니혼슈도 +12의 Extra Dry. 담백한 감칠맛, 자극적인 향을 절제."}
+{"t":"text","x":605,"y":1198,"fill":"#2D3436","content":"16,300"}
+{"t":"text","x":665,"y":1198,"fill":"#2D3436","content":"46,500"}
+{"t":"text","x":725,"y":1198,"fill":"#2D3436","content":"93,000"}
+{"t":"rect","x":94,"y":1206,"w":440,"h":30,"rx":8,"fill":"#F5F1EC","stroke":null,"sw":null}
+{"t":"rect","x":733,"y":1209,"w":16,"h":3,"rx":2,"fill":"#C0560F","stroke":null,"sw":null}
+{"t":"rect","x":104,"y":1213,"w":46,"h":15,"rx":4,"fill":"#FBF1DC","stroke":null,"sw":null}
+{"t":"text","x":729,"y":1218,"fill":"#C0560F","content":"♨ 데움(아츠캉) 가능"}
+{"t":"text","x":127,"y":1224,"fill":"#B07A1E","content":"소믈리에"}
+{"t":"text","x":158,"y":1225,"fill":"#5C564E","content":"데우면 진가가 나오는 술. 아츠캉으로 권해요."}
+{"t":"circle","cx":166,"cy":1254,"r":1.5,"fill":"#C9BFB0","stroke":null}
+{"t":"text","x":94,"y":1258,"fill":"#9A8F80","content":"추천 페어링"}
+{"t":"text","x":174,"y":1258,"fill":"#5C564E","content":"오뎅·전골"}
+{"t":"text","x":94,"y":1282,"fill":"#9A8F80","content":"정미보합 70% · 일본주도 +12 · 산도 1.6 · 도수 15%"}
+{"t":"line","x1":28,"y1":1290,"x2":740,"y2":1290,"stroke":"#EDE8E0","sw":"1","dash":null}
+{"t":"rect","x":28,"y":1306,"w":50,"h":104,"rx":8,"fill":"#F5F1EC","stroke":"#D8D0C4","sw":"1"}
+{"t":"text","x":94,"y":1324,"fill":"#2D3436","content":"쿠즈류 준마이"}
+{"t":"text","x":231.1,"y":1324,"fill":"#636E72","content":"(후쿠이)"}
+{"t":"text","x":94,"y":1344,"fill":"#8E8576","content":"코쿠류"}
+{"t":"text","x":605,"y":1344,"fill":"#636E72","content":"잔술"}
+{"t":"text","x":665,"y":1344,"fill":"#636E72","content":"도쿠리"}
+{"t":"text","x":725,"y":1344,"fill":"#636E72","content":"보틀"}
+{"t":"text","x":605,"y":1355,"fill":"#9A8F80","content":"100㎖"}
+{"t":"text","x":665,"y":1355,"fill":"#9A8F80","content":"300㎖"}
+{"t":"text","x":725,"y":1355,"fill":"#9A8F80","content":"720㎖"}
+{"t":"text","x":53,"y":1363,"fill":"#B5AB99","content":"보틀"}
+{"t":"text","x":94,"y":1366,"fill":"#5C564E","content":"잘 익은 바나나 아로마에 곡물감. 차게 즐기기 좋은 한 병."}
+{"t":"text","x":605,"y":1370,"fill":"#2D3436","content":"13,500"}
+{"t":"text","x":665,"y":1370,"fill":"#2D3436","content":"38,500"}
+{"t":"text","x":725,"y":1370,"fill":"#2D3436","content":"111,000"}
+{"t":"rect","x":94,"y":1378,"w":440,"h":30,"rx":8,"fill":"#F5F1EC","stroke":null,"sw":null}
+{"t":"rect","x":733,"y":1381,"w":16,"h":3,"rx":2,"fill":"#1F8A8C","stroke":null,"sw":null}
+{"t":"rect","x":104,"y":1385,"w":46,"h":15,"rx":4,"fill":"#FBF1DC","stroke":null,"sw":null}
+{"t":"text","x":729,"y":1390,"fill":"#1F8A8C","content":"여름 한정"}
+{"t":"text","x":127,"y":1396,"fill":"#B07A1E","content":"소믈리에"}
+{"t":"rect","x":733,"y":1396,"w":16,"h":3,"rx":2,"fill":"#C0560F","stroke":null,"sw":null}
+{"t":"text","x":158,"y":1397,"fill":"#5C564E","content":"데워도, 차게도. 안주 없이도 좋은 만능주."}
+{"t":"text","x":729,"y":1405,"fill":"#C0560F","content":"♨ 데움(아츠캉) 가능"}
+{"t":"text","x":94,"y":1432,"fill":"#9A8F80","content":"정미보합 65% · 일본주도 +5.5 · 산도 비공개 · 도수 14.5%"}
+{"t":"text","x":28,"y":1478,"fill":"#2D3436","content":"혼죠조"}
+{"t":"text","x":87.5,"y":1478,"fill":"#9A8F80","content":"本醸造"}
+{"t":"text","x":740,"y":1478,"fill":"#9A8F80","content":"깔끔하고 드라이한 반주(飯酒)용"}
+{"t":"line","x1":28,"y1":1490,"x2":740,"y2":1490,"stroke":"#E0D9CC","sw":"1.5","dash":null}
+{"t":"rect","x":28,"y":1506,"w":50,"h":104,"rx":8,"fill":"#F5F1EC","stroke":"#D8D0C4","sw":"1"}
+{"t":"text","x":94,"y":1524,"fill":"#2D3436","content":"키쿠마사무네 혼죠조"}
+{"t":"text","x":289,"y":1524,"fill":"#636E72","content":"(효고)"}
+{"t":"text","x":94,"y":1544,"fill":"#8E8576","content":"키쿠마사무네"}
+{"t":"text","x":605,"y":1544,"fill":"#636E72","content":"잔술"}
+{"t":"text","x":665,"y":1544,"fill":"#636E72","content":"도쿠리"}
+{"t":"text","x":725,"y":1544,"fill":"#636E72","content":"보틀"}
+{"t":"text","x":605,"y":1555,"fill":"#9A8F80","content":"100㎖"}
+{"t":"text","x":665,"y":1555,"fill":"#9A8F80","content":"300㎖"}
+{"t":"text","x":725,"y":1555,"fill":"#9A8F80","content":"720㎖"}
+{"t":"text","x":53,"y":1563,"fill":"#B5AB99","content":"보틀"}
+{"t":"text","x":94,"y":1566,"fill":"#5C564E","content":"쌀의 감칠맛을 살린 드라이한 정통파. 식사와 함께 부담 없이."}
+{"t":"text","x":605,"y":1570,"fill":"#2D3436","content":"9,500"}
+{"t":"text","x":665,"y":1570,"fill":"#2D3436","content":"27,000"}
+{"t":"text","x":725,"y":1570,"fill":"#2D3436","content":"58,000"}
+{"t":"rect","x":733,"y":1581,"w":16,"h":3,"rx":2,"fill":"#C0560F","stroke":null,"sw":null}
+{"t":"circle","cx":166,"cy":1582,"r":1.5,"fill":"#C9BFB0","stroke":null}
+{"t":"text","x":94,"y":1586,"fill":"#9A8F80","content":"추천 페어링"}
+{"t":"text","x":174,"y":1586,"fill":"#5C564E","content":"전골·구이"}
+{"t":"text","x":729,"y":1590,"fill":"#C0560F","content":"♨ 데움(아츠캉) 가능"}
+{"t":"text","x":94,"y":1610,"fill":"#9A8F80","content":"정미보합 70% · 일본주도 +5 · 산도 1.4 · 도수 15%"}
+
+-- text rows (outline glyph clusters): y | font≈h | x-range | color | glyphs --
+y=2  h≈30  x:3–18  #8A7F6E33  (27)
+y=8  h≈0  x:4.4–11.6  ?  (9)

@@ -1,0 +1,216 @@
+=== svg/admin-01-list.svg ===
+viewBox: 0 0 768 828
+
+-- colors (count) --
+stroke:#D8D3C9:66  #8B8478:48  #fff:47  #3A3631:44  #EDEAE2:35  #C8902F:8  #B5AFA3:8  #2B2722:2  #F6F4EF:1  #FFFFFF:1  #E2A04F:1  #F3EFE7:1
+
+-- shapes (rect/line/circle/text), y-sorted --
+{"t":"rect","x":0,"y":0,"w":768,"h":828,"rx":0,"fill":"#F6F4EF","stroke":null,"sw":null}
+{"t":"rect","x":0,"y":0,"w":768,"h":52,"rx":0,"fill":"#FFFFFF","stroke":null,"sw":null}
+{"t":"rect","x":24,"y":14,"w":24,"h":24,"rx":6,"fill":"#2B2722","stroke":null,"sw":null}
+{"t":"text","x":36,"y":31,"fill":"#E2A04F","content":"手"}
+{"t":"text","x":58,"y":31,"fill":"#3A3631","content":"더핸드 관리"}
+{"t":"text","x":744,"y":31,"fill":"#8B8478","content":"PIN 재설정 · 로그아웃"}
+{"t":"line","x1":0,"y1":52,"x2":768,"y2":52,"stroke":"#D8D3C9","sw":"1","dash":null}
+{"t":"text","x":66.5,"y":84,"fill":"#3A3631","content":"메뉴 관리"}
+{"t":"text","x":164,"y":84,"fill":"#8B8478","content":"페이지·순서"}
+{"t":"text","x":268,"y":84,"fill":"#8B8478","content":"공지·이벤트"}
+{"t":"text","x":365.5,"y":84,"fill":"#8B8478","content":"영업 정보"}
+{"t":"rect","x":32,"y":92,"w":69,"h":3,"rx":1.5,"fill":"#C8902F","stroke":null,"sw":null}
+{"t":"rect","x":24,"y":106,"w":720,"h":86,"rx":10,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":164,"y":116,"w":110,"h":22,"rx":6,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"text","x":40,"y":130,"fill":"#3A3631","content":"일괄 조정"}
+{"t":"text","x":110,"y":130,"fill":"#8B8478","content":"적용 범위"}
+{"t":"text","x":175,"y":131,"fill":"#3A3631","content":"니혼슈 전체 ▾"}
+{"t":"rect","x":40,"y":150,"w":128,"h":28,"rx":14,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":176,"y":150,"w":110,"h":28,"rx":14,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":294,"y":150,"w":128,"h":28,"rx":14,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":430,"y":150,"w":140,"h":28,"rx":14,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"text","x":104,"y":168,"fill":"#3A3631","content":"가격 일괄 조정 %"}
+{"t":"text","x":231,"y":168,"fill":"#3A3631","content":"품절 모두 해제"}
+{"t":"text","x":358,"y":168,"fill":"#3A3631","content":"태그 일괄 제거"}
+{"t":"text","x":500,"y":168,"fill":"#3A3631","content":"용량 일괄 변경 ㎖"}
+{"t":"text","x":728,"y":168,"fill":"#8B8478","content":"미리보기 후 적용"}
+{"t":"rect","x":620,"y":207,"w":124,"h":28,"rx":14,"fill":"#C8902F","stroke":null,"sw":null}
+{"t":"rect","x":24,"y":208,"w":76,"h":26,"rx":13,"fill":"#2B2722","stroke":null,"sw":null}
+{"t":"rect","x":108,"y":208,"w":66,"h":26,"rx":13,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":182,"y":208,"w":66,"h":26,"rx":13,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":256,"y":208,"w":66,"h":26,"rx":13,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"text","x":62,"y":225,"fill":"#fff","content":"니혼슈 8"}
+{"t":"text","x":141,"y":225,"fill":"#8B8478","content":"요리 9"}
+{"t":"text","x":215,"y":225,"fill":"#8B8478","content":"쇼츄 7"}
+{"t":"text","x":289,"y":225,"fill":"#8B8478","content":"음료 0"}
+{"t":"text","x":682,"y":225,"fill":"#fff","content":"+ 새 메뉴 추가"}
+{"t":"text","x":24,"y":260,"fill":"#8B8478","content":"행을 끌어 순서 변경 · 가격/용량은 칸에서 바로 수정"}
+{"t":"line","x1":24,"y1":270,"x2":744,"y2":270,"stroke":"#D8D3C9","sw":"1","dash":null}
+{"t":"rect","x":300,"y":280,"w":80,"h":24,"rx":5,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":392,"y":280,"w":80,"h":24,"rx":5,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":484,"y":280,"w":80,"h":24,"rx":5,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":648,"y":286,"w":72,"h":26,"rx":13,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":592,"y":289,"w":34,"h":18,"rx":9,"fill":"#EDEAE2","stroke":"#D8D3C9","sw":"1"}
+{"t":"text","x":58,"y":294,"fill":"#3A3631","content":"에미시키 몬순"}
+{"t":"text","x":162.5,"y":294,"fill":"#C8902F","content":"★추천"}
+{"t":"text","x":372,"y":296,"fill":"#3A3631","content":"18,500"}
+{"t":"text","x":464,"y":296,"fill":"#3A3631","content":"53,000"}
+{"t":"text","x":556,"y":296,"fill":"#3A3631","content":"106,000"}
+{"t":"circle","cx":601,"cy":298,"r":7,"fill":"#fff","stroke":"#D8D3C9"}
+{"t":"text","x":36,"y":303,"fill":"#B5AFA3","content":"≡"}
+{"t":"text","x":684,"y":303,"fill":"#3A3631","content":"수정"}
+{"t":"rect","x":300,"y":308,"w":44,"h":14,"rx":4,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"rect","x":392,"y":308,"w":44,"h":14,"rx":4,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"rect","x":484,"y":308,"w":44,"h":14,"rx":4,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"text","x":58,"y":311,"fill":"#8B8478","content":"준마이다이긴죠 · 후쿠시마"}
+{"t":"text","x":322,"y":318,"fill":"#8B8478","content":"100㎖"}
+{"t":"text","x":414,"y":318,"fill":"#8B8478","content":"300㎖"}
+{"t":"text","x":506,"y":318,"fill":"#8B8478","content":"720㎖"}
+{"t":"line","x1":24,"y1":326,"x2":744,"y2":326,"stroke":"#D8D3C9","sw":"1","dash":null}
+{"t":"rect","x":300,"y":336,"w":80,"h":24,"rx":5,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":392,"y":336,"w":80,"h":24,"rx":5,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":484,"y":336,"w":80,"h":24,"rx":5,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":648,"y":342,"w":72,"h":26,"rx":13,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":592,"y":345,"w":34,"h":18,"rx":9,"fill":"#EDEAE2","stroke":"#D8D3C9","sw":"1"}
+{"t":"text","x":58,"y":350,"fill":"#3A3631","content":"자쿠 나카도리"}
+{"t":"text","x":372,"y":352,"fill":"#3A3631","content":"22,500"}
+{"t":"text","x":464,"y":352,"fill":"#3A3631","content":"65,000"}
+{"t":"text","x":556,"y":352,"fill":"#3A3631","content":"130,000"}
+{"t":"circle","cx":601,"cy":354,"r":7,"fill":"#fff","stroke":"#D8D3C9"}
+{"t":"text","x":36,"y":359,"fill":"#B5AFA3","content":"≡"}
+{"t":"text","x":684,"y":359,"fill":"#3A3631","content":"수정"}
+{"t":"rect","x":300,"y":364,"w":44,"h":14,"rx":4,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"rect","x":392,"y":364,"w":44,"h":14,"rx":4,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"rect","x":484,"y":364,"w":44,"h":14,"rx":4,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"text","x":58,"y":367,"fill":"#8B8478","content":"준마이다이긴죠 · 미에"}
+{"t":"text","x":322,"y":374,"fill":"#8B8478","content":"100㎖"}
+{"t":"text","x":414,"y":374,"fill":"#8B8478","content":"300㎖"}
+{"t":"text","x":506,"y":374,"fill":"#8B8478","content":"720㎖"}
+{"t":"line","x1":24,"y1":382,"x2":744,"y2":382,"stroke":"#D8D3C9","sw":"1","dash":null}
+{"t":"rect","x":300,"y":392,"w":80,"h":24,"rx":5,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":392,"y":392,"w":80,"h":24,"rx":5,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":484,"y":392,"w":80,"h":24,"rx":5,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":648,"y":398,"w":72,"h":26,"rx":13,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":592,"y":401,"w":34,"h":18,"rx":9,"fill":"#EDEAE2","stroke":"#D8D3C9","sw":"1"}
+{"t":"text","x":58,"y":406,"fill":"#3A3631","content":"키노에네 준마이긴죠"}
+{"t":"text","x":203,"y":406,"fill":"#C8902F","content":"NEW"}
+{"t":"text","x":372,"y":408,"fill":"#3A3631","content":"12,000"}
+{"t":"text","x":464,"y":408,"fill":"#3A3631","content":"34,500"}
+{"t":"text","x":556,"y":408,"fill":"#3A3631","content":"69,000"}
+{"t":"circle","cx":601,"cy":410,"r":7,"fill":"#fff","stroke":"#D8D3C9"}
+{"t":"text","x":36,"y":415,"fill":"#B5AFA3","content":"≡"}
+{"t":"text","x":684,"y":415,"fill":"#3A3631","content":"수정"}
+{"t":"rect","x":300,"y":420,"w":44,"h":14,"rx":4,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"rect","x":392,"y":420,"w":44,"h":14,"rx":4,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"rect","x":484,"y":420,"w":44,"h":14,"rx":4,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"text","x":58,"y":423,"fill":"#8B8478","content":"준마이긴죠 · 치바"}
+{"t":"text","x":322,"y":430,"fill":"#8B8478","content":"100㎖"}
+{"t":"text","x":414,"y":430,"fill":"#8B8478","content":"300㎖"}
+{"t":"text","x":506,"y":430,"fill":"#8B8478","content":"720㎖"}
+{"t":"line","x1":24,"y1":438,"x2":744,"y2":438,"stroke":"#D8D3C9","sw":"1","dash":null}
+{"t":"rect","x":300,"y":448,"w":80,"h":24,"rx":5,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":392,"y":448,"w":80,"h":24,"rx":5,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":484,"y":448,"w":80,"h":24,"rx":5,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":648,"y":454,"w":72,"h":26,"rx":13,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":592,"y":457,"w":34,"h":18,"rx":9,"fill":"#EDEAE2","stroke":"#D8D3C9","sw":"1"}
+{"t":"text","x":58,"y":462,"fill":"#3A3631","content":"하쿠주로 아카즈라"}
+{"t":"text","x":189.5,"y":462,"fill":"#C8902F","content":"♨"}
+{"t":"text","x":372,"y":464,"fill":"#3A3631","content":"16,300"}
+{"t":"text","x":464,"y":464,"fill":"#3A3631","content":"46,500"}
+{"t":"text","x":556,"y":464,"fill":"#3A3631","content":"93,000"}
+{"t":"circle","cx":601,"cy":466,"r":7,"fill":"#fff","stroke":"#D8D3C9"}
+{"t":"text","x":36,"y":471,"fill":"#B5AFA3","content":"≡"}
+{"t":"text","x":684,"y":471,"fill":"#3A3631","content":"수정"}
+{"t":"rect","x":300,"y":476,"w":44,"h":14,"rx":4,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"rect","x":392,"y":476,"w":44,"h":14,"rx":4,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"rect","x":484,"y":476,"w":44,"h":14,"rx":4,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"text","x":58,"y":479,"fill":"#8B8478","content":"준마이 · 효고"}
+{"t":"text","x":322,"y":486,"fill":"#8B8478","content":"100㎖"}
+{"t":"text","x":414,"y":486,"fill":"#8B8478","content":"300㎖"}
+{"t":"text","x":506,"y":486,"fill":"#8B8478","content":"720㎖"}
+{"t":"line","x1":24,"y1":494,"x2":744,"y2":494,"stroke":"#D8D3C9","sw":"1","dash":null}
+{"t":"rect","x":300,"y":504,"w":80,"h":24,"rx":5,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":392,"y":504,"w":80,"h":24,"rx":5,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":484,"y":504,"w":80,"h":24,"rx":5,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":648,"y":510,"w":72,"h":26,"rx":13,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":592,"y":513,"w":34,"h":18,"rx":9,"fill":"#EDEAE2","stroke":"#D8D3C9","sw":"1"}
+{"t":"text","x":58,"y":518,"fill":"#3A3631","content":"스이게이 코우이쿠"}
+{"t":"text","x":372,"y":520,"fill":"#3A3631","content":"16,000"}
+{"t":"text","x":464,"y":520,"fill":"#3A3631","content":"45,500"}
+{"t":"text","x":556,"y":520,"fill":"#3A3631","content":"—"}
+{"t":"circle","cx":601,"cy":522,"r":7,"fill":"#fff","stroke":"#D8D3C9"}
+{"t":"text","x":36,"y":527,"fill":"#B5AFA3","content":"≡"}
+{"t":"text","x":684,"y":527,"fill":"#3A3631","content":"수정"}
+{"t":"rect","x":300,"y":532,"w":44,"h":14,"rx":4,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"rect","x":392,"y":532,"w":44,"h":14,"rx":4,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"rect","x":484,"y":532,"w":44,"h":14,"rx":4,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"text","x":58,"y":535,"fill":"#8B8478","content":"준마이긴죠 · 고치"}
+{"t":"text","x":322,"y":542,"fill":"#8B8478","content":"100㎖"}
+{"t":"text","x":414,"y":542,"fill":"#8B8478","content":"300㎖"}
+{"t":"text","x":506,"y":542,"fill":"#8B8478","content":"720㎖"}
+{"t":"line","x1":24,"y1":550,"x2":744,"y2":550,"stroke":"#D8D3C9","sw":"1","dash":null}
+{"t":"rect","x":300,"y":560,"w":80,"h":24,"rx":5,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":392,"y":560,"w":80,"h":24,"rx":5,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":484,"y":560,"w":80,"h":24,"rx":5,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":648,"y":566,"w":72,"h":26,"rx":13,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":592,"y":569,"w":34,"h":18,"rx":9,"fill":"#EDEAE2","stroke":"#D8D3C9","sw":"1"}
+{"t":"text","x":58,"y":574,"fill":"#3A3631","content":"이요카기야 무여과"}
+{"t":"text","x":189.5,"y":574,"fill":"#C8902F","content":"♨"}
+{"t":"text","x":372,"y":576,"fill":"#3A3631","content":"13,500"}
+{"t":"text","x":464,"y":576,"fill":"#3A3631","content":"38,500"}
+{"t":"text","x":556,"y":576,"fill":"#3A3631","content":"77,000"}
+{"t":"circle","cx":601,"cy":578,"r":7,"fill":"#fff","stroke":"#D8D3C9"}
+{"t":"text","x":36,"y":583,"fill":"#B5AFA3","content":"≡"}
+{"t":"text","x":684,"y":583,"fill":"#3A3631","content":"수정"}
+{"t":"rect","x":300,"y":588,"w":44,"h":14,"rx":4,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"rect","x":392,"y":588,"w":44,"h":14,"rx":4,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"rect","x":484,"y":588,"w":44,"h":14,"rx":4,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"text","x":58,"y":591,"fill":"#8B8478","content":"준마이긴죠 · 에히메"}
+{"t":"text","x":322,"y":598,"fill":"#8B8478","content":"100㎖"}
+{"t":"text","x":414,"y":598,"fill":"#8B8478","content":"300㎖"}
+{"t":"text","x":506,"y":598,"fill":"#8B8478","content":"720㎖"}
+{"t":"line","x1":24,"y1":606,"x2":744,"y2":606,"stroke":"#D8D3C9","sw":"1","dash":null}
+{"t":"rect","x":24,"y":606,"w":720,"h":56,"rx":0,"fill":"#F3EFE7","stroke":null,"sw":null}
+{"t":"rect","x":300,"y":616,"w":80,"h":24,"rx":5,"fill":"#EDEAE2","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":392,"y":616,"w":80,"h":24,"rx":5,"fill":"#EDEAE2","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":484,"y":616,"w":80,"h":24,"rx":5,"fill":"#EDEAE2","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":648,"y":622,"w":72,"h":26,"rx":13,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":592,"y":625,"w":34,"h":18,"rx":9,"fill":"#C8902F","stroke":null,"sw":null}
+{"t":"text","x":58,"y":630,"fill":"#8B8478","content":"치요무스비 고우리키"}
+{"t":"text","x":372,"y":632,"fill":"#8B8478","content":"14,500"}
+{"t":"text","x":464,"y":632,"fill":"#8B8478","content":"41,000"}
+{"t":"text","x":556,"y":632,"fill":"#8B8478","content":"82,000"}
+{"t":"circle","cx":617,"cy":634,"r":7,"fill":"#fff","stroke":"#D8D3C9"}
+{"t":"text","x":36,"y":639,"fill":"#B5AFA3","content":"≡"}
+{"t":"text","x":684,"y":639,"fill":"#3A3631","content":"수정"}
+{"t":"rect","x":300,"y":644,"w":44,"h":14,"rx":4,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"rect","x":392,"y":644,"w":44,"h":14,"rx":4,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"rect","x":484,"y":644,"w":44,"h":14,"rx":4,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"text","x":58,"y":647,"fill":"#8B8478","content":"준마이다이긴죠 · 돗토리"}
+{"t":"text","x":322,"y":654,"fill":"#8B8478","content":"100㎖"}
+{"t":"text","x":414,"y":654,"fill":"#8B8478","content":"300㎖"}
+{"t":"text","x":506,"y":654,"fill":"#8B8478","content":"720㎖"}
+{"t":"line","x1":24,"y1":662,"x2":744,"y2":662,"stroke":"#D8D3C9","sw":"1","dash":null}
+{"t":"rect","x":300,"y":672,"w":80,"h":24,"rx":5,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":392,"y":672,"w":80,"h":24,"rx":5,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":484,"y":672,"w":80,"h":24,"rx":5,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":648,"y":678,"w":72,"h":26,"rx":13,"fill":"#fff","stroke":"#D8D3C9","sw":"1"}
+{"t":"rect","x":592,"y":681,"w":34,"h":18,"rx":9,"fill":"#EDEAE2","stroke":"#D8D3C9","sw":"1"}
+{"t":"text","x":58,"y":686,"fill":"#3A3631","content":"쿠즈류 준마이"}
+{"t":"text","x":162.5,"y":686,"fill":"#C8902F","content":"여름"}
+{"t":"text","x":372,"y":688,"fill":"#3A3631","content":"13,500"}
+{"t":"text","x":464,"y":688,"fill":"#3A3631","content":"38,500"}
+{"t":"text","x":556,"y":688,"fill":"#3A3631","content":"111,000"}
+{"t":"circle","cx":601,"cy":690,"r":7,"fill":"#fff","stroke":"#D8D3C9"}
+{"t":"text","x":36,"y":695,"fill":"#B5AFA3","content":"≡"}
+{"t":"text","x":684,"y":695,"fill":"#3A3631","content":"수정"}
+{"t":"rect","x":300,"y":700,"w":44,"h":14,"rx":4,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"rect","x":392,"y":700,"w":44,"h":14,"rx":4,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"rect","x":484,"y":700,"w":44,"h":14,"rx":4,"fill":"#EDEAE2","stroke":null,"sw":null}
+{"t":"text","x":58,"y":703,"fill":"#8B8478","content":"준마이 · 후쿠이"}
+{"t":"text","x":322,"y":710,"fill":"#8B8478","content":"100㎖"}
+{"t":"text","x":414,"y":710,"fill":"#8B8478","content":"300㎖"}
+{"t":"text","x":506,"y":710,"fill":"#8B8478","content":"720㎖"}
+{"t":"line","x1":24,"y1":718,"x2":744,"y2":718,"stroke":"#D8D3C9","sw":"1","dash":null}
+{"t":"rect","x":24,"y":736,"w":720,"h":44,"rx":10,"fill":null,"stroke":"#D8D3C9","sw":"1"}
+{"t":"text","x":384,"y":763,"fill":"#8B8478","content":"+ 새 메뉴 추가 (사진·설명·코멘트는 추가 후 수정 화면에서)"}
+{"t":"text","x":24,"y":804,"fill":"#8B8478","content":"모든 변경은 저장 즉시 손님 메뉴판에 반영됩니다"}
+
+-- text rows (outline glyph clusters): y | font≈h | x-range | color | glyphs --

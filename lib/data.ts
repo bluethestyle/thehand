@@ -1,11 +1,12 @@
 import "server-only";
-import { BANDS, DEFAULT_DENSITY, SEED_ITEMS, SEED_PAGES } from "@/data/seed";
+import { BANDS, DEFAULT_DENSITY, SEED_ITEMS, SEED_ORIGINS, SEED_PAGES } from "@/data/seed";
 import { serverAnonClient, supabaseConfigured } from "@/lib/supabase";
 import type {
   DensitySettings,
   MenuData,
   MenuItem,
   MenuPage,
+  OriginRow,
   Sticker,
 } from "@/lib/types";
 
@@ -26,6 +27,11 @@ function rowToItem(r: any): MenuItem {
     region: r.region,
     style: r.style,
     description: r.description,
+    ingredient: r.ingredient,
+    sommelier: r.sommelier,
+    pairing: r.pairing,
+    originNote: r.origin_note,
+    halfPrice: num(r.half_price),
     polish: num(r.polish),
     smv: r.smv,
     acidity: r.acidity,
@@ -100,6 +106,7 @@ const seedData = (): MenuData => ({
   bands: BANDS,
   density: DEFAULT_DENSITY,
   branding: { logoUrl: null },
+  origins: SEED_ORIGINS,
 });
 
 /**
@@ -115,7 +122,7 @@ export async function getMenuData(): Promise<MenuData> {
       sb.from("thehand_pages").select("*").order("sort_order", { ascending: true }),
       sb.from("thehand_items").select("*").order("sort_order", { ascending: true }),
       sb.from("thehand_stickers").select("*").order("z", { ascending: true }),
-      sb.from("thehand_settings").select("key, value").in("key", ["density", "branding"]),
+      sb.from("thehand_settings").select("key, value").in("key", ["density", "branding", "origins"]),
     ]);
 
     if (pagesRes.error) throw pagesRes.error;
@@ -141,11 +148,16 @@ export async function getMenuData(): Promise<MenuData> {
       logoUrl:
         (settings.get("branding") as { logoUrl?: string } | undefined)?.logoUrl ?? null,
     };
+    const originsSetting = settings.get("origins") as OriginRow[] | undefined;
+    const origins =
+      Array.isArray(originsSetting) && originsSetting.length > 0
+        ? originsSetting
+        : SEED_ORIGINS;
 
     // DB가 비어있으면(마이그레이션만 하고 시드 안 한 경우) 시드로 보완
     if (pages.length === 0 && items.length === 0) return seedData();
 
-    return { pages, items, bands: BANDS, density, branding };
+    return { pages, items, bands: BANDS, density, branding, origins };
   } catch (err) {
     console.error("[getMenuData] Supabase 실패, 시드로 폴백:", err);
     return seedData();

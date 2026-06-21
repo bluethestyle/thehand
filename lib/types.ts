@@ -32,6 +32,17 @@ export interface MenuItem {
   style?: SakeStyle | null;
   description?: string | null;
 
+  /** 쇼츄 원료 (보리/고구마/쌀/흑당/자색고구마/아와모리/생강) — 좌측 색바 + pill */
+  ingredient?: string | null;
+  /** 소믈리에 코멘트 (니혼슈 강조 박스) */
+  sommelier?: string | null;
+  /** 추천 페어링 (니혼슈) */
+  pairing?: string | null;
+  /** 요리 원산지 노트. ex) "광어 국내산(양식)" */
+  originNote?: string | null;
+  /** 요리 하프(½) 가격 */
+  halfPrice?: number | null;
+
   // 스펙
   polish?: number | null; // 정미보합 %
   smv?: string | null; // 일본주도 ("+12", "비공개")
@@ -129,6 +140,16 @@ export interface Branding {
   logoUrl: string | null;
 }
 
+/** 원산지 표기(법정) 한 줄. 재료 → 원산지. */
+export interface OriginRow {
+  id: string;
+  ingredient: string; // 쌀
+  origin: string; // 국내산(양식)
+  /** 법정 의무 표기(삭제 시 경고) */
+  required?: boolean;
+  sortOrder: number;
+}
+
 /** 손님 화면에 실제로 펼쳐지는 한 장(자동 분할 결과 포함). */
 export interface RenderedPage {
   key: string;
@@ -146,4 +167,6 @@ export interface MenuData {
   bands: Record<string, CategoryBand[]>; // categoryKey → 밴드 목록(순서)
   density: DensitySettings;
   branding: Branding;
+  /** 원산지 표기 페이지 데이터(법정) */
+  origins?: OriginRow[];
 }

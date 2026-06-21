@@ -78,3 +78,19 @@ export function stickerColor(color: string | null | undefined) {
   if (color.startsWith("#")) return { fill: color, text: "#ffffff" };
   return STICKER_COLOR[color] ?? STICKER_COLOR.outline;
 }
+
+/** 쇼츄 원료 → 색 (피그마 v2-shochu 기준). 좌측 색바 + pill 배경 */
+export const SHOCHU_INGREDIENT_COLOR: Record<string, string> = {
+  보리: "#C9A24B",
+  고구마: "#9B6FB0",
+  자색고구마: "#8E5AA0",
+  쌀: "#C2B280",
+  흑당: "#7A4B2B",
+  아와모리: "#4F9DA6",
+  생강: "#D98E2B",
+};
+
+export function ingredientColor(ingredient: string | null | undefined): string {
+  if (!ingredient) return "#9A8F80";
+  return SHOCHU_INGREDIENT_COLOR[ingredient] ?? "#9A8F80";
+}

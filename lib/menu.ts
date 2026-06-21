@@ -36,14 +36,6 @@ export function splitCount(total: number, itemsPerPage: number): number {
   return Math.ceil(total / Math.max(1, itemsPerPage));
 }
 
-/** N개씩 묶기 */
-function chunk<T>(arr: T[], size: number): T[][] {
-  if (size <= 0) return [arr];
-  const out: T[][] = [];
-  for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
-  return out;
-}
-
 /**
  * 페이지 보드(MenuPage[])를 손님이 실제로 넘기는 장(RenderedPage[])으로 전개.
  *  - 숨김 페이지 제외, sortOrder 정렬
@@ -51,7 +43,7 @@ function chunk<T>(arr: T[], size: number): T[][] {
  *  - 닫힌 항목 제외
  */
 export function buildRenderedPages(data: MenuData): RenderedPage[] {
-  const { pages, items, density } = data;
+  const { pages, items } = data;
   const visiblePages = pages
     .filter((p) => !p.isHidden)
     .sort((a, b) => a.sortOrder - b.sortOrder);
@@ -68,22 +60,8 @@ export function buildRenderedPages(data: MenuData): RenderedPage[] {
       .filter((it) => it.categoryKey === page.categoryKey && isCustomerVisible(it))
       .sort((a, b) => a.sortOrder - b.sortOrder);
 
-    if (catItems.length === 0) {
-      // 빈 메뉴 페이지도 한 장은 보여줌(준비 중 상태)
-      rendered.push({ key: page.id, source: page, items: [] });
-      continue;
-    }
-
-    const groups = chunk(catItems, density.itemsPerPage);
-    groups.forEach((groupItems, idx) => {
-      rendered.push({
-        key: groups.length > 1 ? `${page.id}--${idx + 1}` : page.id,
-        source: page,
-        items: groupItems,
-        splitIndex: groups.length > 1 ? idx + 1 : undefined,
-        splitTotal: groups.length > 1 ? groups.length : undefined,
-      });
-    });
+    // v2 디자인: 카테고리당 1장(스크롤). 자동 분할하지 않음.
+    rendered.push({ key: page.id, source: page, items: catItems });
   }
 
   return rendered;

@@ -1,0 +1,48 @@
+=== svg/v2-wonsanji.svg ===
+viewBox: 0 0 768 464
+
+-- colors (count) --
+#2D3436:9  stroke:#C9BFB0:8  #5C564E:8  stroke:#EDE8E0:8  #9A8F80:2  stroke:#D8D0C4:2  #FDFCFB:1  #636E72:1
+
+-- shapes (rect/line/circle/text), y-sorted --
+{"t":"rect","x":0,"y":0,"w":768,"h":464,"rx":0,"fill":"#FDFCFB","stroke":null,"sw":null}
+{"t":"text","x":384,"y":44,"fill":"#9A8F80","content":"THE HAND"}
+{"t":"line","x1":266,"y1":72,"x2":306,"y2":72,"stroke":"#D8D0C4","sw":"1","dash":null}
+{"t":"line","x1":462,"y1":72,"x2":502,"y2":72,"stroke":"#D8D0C4","sw":"1","dash":null}
+{"t":"text","x":384,"y":78,"fill":"#2D3436","content":"원산지 표기"}
+{"t":"text","x":384,"y":104,"fill":"#636E72","content":"농수산물의 원산지 표시에 관한 법률에 따른 표기"}
+{"t":"line","x1":193,"y1":148,"x2":549.5,"y2":148,"stroke":"#C9BFB0","sw":"1.5","dash":"2 4"}
+{"t":"text","x":164,"y":152,"fill":"#2D3436","content":"쌀"}
+{"t":"text","x":604,"y":152,"fill":"#5C564E","content":"국내산"}
+{"t":"line","x1":164,"y1":162,"x2":604,"y2":162,"stroke":"#EDE8E0","sw":"1","dash":null}
+{"t":"line","x1":208,"y1":184,"x2":495.5,"y2":184,"stroke":"#C9BFB0","sw":"1.5","dash":"2 4"}
+{"t":"text","x":164,"y":188,"fill":"#2D3436","content":"광어"}
+{"t":"text","x":604,"y":188,"fill":"#5C564E","content":"국내산(양식)"}
+{"t":"line","x1":164,"y1":198,"x2":604,"y2":198,"stroke":"#EDE8E0","sw":"1","dash":null}
+{"t":"line","x1":208,"y1":220,"x2":549.5,"y2":220,"stroke":"#C9BFB0","sw":"1.5","dash":"2 4"}
+{"t":"text","x":164,"y":224,"fill":"#2D3436","content":"한치"}
+{"t":"text","x":604,"y":224,"fill":"#5C564E","content":"국내산"}
+{"t":"line","x1":164,"y1":234,"x2":604,"y2":234,"stroke":"#EDE8E0","sw":"1","dash":null}
+{"t":"line","x1":283,"y1":256,"x2":549.5,"y2":256,"stroke":"#C9BFB0","sw":"1.5","dash":"2 4"}
+{"t":"text","x":164,"y":260,"fill":"#2D3436","content":"소고기(와규)"}
+{"t":"text","x":604,"y":260,"fill":"#5C564E","content":"호주산"}
+{"t":"line","x1":164,"y1":270,"x2":604,"y2":270,"stroke":"#EDE8E0","sw":"1","dash":null}
+{"t":"line","x1":208,"y1":292,"x2":536,"y2":292,"stroke":"#C9BFB0","sw":"1.5","dash":"2 4"}
+{"t":"text","x":164,"y":296,"fill":"#2D3436","content":"새우"}
+{"t":"text","x":604,"y":296,"fill":"#5C564E","content":"베트남산"}
+{"t":"line","x1":164,"y1":306,"x2":604,"y2":306,"stroke":"#EDE8E0","sw":"1","dash":null}
+{"t":"line","x1":208,"y1":328,"x2":549.5,"y2":328,"stroke":"#C9BFB0","sw":"1.5","dash":"2 4"}
+{"t":"text","x":164,"y":332,"fill":"#2D3436","content":"메밀"}
+{"t":"text","x":604,"y":332,"fill":"#5C564E","content":"중국산"}
+{"t":"line","x1":164,"y1":342,"x2":604,"y2":342,"stroke":"#EDE8E0","sw":"1","dash":null}
+{"t":"line","x1":238,"y1":364,"x2":360.5,"y2":364,"stroke":"#C9BFB0","sw":"1.5","dash":"2 4"}
+{"t":"text","x":164,"y":368,"fill":"#2D3436","content":"배추김치"}
+{"t":"text","x":604,"y":368,"fill":"#5C564E","content":"배추 국내산 · 고춧가루 중국산"}
+{"t":"line","x1":164,"y1":378,"x2":604,"y2":378,"stroke":"#EDE8E0","sw":"1","dash":null}
+{"t":"line","x1":208,"y1":400,"x2":549.5,"y2":400,"stroke":"#C9BFB0","sw":"1.5","dash":"2 4"}
+{"t":"text","x":164,"y":404,"fill":"#2D3436","content":"가지"}
+{"t":"text","x":604,"y":404,"fill":"#5C564E","content":"국내산"}
+{"t":"line","x1":164,"y1":414,"x2":604,"y2":414,"stroke":"#EDE8E0","sw":"1","dash":null}
+{"t":"text","x":384,"y":436,"fill":"#9A8F80","content":"∗ 수급 상황에 따라 원산지가 변경될 수 있으며, 변경 시 즉시 수정 표기합니다 ∗"}
+
+-- text rows (outline glyph clusters): y | font≈h | x-range | color | glyphs --
