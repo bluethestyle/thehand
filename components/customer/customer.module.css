@@ -1,0 +1,821 @@
+/* ───────────────────────── 덱 / 프레임 ───────────────────────── */
+.app {
+  position: fixed;
+  inset: 0;
+  background: var(--c-app-bg);
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.deck {
+  position: relative;
+  width: min(100vw, 768px);
+  height: 100dvh;
+  background: var(--c-page);
+  overflow: hidden;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.12);
+}
+
+.track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.34s var(--ease);
+  will-change: transform;
+}
+.dragging {
+  transition: none;
+}
+
+.panel {
+  flex: 0 0 100%;
+  height: 100%;
+  min-width: 0;
+}
+
+/* 한 페이지(프레임) 내부 세로 레이아웃 */
+.frame {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--c-page);
+}
+
+/* ───────────────────────── 헤더 ───────────────────────── */
+.header {
+  flex: none;
+  height: 60px;
+  background: var(--c-header);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 28px;
+  color: #f3ede2;
+}
+.logoMark {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background: linear-gradient(135deg, var(--c-gold-a), var(--c-gold-b));
+  display: grid;
+  place-items: center;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 15px;
+  color: #1e1e36;
+  flex: none;
+}
+.logoText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+.brand {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: #f3ede2;
+}
+.brandSub {
+  font-size: 10px;
+  font-weight: 400;
+  color: #b8ae9c;
+}
+.sectionTag {
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--c-gold-text);
+}
+
+/* ───────────────────────── 페이지 타이틀 밴드 ───────────────────────── */
+.titleBand {
+  flex: none;
+  padding: 12px 28px 8px;
+  text-align: center;
+}
+.titleBand h2 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--c-text);
+}
+.titleBand p {
+  margin: 3px 0 0;
+  font-size: 10.5px;
+  font-weight: 400;
+  color: var(--c-muted-2);
+}
+
+/* ───────────────────────── 본문 스크롤 영역 ───────────────────────── */
+.content {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 28px 16px;
+}
+.contentFlush {
+  flex: 1 1 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ───────────────────────── 등급 밴드 헤더 ───────────────────────── */
+.bandHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 26px;
+  padding: 0 12px;
+  margin: 10px 0 8px;
+  background: var(--c-sand);
+  border-radius: 6px;
+}
+.bandJa {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--c-text);
+}
+.bandKo {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--c-grade);
+}
+.bandNote {
+  margin-left: auto;
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--c-muted-2);
+}
+
+/* ───────────────────────── 사케 행 ───────────────────────── */
+.row {
+  display: flex;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--c-border);
+  align-items: flex-start;
+}
+.row:last-child {
+  border-bottom: none;
+}
+.thumb {
+  flex: none;
+  width: 42px;
+  height: 72px;
+  border-radius: 7px;
+  background: var(--c-sand);
+  border: 1px dashed var(--c-border-2);
+  display: grid;
+  place-items: end center;
+  padding-bottom: 6px;
+  font-size: 9px;
+  color: var(--c-faint);
+  overflow: hidden;
+}
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.rowBody {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.rowHead {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.featuredStar {
+  color: #e0962e;
+  font-size: 13px;
+  line-height: 1;
+}
+.name {
+  font-family: var(--font-serif);
+  font-size: calc(17.5px * var(--row-scale, 1));
+  font-weight: 700;
+  color: var(--c-text);
+  position: relative;
+}
+.nameHi {
+  background: rgba(243, 156, 18, 0.42);
+  box-decoration-break: clone;
+  padding: 0 1px;
+}
+.region {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--c-muted);
+}
+.newSup {
+  font-size: 9px;
+  font-weight: 800;
+  color: var(--c-soldout);
+  align-self: flex-start;
+}
+.soldoutPill {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--c-soldout);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+.brewery {
+  margin: 2px 0 0;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--c-muted-2);
+}
+.desc {
+  margin: 4px 0 0;
+  font-size: calc(12px * var(--row-scale, 1));
+  font-weight: 400;
+  color: var(--c-label);
+  line-height: 1.45;
+}
+.flagNote {
+  margin-top: 4px;
+  font-size: 10px;
+  font-weight: 700;
+}
+.rowSoldout {
+  opacity: 0.55;
+}
+
+/* 가격칩 묶음 */
+.prices {
+  flex: none;
+  display: flex;
+  gap: 6px;
+  align-self: flex-start;
+  padding-top: 2px;
+}
+.chip {
+  width: 46px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.chipOff {
+  opacity: 0.4;
+}
+.chipIcon {
+  color: #8a7f6e;
+  height: 22px;
+  display: grid;
+  place-items: center;
+}
+.chipUnit {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--c-muted);
+}
+.chipMl {
+  font-size: 7.5px;
+  font-weight: 400;
+  color: var(--c-muted-2);
+  margin-top: -2px;
+}
+.chipPrice {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--c-text);
+}
+
+.emptyMenu {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  color: var(--c-muted-2);
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  gap: 6px;
+}
+
+/* ───────────────────────── 푸터 / 페이저 ───────────────────────── */
+.pager {
+  flex: none;
+  height: 64px;
+  background: var(--c-page);
+  border-top: 1px solid var(--c-border);
+  display: flex;
+  align-items: center;
+  padding: 0 28px;
+  position: relative;
+}
+.pagerHint {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--c-muted-2);
+}
+.dots {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--c-border-2);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.2s, width 0.2s;
+}
+.dotActive {
+  width: 18px;
+  background: var(--c-accent);
+}
+.counter {
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--c-muted-2);
+}
+
+/* 좌우 화살표 */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 40px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  font-size: 30px;
+  font-weight: 300;
+  color: var(--c-border-2);
+  background: none;
+  border: none;
+  opacity: 0.7;
+}
+.arrow:disabled {
+  opacity: 0.2;
+}
+.arrowLeft {
+  left: 0;
+}
+.arrowRight {
+  right: 0;
+}
+
+/* ───────────────────────── 표지 ───────────────────────── */
+.cover {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  background: radial-gradient(circle at 50% 35%, #1b1f27, #111418 70%);
+  color: #f3ede2;
+  text-align: center;
+  padding: 40px;
+}
+.coverMark {
+  width: 92px;
+  height: 92px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, var(--c-gold-a), var(--c-gold-b));
+  display: grid;
+  place-items: center;
+  font-family: var(--font-serif);
+  font-size: 50px;
+  font-weight: 700;
+  color: #1e1e36;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.4);
+}
+.coverBrand {
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  margin-right: -0.22em;
+}
+.coverRule {
+  width: 64px;
+  height: 1px;
+  background: var(--c-gold-text);
+  opacity: 0.6;
+}
+.coverSub {
+  font-size: 14px;
+  font-weight: 400;
+  color: #b8ae9c;
+  letter-spacing: 0.04em;
+}
+
+/* ───────────────────────── 원산지 표기 ───────────────────────── */
+.notice {
+  padding: 8px 36px;
+  color: var(--c-label);
+}
+.notice h3 {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  margin: 12px 0;
+}
+.notice ul {
+  padding-left: 18px;
+  line-height: 1.9;
+  font-size: 13px;
+}
+
+/* ───────────────────────── 이미지 / 이벤트 페이지 ───────────────────────── */
+.imageStage {
+  position: absolute;
+  inset: 24px 28px;
+  border-radius: var(--r-feature);
+  overflow: visible;
+}
+.imageDrop {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-feature);
+  background: #ede7dd;
+  border: 1.5px dashed var(--c-border-2);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  gap: 8px;
+  color: #8e8576;
+}
+.imageDrop svg {
+  opacity: 0.5;
+}
+.imageDrop span {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #8e8576;
+}
+.imageReal {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-feature);
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.stickerLayer {
+  position: absolute;
+  inset: 0;
+}
+
+/* 스티커 공통 */
+.sticker {
+  position: absolute;
+  transform-origin: center;
+  filter: drop-shadow(0 3px 4px rgba(26, 26, 46, 0.28));
+  white-space: nowrap;
+}
+.stRibbon {
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 800;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 9px) 50%, 100% 100%, 0 100%);
+  padding-right: 22px;
+}
+.stPill {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 800;
+  border: 1.5px solid transparent;
+}
+.stBadge {
+  padding: 5px 12px;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 800;
+}
+.stCircle {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  line-height: 1.15;
+}
+.stCircleTop {
+  font-size: 10px;
+  font-weight: 700;
+}
+.stCircleBig {
+  font-size: 14px;
+  font-weight: 800;
+}
+.stPriceCard {
+  background: #fff;
+  border-radius: 10px;
+  padding: 12px 16px;
+  min-width: 140px;
+  filter: none;
+  box-shadow: 0 5px 16px rgba(26, 26, 46, 0.18);
+}
+.stPriceTitle {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--c-text);
+  text-align: center;
+}
+.stPriceSub {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--c-muted);
+  text-align: center;
+  margin-top: 4px;
+}
+.stPriceLine {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 6px;
+  font-size: 12.5px;
+}
+.stPriceLine span:first-child {
+  color: var(--c-muted);
+}
+.stPriceLine span:last-child {
+  font-weight: 800;
+  color: var(--c-text);
+}
+
+/* ───────────────────────── 취향 지도 ───────────────────────── */
+.mapWrap {
+  padding: 6px 24px 16px;
+}
+.plotCard {
+  border: 1px solid var(--c-border);
+  border-radius: 14px;
+  padding: 30px 18px 20px;
+  background: #fff;
+}
+.plot {
+  position: relative;
+  width: min(300px, 76vw);
+  aspect-ratio: 1;
+  margin: 0 auto;
+  background: linear-gradient(180deg, #f7f2e8, #fdfbf7 70%);
+}
+.plot::before,
+.plot::after {
+  content: "";
+  position: absolute;
+  background: var(--c-border);
+}
+.plot::before {
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+}
+.plot::after {
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+}
+.axis {
+  position: absolute;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.axisTop {
+  top: -2px;
+  left: 50%;
+  transform: translate(-50%, -120%);
+  color: #c45e86;
+}
+.axisBottom {
+  bottom: -2px;
+  left: 50%;
+  transform: translate(-50%, 120%);
+  color: #8b6f47;
+}
+.axisLeft {
+  left: -2px;
+  top: 50%;
+  transform: translate(-120%, -50%) rotate(-90deg);
+  color: #e2a04f;
+}
+.axisRight {
+  right: -2px;
+  top: 50%;
+  transform: translate(120%, -50%) rotate(90deg);
+  color: #5dade2;
+}
+.node {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 800;
+  color: #fff;
+  border: 2px solid transparent;
+}
+.nodeOut {
+  background: #fff !important;
+  border-width: 1.8px;
+}
+.legend {
+  margin-top: 16px;
+}
+.legendTitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--c-label);
+  margin: 0 0 8px 2px;
+}
+.legendRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 0;
+}
+.legendNum {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 800;
+  color: #fff;
+  flex: none;
+  border: 1.8px solid transparent;
+}
+.legendName {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--c-text);
+}
+.legendRegion {
+  font-size: 12px;
+  color: var(--c-muted);
+}
+.legendTag {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--c-muted-2);
+}
+
+/* 산지 지도(간이) */
+.regionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 6px 24px 16px;
+}
+.regionCard {
+  border: 1px solid var(--c-border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  background: #fff;
+}
+.regionPref {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--c-text);
+}
+.regionSake {
+  font-size: 12px;
+  color: var(--c-muted);
+  margin-top: 2px;
+}
+
+/* ───────────────────────── 관리자 진입 + 모달 ───────────────────────── */
+.adminFab {
+  position: absolute;
+  right: 10px;
+  bottom: 8px;
+  z-index: 20;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--c-border-2);
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+.adminFab:hover {
+  background: rgba(0, 0, 0, 0.08);
+  color: var(--c-muted-2);
+}
+
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 20, 24, 0.55);
+  display: grid;
+  place-items: center;
+  z-index: 100;
+  padding: 24px;
+}
+.modal {
+  width: min(360px, 100%);
+  background: #fff;
+  border-radius: var(--r-sheet);
+  padding: 26px 24px 22px;
+  box-shadow: var(--shadow-sheet);
+}
+.modalTitle {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--c-text);
+  margin: 0 0 4px;
+}
+.modalSub {
+  font-size: 12.5px;
+  color: var(--c-muted);
+  margin: 0 0 18px;
+  line-height: 1.5;
+}
+.field {
+  display: block;
+  margin-bottom: 12px;
+}
+.field span {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--c-label);
+  margin-bottom: 6px;
+}
+.input {
+  width: 100%;
+  height: 44px;
+  border-radius: var(--r-button);
+  border: 1.5px solid var(--c-border);
+  padding: 0 14px;
+  font-size: 16px;
+  font-family: inherit;
+  background: var(--c-page);
+}
+.input:focus {
+  outline: none;
+  border-color: var(--c-accent);
+}
+.modalErr {
+  color: var(--c-error);
+  font-size: 12.5px;
+  font-weight: 600;
+  margin: 2px 0 12px;
+  min-height: 16px;
+}
+.modalActions {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+.btn {
+  flex: 1;
+  height: 46px;
+  border-radius: var(--r-button);
+  border: none;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.btnPrimary {
+  background: var(--c-accent);
+  color: #1e1e36;
+}
+.btnPrimary:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.btnGhost {
+  background: var(--c-sand);
+  color: var(--c-label);
+}
