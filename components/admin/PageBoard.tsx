@@ -1,6 +1,23 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  type DragEndEvent,
+} from "@dnd-kit/core";
+import {
+  SortableContext,
+  arrayMove,
+  sortableKeyboardCoordinates,
+  useSortable,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 import type { MenuPage, PageType } from "@/lib/types";
 import { AdminShell, useToast } from "./AdminShell";
 import { EyeIcon, EyeOffIcon, PencilIcon } from "./icons";
@@ -44,11 +61,17 @@ function Thumb({ page }: { page: MenuPage }) {
   if (page.type === "image" || page.type === "event") {
     const c = page.themeColor ?? "#1F8A5B";
     return (
-      <div
-        className={s.pageThumb}
-        style={{ border: `1.5px dashed ${c}`, background: "#fff" }}
-      >
-        <span style={{ fontSize: 16, color: c }}>▦</span>
+      <div className={s.pageThumb} style={{ border: `1.5px dashed ${c}`, background: "#fff" }}>
+        {page.imageUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={page.imageUrl}
+            alt=""
+            style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 4 }}
+          />
+        ) : (
+          <span style={{ fontSize: 16, color: c }}>▦</span>
+        )}
       </div>
     );
   }
@@ -65,7 +88,6 @@ function Thumb({ page }: { page: MenuPage }) {
       </div>
     );
   }
-  // menu / notice → text lines + 좌측 색띠
   return (
     <div className={s.pageThumb}>
       <span
@@ -79,6 +101,100 @@ function Thumb({ page }: { page: MenuPage }) {
       </svg>
     </div>
   );
+}
+
+function PlusIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden>
+      <path d="M8 3.2 V12.8 M3.2 8 H12.8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function SortableCard({
+  page,
+  index,
+  busy,
+  href,
+  subtext,
+  onToggleHide,
+  onEdit,
+}: {
+  page: MenuPage;
+  index: number;
+  busy: boolean;
+  href: string | null;
+  subtext: string;
+  onToggleHide: () => void;
+  onEdit: () => void;
+}) {
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
+    id: page.id,
+    disabled: page.isFixed,
+  });
+  const badge = badgeFor(page);
+  const style: React.CSSProperties = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    zIndex: isDragging ? 30 : undefined,
+    position: "relative",
+    boxShadow: isDragging ? "0 12px 28px rgba(26,26,46,0.22)" : undefined,
+    opacity: isDragging ? 0.97 : 1,
+  };
+  return (
+    <div ref={setNodeRef} style={style} className={`${s.pageCard} ${page.isHidden ? s.pageCardHidden : ""}`}>
+      <button
+        type="button"
+        className={s.handle}
+        {...attributes}
+        {...listeners}
+        disabled={page.isFixed}
+        aria-label="끌어서 순서 변경"
+        title={page.isFixed ? "고정 페이지" : "끌어서 순서 변경"}
+        style={page.isFixed ? { opacity: 0.3, cursor: "default" } : undefined}
+      >
+        ⠿
+      </button>
+      <span className={s.numBadge}>{index + 1}</span>
+      <Thumb page={page} />
+      <div className={s.pageMeta}>
+        <div className={s.pageTitleRow}>
+          <span className={s.pageTitleText}>{page.title}</span>
+          <span className={s.typeBadge} style={{ background: `${badge.color}1A`, color: badge.color }}>
+            {badge.label}
+          </span>
+        </div>
+        <div className={s.pageSub}>{subtext}</div>
+      </div>
+      <div className={s.cardActions}>
+        <button
+          className={s.iconBtn}
+          onClick={onToggleHide}
+          disabled={busy}
+          title={page.isHidden ? "표시하기" : "숨기기"}
+          style={page.isHidden ? { color: "#9A8F80" } : undefined}
+        >
+          {page.isHidden ? <EyeOffIcon /> : <EyeIcon />}
+        </button>
+        <button
+          className={s.iconBtn}
+          disabled={!href}
+          onClick={onEdit}
+          title="편집"
+          style={!href ? { opacity: 0.35 } : undefined}
+        >
+          <PencilIcon />
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function normalizeFixed(arr: MenuPage[]): MenuPage[] {
+  const cover = arr.find((p) => p.type === "cover");
+  const notice = arr.find((p) => p.type === "notice");
+  const mid = arr.filter((p) => p.type !== "cover" && p.type !== "notice");
+  return [cover, ...mid, notice].filter(Boolean) as MenuPage[];
 }
 
 export function PageBoard({
@@ -96,11 +212,17 @@ export function PageBoard({
   const { show, node } = useToast();
   const [busy, setBusy] = useState(false);
   const [insertAt, setInsertAt] = useState<number | null>(null);
+  const [order, setOrder] = useState<MenuPage[]>(pages);
 
-  // 서버 스냅샷(pages)이 갱신되면 잠금 해제 → 연속 클릭 시 stale 순서 덮어쓰기 방지
   useEffect(() => {
+    setOrder(pages);
     setBusy(false);
   }, [pages]);
+
+  const sensors = useSensors(
+    useSensor(PointerSensor, { activationConstraint: { distance: 6 } }),
+    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
+  );
 
   function subtext(page: MenuPage): string {
     switch (page.type) {
@@ -121,33 +243,45 @@ export function PageBoard({
     }
   }
 
-  async function call(body: object) {
+  async function reorder(ids: string[]) {
     setBusy(true);
     const res = await fetch("/api/admin/pages", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
+      body: JSON.stringify({ action: "reorder", orderedIds: ids }),
     });
     if (!res.ok) {
-      setBusy(false);
       show((await res.json()).error ?? "오류");
-      return false;
+    } else {
+      show("순서 변경됨");
     }
-    router.refresh(); // busy는 pages prop 갱신 effect가 해제
-    return true;
+    router.refresh();
+  }
+
+  function onDragEnd(e: DragEndEvent) {
+    const { active, over } = e;
+    if (!over || active.id === over.id) return;
+    const oldI = order.findIndex((p) => p.id === active.id);
+    const newI = order.findIndex((p) => p.id === over.id);
+    if (oldI < 0 || newI < 0) return;
+    const moved = normalizeFixed(arrayMove(order, oldI, newI));
+    setOrder(moved); // 낙관적
+    void reorder(moved.map((p) => p.id));
   }
 
   async function toggleHide(page: MenuPage) {
-    if (await call({ action: "visibility", id: page.id, isHidden: !page.isHidden }))
-      show(page.isHidden ? "손님 화면에 표시" : "손님 화면에서 숨김");
-  }
-
-  async function move(index: number, dir: -1 | 1) {
-    const next = [...pages];
-    const j = index + dir;
-    [next[index], next[j]] = [next[j], next[index]];
-    if (await call({ action: "reorder", orderedIds: next.map((p) => p.id) }))
-      show("순서 변경됨");
+    setBusy(true);
+    const res = await fetch("/api/admin/pages", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action: "visibility", id: page.id, isHidden: !page.isHidden }),
+    });
+    if (!res.ok) {
+      setBusy(false);
+      return show((await res.json()).error ?? "오류");
+    }
+    show(page.isHidden ? "손님 화면에 표시" : "손님 화면에서 숨김");
+    router.refresh();
   }
 
   async function doInsert(type: PageType) {
@@ -164,23 +298,23 @@ export function PageBoard({
       return show((await res.json()).error ?? "오류");
     }
     show("페이지 추가됨");
-    router.refresh(); // busy는 pages prop 갱신 effect가 해제
+    router.refresh();
   }
 
   function editHref(page: MenuPage): string | null {
     if (page.type === "menu") return "/admin/items";
-    if (page.type === "image" || page.type === "event")
-      return `/admin/page/${page.id}/stickers`;
+    if (page.type === "image" || page.type === "event") return `/admin/page/${page.id}/stickers`;
     return null;
   }
 
-  const lastNonFixed = [...pages].reverse().find((p) => !p.isFixed);
+  const lastNonFixed = [...order].reverse().find((p) => !p.isFixed);
+  const ids = order.map((p) => p.id);
 
   return (
     <AdminShell title="메뉴 페이지 관리">
       <div className={s.toolbar}>
         <div className={s.toolbarText}>
-          <span className={s.bannerMain}>{pages.length}개 페이지 · ▲▼로 순서 변경</span>
+          <span className={s.bannerMain}>{order.length}개 페이지 · ⠿ 끌어서 순서 변경</span>
           <span className={s.bannerSub}>
             숨김 페이지는 손님 스와이프에서 빠집니다 (손님엔 {visibleCount}장 노출)
           </span>
@@ -188,97 +322,59 @@ export function PageBoard({
         <button
           className={s.insertBtn}
           disabled={busy}
-          onClick={() => setInsertAt(lastNonFixed?.sortOrder ?? pages.length)}
+          onClick={() => setInsertAt(lastNonFixed?.sortOrder ?? order.length)}
         >
-          + 이미지·이벤트 페이지 삽입
+          + 페이지 삽입
         </button>
       </div>
 
-      {pages.map((page, i) => {
-        const badge = badgeFor(page);
-        const canUp = i > 0 && !page.isFixed && !pages[i - 1].isFixed;
-        const canDown = i < pages.length - 1 && !page.isFixed && !pages[i + 1].isFixed;
-        const href = editHref(page);
-        return (
-          <div key={page.id}>
-            <div className={`${s.pageCard} ${page.isHidden ? s.pageCardHidden : ""}`}>
-              <span className={s.handle}>⠿</span>
-              <span className={s.numBadge}>{i + 1}</span>
-              <Thumb page={page} />
-              <div className={s.pageMeta}>
-                <div className={s.pageTitleRow}>
-                  <span className={s.pageTitleText}>{page.title}</span>
-                  <span
-                    className={s.typeBadge}
-                    style={{ background: `${badge.color}1A`, color: badge.color }}
-                  >
-                    {badge.label}
-                  </span>
-                </div>
-                <div className={s.pageSub}>{subtext(page)}</div>
-              </div>
-              <div className={s.cardActions}>
-                <button
-                  className={s.iconBtn}
-                  onClick={() => toggleHide(page)}
-                  disabled={busy}
-                  title={page.isHidden ? "표시하기" : "숨기기"}
-                  style={page.isHidden ? { color: "#9A8F80" } : undefined}
-                >
-                  {page.isHidden ? <EyeOffIcon /> : <EyeIcon />}
-                </button>
-                <button
-                  className={s.iconBtn}
-                  disabled={!href}
-                  onClick={() => href && router.push(href)}
-                  title="편집"
-                  style={!href ? { opacity: 0.35 } : undefined}
-                >
-                  <PencilIcon />
-                </button>
-                <div className={s.moveCol}>
+      <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={onDragEnd}>
+        <SortableContext items={ids} strategy={verticalListSortingStrategy}>
+          {order.map((page, i) => (
+            <div key={page.id}>
+              <SortableCard
+                page={page}
+                index={i}
+                busy={busy}
+                href={editHref(page)}
+                subtext={subtext(page)}
+                onToggleHide={() => toggleHide(page)}
+                onEdit={() => {
+                  const h = editHref(page);
+                  if (h) router.push(h);
+                }}
+              />
+              {i < order.length - 1 && (
+                <div className={s.insertDivider}>
+                  <span className={s.insertLine} />
                   <button
-                    className={s.moveBtn}
-                    disabled={!canUp || busy}
-                    onClick={() => move(i, -1)}
-                    aria-label="위로"
+                    type="button"
+                    className={s.insertPlus}
+                    onClick={() => setInsertAt(page.sortOrder)}
+                    aria-label="여기에 페이지 삽입"
+                    disabled={busy}
                   >
-                    ▲
+                    <PlusIcon />
                   </button>
-                  <button
-                    className={s.moveBtn}
-                    disabled={!canDown || busy}
-                    onClick={() => move(i, 1)}
-                    aria-label="아래로"
-                  >
-                    ▼
-                  </button>
+                  <span className={s.insertLine} />
                 </div>
-              </div>
+              )}
             </div>
-            {i < pages.length - 1 && (
-              <div className={s.insertDivider}>
-                <span className={s.insertLine} />
-                <button
-                  className={s.insertPlus}
-                  onClick={() => setInsertAt(page.sortOrder)}
-                  aria-label="여기에 페이지 삽입"
-                  disabled={busy}
-                >
-                  +
-                </button>
-                <span className={s.insertLine} />
-              </div>
-            )}
-          </div>
-        );
-      })}
+          ))}
+        </SortableContext>
+      </DndContext>
 
       {insertAt !== null && (
-        <div className={s.modalBackdrop ?? ""} onClick={() => setInsertAt(null)}
+        <div
+          onClick={() => setInsertAt(null)}
           style={{
-            position: "fixed", inset: 0, background: "rgba(17,20,24,.5)",
-            display: "grid", placeItems: "center", zIndex: 100,
+            position: "fixed",
+            inset: 0,
+            background: "rgba(17,20,24,.5)",
+            display: "grid",
+            placeItems: "center",
+            zIndex: 100,
+            padding: 24,
           }}
         >
           <div

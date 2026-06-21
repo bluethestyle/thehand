@@ -26,14 +26,16 @@ const ctx = await browser.newContext({
   viewport: { width: 768, height: 1024 },
   deviceScaleFactor: Number(process.env.SHOOT_DSF || 1),
 });
+const page = await ctx.newPage();
 const PW = process.env.SHOOT_LOGIN_PW;
 if (PW) {
-  const hdr = { "content-type": "application/json" };
-  let r = await ctx.request.post(BASE + "/api/admin/setup", { data: { password: PW }, headers: hdr });
-  if (!r.ok()) await ctx.request.post(BASE + "/api/admin/login", { data: { password: PW }, headers: hdr });
+  await page.goto(BASE + "/", { waitUntil: "domcontentloaded" });
+  await page.evaluate(async (pw) => {
+    const j = { "content-type": "application/json" };
+    let r = await fetch("/api/admin/setup", { method: "POST", headers: j, body: JSON.stringify({ password: pw }) });
+    if (!r.ok) await fetch("/api/admin/login", { method: "POST", headers: j, body: JSON.stringify({ password: pw }) });
+  }, PW);
 }
-
-const page = await ctx.newPage();
 await page.goto(BASE + PATHNAME, { waitUntil: "domcontentloaded" });
 await page.waitForTimeout(1600);
 
