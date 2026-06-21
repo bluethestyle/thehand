@@ -37,6 +37,25 @@ const page = await ctx.newPage();
 await page.goto(BASE + PATHNAME, { waitUntil: "domcontentloaded" });
 await page.waitForTimeout(1600);
 
+// 단일 샷: 특정 페이지로 이동 후 텍스트 클릭(상호작용 캡처용)
+const NAV = Number(process.env.SHOOT_NAV || 0);
+for (let k = 0; k < NAV; k++) {
+  await page.keyboard.press("ArrowRight");
+  await page.waitForTimeout(450);
+}
+if (process.env.SHOOT_CLICK_TEXT) {
+  try {
+    await page
+      .locator("button")
+      .filter({ hasText: process.env.SHOOT_CLICK_TEXT })
+      .first()
+      .click({ timeout: 4000 });
+    await page.waitForTimeout(600);
+  } catch {
+    console.log("click text not found:", process.env.SHOOT_CLICK_TEXT);
+  }
+}
+
 const FULL = process.env.SHOOT_FULL === "1";
 const n = CLICKS ? PAGES : 1;
 for (let i = 0; i < n; i++) {

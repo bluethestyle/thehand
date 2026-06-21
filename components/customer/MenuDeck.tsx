@@ -8,7 +8,8 @@ import type { MenuPage } from "@/lib/types";
 import { MenuPageView } from "./pages/MenuPageView";
 import { ImagePageView } from "./pages/ImagePageView";
 import { TasteMapView } from "./pages/TasteMapView";
-import { CoverView, NoticeView, RegionMapView } from "./pages/MiscViews";
+import { CoverView, NoticeView } from "./pages/MiscViews";
+import { RegionMapView } from "./pages/RegionMapView";
 import { AdminGate } from "./AdminGate";
 import s from "./customer.module.css";
 
