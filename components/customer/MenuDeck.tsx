@@ -24,6 +24,7 @@ export function MenuDeck({
   const [index, setIndex] = useState(0);
   const [dragX, setDragX] = useState(0);
   const [dragging, setDragging] = useState(false);
+  const [deckW, setDeckW] = useState(0);
 
   const deckRef = useRef<HTMLDivElement>(null);
   const drag = useRef<{ startX: number; startY: number; axis: null | "x" | "y" }>({
@@ -35,10 +36,23 @@ export function MenuDeck({
   const pages: RenderedPage[] = useMemo(() => buildRenderedPages(data), [data]);
   const total = pages.length;
   const scale = fontScale(data.density.itemsPerPage, data.density.fontScaleOffset);
+  // 렌더 단계에서 파생 → realtime 갱신/total 감소 시 한 프레임 어긋남 방지
+  const safeIndex = Math.min(Math.max(0, index), Math.max(0, total - 1));
 
+  // index 상태를 범위 안으로 동기화(파생값은 safeIndex가 이미 보호)
   useEffect(() => {
-    if (index > total - 1) setIndex(Math.max(0, total - 1));
-  }, [total, index]);
+    if (index !== safeIndex) setIndex(safeIndex);
+  }, [index, safeIndex]);
+
+  // deck 실제 폭 추적 (회전/리사이즈 대응)
+  useEffect(() => {
+    const el = deckRef.current;
+    if (!el) return;
+    setDeckW(el.clientWidth);
+    const ro = new ResizeObserver(([entry]) => setDeckW(entry.contentRect.width));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   const go = useCallback(
     (i: number) => setIndex(Math.max(0, Math.min(total - 1, i))),
@@ -47,7 +61,6 @@ export function MenuDeck({
   const prev = useCallback(() => setIndex((i) => Math.max(0, i - 1)), []);
   const next = useCallback(() => setIndex((i) => Math.min(total - 1, i + 1)), [total]);
 
-  // ── 키보드 좌우 ──
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") prev();
@@ -96,6 +109,11 @@ export function MenuDeck({
     if ((e.target as HTMLElement).closest("button, input, a")) return;
     drag.current = { startX: e.clientX, startY: e.clientY, axis: null };
     setDragging(true);
+    try {
+      (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+    } catch {
+      /* noop */
+    }
   };
   const onPointerMove = (e: React.PointerEvent) => {
     if (!dragging) return;
@@ -107,16 +125,22 @@ export function MenuDeck({
     }
     if (drag.current.axis === "x") {
       e.preventDefault();
-      const w = deckRef.current?.clientWidth ?? 1;
-      // 양 끝에서 저항
+      const w = deckW || 1;
       let d = dx;
-      if ((index === 0 && dx > 0) || (index === total - 1 && dx < 0)) d = dx * 0.35;
+      if ((safeIndex === 0 && dx > 0) || (safeIndex === total - 1 && dx < 0)) d = dx * 0.35;
       setDragX(Math.max(-w, Math.min(w, d)));
     }
   };
-  const endDrag = () => {
+  const endDrag = (e?: React.PointerEvent) => {
     if (!dragging) return;
     setDragging(false);
+    if (e) {
+      try {
+        (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
+      } catch {
+        /* noop */
+      }
+    }
     if (drag.current.axis === "x") {
       if (dragX <= -SWIPE_THRESHOLD) next();
       else if (dragX >= SWIPE_THRESHOLD) prev();
@@ -125,11 +149,10 @@ export function MenuDeck({
     drag.current.axis = null;
   };
 
-  const nav: DeckNav = { index, total, onPrev: prev, onNext: next, onDot: go };
+  const nav: DeckNav = { index: safeIndex, total, onPrev: prev, onNext: next, onDot: go };
 
-  const w = deckRef.current?.clientWidth ?? 0;
   const trackStyle: React.CSSProperties = {
-    transform: `translateX(${-index * w + dragX}px)`,
+    transform: `translateX(${-safeIndex * deckW + dragX}px)`,
   };
 
   return (
@@ -142,7 +165,6 @@ export function MenuDeck({
           onPointerMove={onPointerMove}
           onPointerUp={endDrag}
           onPointerCancel={endDrag}
-          onPointerLeave={endDrag}
         >
           {pages.map((rp) => (
             <div

@@ -12,15 +12,16 @@ export async function PUT(req: Request) {
     fontScaleOffset?: number;
   };
   const n = Math.round(Number(itemsPerPage));
-  const off = Math.round(Number(fontScaleOffset));
   if (!Number.isFinite(n) || n < 2 || n > 10)
     return fail("페이지당 항목 수는 2~10 입니다.");
+  const rawOff = Math.round(Number(fontScaleOffset));
+  const off = Number.isFinite(rawOff) ? Math.max(-2, Math.min(2, rawOff)) : 0;
 
   const sb = adminClient();
   const { error } = await sb.from("thehand_settings").upsert(
     {
       key: "density",
-      value: { itemsPerPage: n, fontScaleOffset: Number.isFinite(off) ? off : 0 },
+      value: { itemsPerPage: n, fontScaleOffset: off },
       updated_at: new Date().toISOString(),
     },
     { onConflict: "key" }

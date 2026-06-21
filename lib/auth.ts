@@ -11,11 +11,15 @@ import { adminClient, adminConfigured } from "@/lib/supabase";
 export const ADMIN_COOKIE = "thehand_admin";
 const SESSION_TTL_MS = 1000 * 60 * 60 * 12; // 12시간
 
+// 미설정 시에도 공개 소스의 고정 비밀을 쓰지 않도록 프로세스 단위 랜덤 폴백.
+// (이 경로는 Supabase 미설정=데모 모드에서만 닿으며, 세션이 의미 없음)
+const EPHEMERAL_SECRET = randomBytes(32).toString("hex");
+
 function sessionSecret(): string {
   return (
     process.env.ADMIN_SESSION_SECRET ||
     process.env.SUPABASE_SERVICE_ROLE_KEY ||
-    "thehand-dev-secret"
+    EPHEMERAL_SECRET
   );
 }
 

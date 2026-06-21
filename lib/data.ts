@@ -80,6 +80,20 @@ function rowToPage(r: any, stickers: Sticker[]): MenuPage {
   };
 }
 
+/** DB의 density 값을 안전 범위로 정규화(손으로 넣은 잘못된 값 방어). */
+function normalizeDensity(value: unknown): DensitySettings {
+  const raw = (value ?? {}) as Partial<DensitySettings>;
+  const ipp = Math.round(Number(raw.itemsPerPage));
+  const off = Math.round(Number(raw.fontScaleOffset));
+  return {
+    itemsPerPage:
+      Number.isFinite(ipp) && ipp >= 2 && ipp <= 10
+        ? ipp
+        : DEFAULT_DENSITY.itemsPerPage,
+    fontScaleOffset: Number.isFinite(off) ? Math.max(-2, Math.min(2, off)) : 0,
+  };
+}
+
 const seedData = (): MenuData => ({
   pages: SEED_PAGES,
   items: SEED_ITEMS,
@@ -118,8 +132,7 @@ export async function getMenuData(): Promise<MenuData> {
       rowToPage(r, stickersByPage.get(r.id) ?? [])
     );
     const items = (itemsRes.data ?? []).map(rowToItem);
-    const density: DensitySettings =
-      (densityRes.data?.value as DensitySettings) ?? DEFAULT_DENSITY;
+    const density = normalizeDensity(densityRes.data?.value);
 
     // DB가 비어있으면(마이그레이션만 하고 시드 안 한 경우) 시드로 보완
     if (pages.length === 0 && items.length === 0) return seedData();

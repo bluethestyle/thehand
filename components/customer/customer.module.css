@@ -24,6 +24,8 @@
   height: 100%;
   transition: transform 0.34s var(--ease);
   will-change: transform;
+  /* 세로 스크롤은 브라우저, 가로 스와이프는 JS가 처리 */
+  touch-action: pan-y;
 }
 .dragging {
   transition: none;

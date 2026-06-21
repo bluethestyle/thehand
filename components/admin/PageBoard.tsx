@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { MenuPage, PageType } from "@/lib/types";
 import { AdminShell, useToast } from "./AdminShell";
 import { EyeIcon, EyeOffIcon, PencilIcon } from "./icons";
@@ -97,6 +97,11 @@ export function PageBoard({
   const [busy, setBusy] = useState(false);
   const [insertAt, setInsertAt] = useState<number | null>(null);
 
+  // 서버 스냅샷(pages)이 갱신되면 잠금 해제 → 연속 클릭 시 stale 순서 덮어쓰기 방지
+  useEffect(() => {
+    setBusy(false);
+  }, [pages]);
+
   function subtext(page: MenuPage): string {
     switch (page.type) {
       case "cover":
@@ -123,12 +128,12 @@ export function PageBoard({
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     });
-    setBusy(false);
     if (!res.ok) {
+      setBusy(false);
       show((await res.json()).error ?? "오류");
       return false;
     }
-    router.refresh();
+    router.refresh(); // busy는 pages prop 갱신 effect가 해제
     return true;
   }
 
@@ -154,10 +159,12 @@ export function PageBoard({
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ type, afterSortOrder: after }),
     });
-    setBusy(false);
-    if (!res.ok) return show((await res.json()).error ?? "오류");
+    if (!res.ok) {
+      setBusy(false);
+      return show((await res.json()).error ?? "오류");
+    }
     show("페이지 추가됨");
-    router.refresh();
+    router.refresh(); // busy는 pages prop 갱신 effect가 해제
   }
 
   function editHref(page: MenuPage): string | null {
