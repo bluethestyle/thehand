@@ -1,7 +1,17 @@
 import type { CategoryBand, MenuItem, RenderedPage } from "@/lib/types";
 import { groupByBand } from "@/lib/menu";
+import { formatPrice } from "@/lib/format";
 import { PriceUnitChip } from "../PriceUnitChip";
 import s from "../customer.module.css";
+
+type Unit = "glass" | "tokkuri" | "bottle";
+
+// 카테고리별 가격 표시 방식
+const UNIT_SETS: Record<string, Unit[]> = {
+  nihonshu: ["glass", "tokkuri", "bottle"],
+  shochu: ["glass", "bottle"], // 쇼츄: 잔 + 보틀(키핑)
+};
+const SINGLE_PRICE_CATEGORIES = new Set(["yori", "drinks"]); // 요리·음료: 단일가
 
 function rightNote(item: MenuItem): { text: string; color: string } | null {
   if (item.heatable) return { text: "♨ 데움 가능", color: "#c0560f" };
@@ -10,18 +20,28 @@ function rightNote(item: MenuItem): { text: string; color: string } | null {
   return null;
 }
 
-function SakeRow({ item }: { item: MenuItem }) {
+function SakeRow({
+  item,
+  single,
+  units,
+}: {
+  item: MenuItem;
+  single: boolean;
+  units: Unit[];
+}) {
   const note = rightNote(item);
   return (
     <div className={s.row}>
-      <div className={s.thumb}>
-        {item.imageUrl ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={item.imageUrl} alt={item.name} />
-        ) : (
-          "보틀"
-        )}
-      </div>
+      {!single && (
+        <div className={s.thumb}>
+          {item.imageUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={item.imageUrl} alt={item.name} />
+          ) : (
+            "보틀"
+          )}
+        </div>
+      )}
       <div className={s.rowBody}>
         <div className={s.rowHead}>
           {item.featured && <span className={s.featuredStar}>★</span>}
@@ -45,11 +65,21 @@ function SakeRow({ item }: { item: MenuItem }) {
           </div>
         )}
       </div>
-      <div className={s.prices}>
-        <PriceUnitChip unit="glass" price={item.priceGlass} />
-        <PriceUnitChip unit="tokkuri" price={item.priceTokkuri} />
-        <PriceUnitChip unit="bottle" price={item.priceBottle} />
-      </div>
+      {single ? (
+        <div className={s.singlePrice}>{formatPrice(item.priceGlass)}</div>
+      ) : (
+        <div className={s.prices}>
+          {units.includes("glass") && (
+            <PriceUnitChip unit="glass" price={item.priceGlass} />
+          )}
+          {units.includes("tokkuri") && (
+            <PriceUnitChip unit="tokkuri" price={item.priceTokkuri} />
+          )}
+          {units.includes("bottle") && (
+            <PriceUnitChip unit="bottle" price={item.priceBottle} />
+          )}
+        </div>
+      )}
     </div>
   );
 }
@@ -62,6 +92,9 @@ export function MenuPageView({
   bands: CategoryBand[] | undefined;
 }) {
   const items = rendered.items ?? [];
+  const cat = rendered.source.categoryKey ?? "";
+  const single = SINGLE_PRICE_CATEGORIES.has(cat);
+  const units = UNIT_SETS[cat] ?? ["glass", "tokkuri", "bottle"];
 
   if (items.length === 0) {
     return (
@@ -89,7 +122,7 @@ export function MenuPageView({
             </div>
           )}
           {g.items.map((item) => (
-            <SakeRow key={item.id} item={item} />
+            <SakeRow key={item.id} item={item} single={single} units={units} />
           ))}
         </div>
       ))}

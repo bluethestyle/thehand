@@ -29,8 +29,16 @@ export const NIHONSHU_BANDS: CategoryBand[] = [
   { key: "junmai", ja: "純米", ko: "준마이", note: "쌀의 감칠맛" },
 ];
 
+/** 요리 분류 밴드 */
+export const YORI_BANDS: CategoryBand[] = [
+  { key: "yori-main", ja: "메뉴", ko: "", note: "모든 메뉴 1인 기준 가격" },
+  { key: "yori-add", ja: "추가요리", ko: "", note: "" },
+  { key: "yori-season", ja: "강력추천 계절메뉴", ko: "", note: "1인 기준" },
+];
+
 export const BANDS: Record<string, CategoryBand[]> = {
   nihonshu: NIHONSHU_BANDS,
+  yori: YORI_BANDS,
 };
 
 /** 8종 니혼슈 — page-1에 보이는 순서 그대로 */
@@ -222,6 +230,305 @@ export const SEED_ITEMS: MenuItem[] = [
     mapY: 52,
     sortOrder: 8,
   },
+
+  // ========================= 쇼츄 (보틀 720㎖ / 잔술 80㎖) =========================
+  // ※ 상품명은 메뉴판 사진 기준 추정 — 관리자에서 확인·수정 필요
+  {
+    id: "shochu-koharu-mugi",
+    categoryKey: "shochu",
+    name: "코하루 무기",
+    brewery: "보리 · 하타카보리 · Alc 25%",
+    region: "구마모토",
+    description:
+      "구마모토현 전통 양조장에서 하다카보리를 100% 사용한 프리미엄 보리 쇼츄. 깨끗하면서 부드러운 산미와 단맛이 조화를 이룹니다.",
+    priceGlass: 16300,
+    priceBottle: 117000,
+    status: "selling",
+    sortOrder: 1,
+  },
+  {
+    id: "shochu-imo-premium",
+    categoryKey: "shochu",
+    name: "이아라이지 코기",
+    brewery: "고구마 · Alc 25%",
+    description:
+      "쇼츄용 고구마를 사용해 끝부분의 무게감 대신 깨끗하고 부드러운 목넘김을 만들어낸 수준 높은 고구마 쇼츄.",
+    priceGlass: 15000,
+    priceBottle: 105000,
+    status: "selling",
+    sortOrder: 2,
+  },
+  {
+    id: "shochu-sasshu-sekitoba",
+    categoryKey: "shochu",
+    name: "삿슈 세키토바",
+    brewery: "고구마 · 황금센본 · Alc 25%",
+    region: "가고시마",
+    description:
+      "가고시마산 황금센본에 흑누룩을 이용해 빚어 증류한 뒤 여러 번 여과한 정통 고구마 쇼츄.",
+    priceGlass: 15200,
+    priceBottle: 110000,
+    status: "selling",
+    sortOrder: 3,
+  },
+  {
+    id: "shochu-jaku-ikuge",
+    categoryKey: "shochu",
+    name: "쟈쿠 이쿠게",
+    brewery: "자색 고구마 · Alc 25%",
+    region: "오키나와",
+    description:
+      "1912년 이후 명맥이 끊겼다가 오키나와현 양조장에서 100년 만에 부활. 깔끔한 흑설탕과 자색 고구마의 구수한 단맛.",
+    priceGlass: 14400,
+    priceBottle: 104000,
+    status: "selling",
+    sortOrder: 4,
+  },
+  {
+    id: "shochu-enma",
+    categoryKey: "shochu",
+    name: "엔마",
+    brewery: "보리 · 상압/감압 · Alc 25%",
+    description:
+      "오크에서 숙성한 보리 쇼츄 '엔마'. 부드러운 맛과 향으로 손색없이 맛있게 즐길 수 있습니다.",
+    priceGlass: 12800,
+    priceBottle: 91000,
+    status: "selling",
+    sortOrder: 5,
+  },
+  {
+    id: "shochu-awamori-kanpa-white",
+    categoryKey: "shochu",
+    name: "아와모리 칸파 화이트",
+    brewery: "아와모리 · Alc 25%",
+    region: "오키나와",
+    description:
+      "아와모리 대표 브랜드 '칸파' 시리즈 중 가장 인기 있는 화이트. 자봉을 연상케 하는 산뜻하고 묵직한 맛.",
+    priceGlass: 12800,
+    priceBottle: 91000,
+    status: "selling",
+    sortOrder: 6,
+  },
+  {
+    id: "shochu-kagamizu-ginger",
+    categoryKey: "shochu",
+    name: "카가미즈 진지",
+    brewery: "보리 · 생강 · Alc 25%",
+    region: "미야자키",
+    description:
+      "미야자키현 생산 프리미엄 생강 쇼츄. 보리·생강·쌀누룩으로 깔끔하고 부드러운 맛. 해산물·담백한 안주와 잘 어울립니다.",
+    priceGlass: null,
+    priceBottle: null,
+    status: "soldout",
+    flagNote: "잔술만",
+    sortOrder: 7,
+  },
+
+  // ========================= 요리 =========================
+  // -- 메뉴(메인) --
+  {
+    id: "yori-sashimi-aged",
+    categoryKey: "yori",
+    bandKey: "yori-main",
+    name: "1인 숙성 사시미 (12~15ea)",
+    description:
+      "계절의 신선함을 그대로 담아 정성껏 숙성한 사시미. 꼬들한 감칠맛과 부드러운 식감으로 계절의 풍미를 느낄 수 있습니다.",
+    priceGlass: 25000,
+    status: "selling",
+    sortOrder: 1,
+  },
+  {
+    id: "yori-sashimi-add",
+    categoryKey: "yori",
+    bandKey: "yori-main",
+    name: "사시미 추가 (6~8ea)",
+    description: "‘1인 숙성 사시미’ 주문 시 추가 가능.",
+    priceGlass: 14000,
+    status: "selling",
+    sortOrder: 2,
+  },
+  {
+    id: "yori-nigiri",
+    categoryKey: "yori",
+    bandKey: "yori-main",
+    name: "니기리 스시 (6~8ea)",
+    description: "적초와 소금만으로 쌀이 가진 단맛과 감칠맛을 극대화시킨 초밥입니다.",
+    priceGlass: 19000,
+    status: "selling",
+    sortOrder: 3,
+  },
+  {
+    id: "yori-pork-sousvide",
+    categoryKey: "yori",
+    bandKey: "yori-main",
+    name: "한돈 목살 수비드 스테이크 (150g)",
+    description:
+      "저온에서 오래 수비드한 한돈 목살에 생강 폰즈·깨크림페퍼를 더해 부드럽고 은은한 매운 향, 톡톡 튀는 식감을 담았습니다.",
+    priceGlass: 18000,
+    status: "selling",
+    sortOrder: 4,
+  },
+  {
+    id: "yori-eggplant-rose",
+    categoryKey: "yori",
+    bandKey: "yori-main",
+    name: "가지 로제요리",
+    description:
+      "가지와 찰떡(키리모찌)을 튀겨 간장 소스에 담가낸, 더핸드에서만 맛볼 수 있는 요리.",
+    priceGlass: 14000,
+    status: "selling",
+    sortOrder: 5,
+  },
+  {
+    id: "yori-lamb-stew",
+    categoryKey: "yori",
+    bandKey: "yori-main",
+    name: "양고기 토마토 스튜",
+    description: "1인 14,000 / 2인 25,000.",
+    priceGlass: 14000,
+    status: "selling",
+    sortOrder: 6,
+  },
+  {
+    id: "yori-baguette-eoran",
+    categoryKey: "yori",
+    bandKey: "yori-main",
+    name: "어란·무화과잼·크림치즈 바게트 (2ea)",
+    description: "‘의정부 유위송훗집’ 사장님이 직접 만든 어란이 올라갑니다.",
+    priceGlass: 13000,
+    status: "selling",
+    sortOrder: 7,
+  },
+  {
+    id: "yori-chicken-nanban",
+    categoryKey: "yori",
+    bandKey: "yori-main",
+    name: "치킨난반",
+    priceGlass: 13000,
+    status: "selling",
+    sortOrder: 8,
+  },
+  {
+    id: "yori-eggplant-miso",
+    categoryKey: "yori",
+    bandKey: "yori-main",
+    name: "가지된장구이",
+    priceGlass: 12000,
+    status: "selling",
+    sortOrder: 9,
+  },
+  // -- 추가요리 --
+  {
+    id: "yori-inaniwa",
+    categoryKey: "yori",
+    bandKey: "yori-add",
+    name: "이나니와 붓가케 (냉우동)",
+    priceGlass: 10000,
+    status: "selling",
+    sortOrder: 10,
+  },
+  {
+    id: "yori-umeboshi-cheese",
+    categoryKey: "yori",
+    bandKey: "yori-add",
+    name: "우메보시 크림치즈와 비스켓",
+    description:
+      "새콤한 우메보시를 부드러운 크림치즈에 섞은 딥과 바삭한 비스켓의 조화. 가볍게 즐기기 좋은 안주.",
+    priceGlass: 9000,
+    status: "selling",
+    sortOrder: 11,
+  },
+  {
+    id: "yori-hanpen",
+    categoryKey: "yori",
+    bandKey: "yori-add",
+    name: "치즈 한펜 구이",
+    priceGlass: 8000,
+    status: "selling",
+    sortOrder: 12,
+  },
+  {
+    id: "yori-tomato-salad",
+    categoryKey: "yori",
+    bandKey: "yori-add",
+    name: "토마토 샐러드",
+    description: "잘 익은 토마토에 다진 할라피뇨의 아삭함과 유자 폰즈의 상큼함을 더한 샐러드.",
+    priceGlass: 7000,
+    status: "selling",
+    sortOrder: 13,
+  },
+  {
+    id: "yori-yokan",
+    categoryKey: "yori",
+    bandKey: "yori-add",
+    name: "팥양갱",
+    priceGlass: 3000,
+    status: "selling",
+    sortOrder: 14,
+  },
+  // -- 강력추천 계절메뉴 --
+  {
+    id: "yori-eel",
+    categoryKey: "yori",
+    bandKey: "yori-season",
+    name: "장어구이 (타래·소금 선택)",
+    priceGlass: 16000,
+    status: "selling",
+    sortOrder: 15,
+  },
+
+  // ========================= 기타 주류·음료 =========================
+  {
+    id: "drink-ebisu-draft",
+    categoryKey: "drinks",
+    name: "에비스 生맥주",
+    description: "일단생맥 이벤트: 니혼슈·쇼츄 보틀 주문 시 에비스 1+1.",
+    priceGlass: 12000,
+    status: "selling",
+    sortOrder: 1,
+  },
+  {
+    id: "drink-asahi-zero",
+    categoryKey: "drinks",
+    name: "아사히 드라이 제로 (350㎖)",
+    description: "논알콜 맥주.",
+    priceGlass: 12000,
+    status: "selling",
+    sortOrder: 2,
+  },
+  {
+    id: "drink-suntory-highball",
+    categoryKey: "drinks",
+    name: "산토리 하이볼",
+    description: "토닉워터·탄산수 선택 가능 (샷 추가 +5,000).",
+    priceGlass: 12000,
+    status: "selling",
+    sortOrder: 3,
+  },
+  {
+    id: "drink-banana-umeshu",
+    categoryKey: "drinks",
+    name: "바나나 우메슈",
+    priceGlass: 12000,
+    status: "selling",
+    sortOrder: 4,
+  },
+  {
+    id: "drink-aragoshi-yuzu",
+    categoryKey: "drinks",
+    name: "아라고시 유즈슈",
+    priceGlass: 12000,
+    status: "selling",
+    sortOrder: 5,
+  },
+  {
+    id: "drink-soft",
+    categoryKey: "drinks",
+    name: "콜라 · 제로콜라 · 스프라이트",
+    priceGlass: 2000,
+    status: "selling",
+    sortOrder: 6,
+  },
 ];
 
 /** 페이지 보드 (관리①) — 손님이 넘기는 페이지 + 관리 메타 */
@@ -404,11 +711,11 @@ export const SEED_PAGES: MenuPage[] = [
   {
     id: "p-drinks",
     type: "menu",
-    title: "음료",
-    subtitle: "준비 중",
+    title: "기타 주류 · 음료",
+    subtitle: "맥주 · 하이볼 · 우메슈 · 소프트드링크",
     sectionTag: "飲料",
     categoryKey: "drinks",
-    isHidden: true, // 손님 화면 비노출 (준비중)
+    isHidden: false,
     sortOrder: 9,
   },
   {
