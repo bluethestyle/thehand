@@ -49,6 +49,7 @@ export function AdminShell({
               <button onClick={() => nav("/admin")}>페이지 보드</button>
               <button onClick={() => nav("/admin/items")}>메뉴 항목 관리</button>
               <button onClick={() => nav("/admin/density")}>표시 밀도 · 글자 크기</button>
+              <button onClick={() => nav("/admin/branding")}>로고 · 브랜딩</button>
               <button onClick={() => nav("/admin/password")}>비밀번호 변경</button>
               <button onClick={() => (window.location.href = "/")}>손님 화면 보기</button>
               <button onClick={logout}>로그아웃</button>

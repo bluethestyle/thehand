@@ -69,6 +69,21 @@
   color: #1e1e36;
   flex: none;
 }
+.logoImg {
+  height: 32px;
+  width: auto;
+  max-width: 130px;
+  object-fit: contain;
+  border-radius: 6px;
+  flex: none;
+}
+.coverLogoImg {
+  height: 110px;
+  width: auto;
+  max-width: 72%;
+  object-fit: contain;
+  border-radius: 18px;
+}
 .logoText {
   display: flex;
   flex-direction: column;

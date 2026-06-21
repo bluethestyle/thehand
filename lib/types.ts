@@ -123,6 +123,11 @@ export interface DensitySettings {
   fontScaleOffset: number; // -2..+2 (자동 비례값 대비 미세조정 단계)
 }
 
+export interface Branding {
+  /** 업로드한 로고 마크 이미지 URL. null이면 기본 手 마크. */
+  logoUrl: string | null;
+}
+
 /** 손님 화면에 실제로 펼쳐지는 한 장(자동 분할 결과 포함). */
 export interface RenderedPage {
   key: string;
@@ -139,4 +144,5 @@ export interface MenuData {
   items: MenuItem[];
   bands: Record<string, CategoryBand[]>; // categoryKey → 밴드 목록(순서)
   density: DensitySettings;
+  branding: Branding;
 }

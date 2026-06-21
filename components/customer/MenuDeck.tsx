@@ -198,6 +198,7 @@ export function MenuDeck({
               <PageShell
                 page={rp.source}
                 nav={nav}
+                branding={data.branding}
                 showTitleBand={
                   rp.source.type === "menu" ||
                   rp.source.type === "map" ||
@@ -226,7 +227,7 @@ function PageBody({ rp, data }: { rp: RenderedPage; data: MenuData }) {
   const page = rp.source;
   switch (page.type) {
     case "cover":
-      return <CoverView page={page} />;
+      return <CoverView page={page} logoUrl={data.branding.logoUrl} />;
     case "menu":
       return (
         <MenuPageView

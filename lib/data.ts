@@ -99,6 +99,7 @@ const seedData = (): MenuData => ({
   items: SEED_ITEMS,
   bands: BANDS,
   density: DEFAULT_DENSITY,
+  branding: { logoUrl: null },
 });
 
 /**
@@ -110,11 +111,11 @@ export async function getMenuData(): Promise<MenuData> {
 
   try {
     const sb = serverAnonClient();
-    const [pagesRes, itemsRes, stickersRes, densityRes] = await Promise.all([
+    const [pagesRes, itemsRes, stickersRes, settingsRes] = await Promise.all([
       sb.from("thehand_pages").select("*").order("sort_order", { ascending: true }),
       sb.from("thehand_items").select("*").order("sort_order", { ascending: true }),
       sb.from("thehand_stickers").select("*").order("z", { ascending: true }),
-      sb.from("thehand_settings").select("value").eq("key", "density").maybeSingle(),
+      sb.from("thehand_settings").select("key, value").in("key", ["density", "branding"]),
     ]);
 
     if (pagesRes.error) throw pagesRes.error;
@@ -132,12 +133,19 @@ export async function getMenuData(): Promise<MenuData> {
       rowToPage(r, stickersByPage.get(r.id) ?? [])
     );
     const items = (itemsRes.data ?? []).map(rowToItem);
-    const density = normalizeDensity(densityRes.data?.value);
+    const settings = new Map(
+      (settingsRes.data ?? []).map((r) => [r.key as string, r.value])
+    );
+    const density = normalizeDensity(settings.get("density"));
+    const branding = {
+      logoUrl:
+        (settings.get("branding") as { logoUrl?: string } | undefined)?.logoUrl ?? null,
+    };
 
     // DB가 비어있으면(마이그레이션만 하고 시드 안 한 경우) 시드로 보완
     if (pages.length === 0 && items.length === 0) return seedData();
 
-    return { pages, items, bands: BANDS, density };
+    return { pages, items, bands: BANDS, density, branding };
   } catch (err) {
     console.error("[getMenuData] Supabase 실패, 시드로 폴백:", err);
     return seedData();

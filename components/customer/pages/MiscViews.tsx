@@ -2,10 +2,21 @@ import type { MenuItem, MenuPage } from "@/lib/types";
 import { styleMeta } from "@/lib/format";
 import s from "../customer.module.css";
 
-export function CoverView({ page }: { page: MenuPage }) {
+export function CoverView({
+  page,
+  logoUrl,
+}: {
+  page: MenuPage;
+  logoUrl?: string | null;
+}) {
   return (
     <div className={s.cover}>
-      <div className={s.coverMark}>手</div>
+      {logoUrl ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img className={s.coverLogoImg} src={logoUrl} alt="THE HAND" />
+      ) : (
+        <div className={s.coverMark}>手</div>
+      )}
       <div className={s.coverBrand}>THE HAND</div>
       <div className={s.coverRule} />
       <div className={s.coverSub}>{page.subtitle ?? "사케 바 · 디지털 메뉴판"}</div>

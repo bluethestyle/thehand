@@ -1,4 +1,4 @@
-import type { MenuPage } from "@/lib/types";
+import type { Branding, MenuPage } from "@/lib/types";
 import s from "./customer.module.css";
 
 export interface DeckTab {
@@ -20,11 +20,13 @@ export interface DeckNav {
 export function PageShell({
   page,
   nav,
+  branding,
   showTitleBand,
   children,
 }: {
   page: MenuPage;
   nav: DeckNav;
+  branding?: Branding;
   showTitleBand?: boolean;
   children: React.ReactNode;
 }) {
@@ -56,7 +58,12 @@ export function PageShell({
   return (
     <div className={s.frame} style={{ position: "relative" }}>
       <header className={s.header}>
-        <div className={s.logoMark}>手</div>
+        {branding?.logoUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img className={s.logoImg} src={branding.logoUrl} alt="THE HAND" />
+        ) : (
+          <div className={s.logoMark}>手</div>
+        )}
         <div className={s.logoText}>
           <span className={s.brand}>THE HAND</span>
           <span className={s.brandSub}>사케 바 · 디지털 메뉴판</span>
