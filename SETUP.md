@@ -7,21 +7,29 @@
 
 ## 1. Supabase 스키마 적용 (기존 프로젝트에 추가)
 
-`thehand_` 접두사 테이블만 추가하므로 기존 앱과 충돌하지 않습니다.
+`thehand_` 접두사 테이블만 추가하므로 기존 앱과 충돌하지 않습니다. 두 방법 중 택1:
 
-1. Supabase 대시보드 → **SQL Editor** 열기
-2. [`supabase/migrations/0001_init.sql`](supabase/migrations/0001_init.sql) 전체 복사 → 붙여넣기 → **Run**
-3. 이어서 [`supabase/seed.sql`](supabase/seed.sql) 전체 복사 → 붙여넣기 → **Run** (8종 니혼슈 + 페이지 + 스티커)
+**방법 A — SQL Editor 붙여넣기 (비번 불필요, 가장 쉬움)**
+1. Supabase 대시보드 → **SQL Editor** → New query
+2. [`supabase/apply.sql`](supabase/apply.sql)(스키마+시드 합본) 전체 복사 → 붙여넣기 → **Run**
+   - (분리 실행하려면 `migrations/0001_init.sql` → `seed.sql` 순서로)
+
+**방법 B — npm 러너 (DB 연결 문자열 필요)**
+1. 대시보드 상단 **Connect** → Session pooler URI 복사(포트 5432, 비번 포함)
+2. `.env.local` 의 `SUPABASE_DB_URL=` 에 그 URI 입력
+3. `npm run db:push`
 
 > 손님은 RLS로 **읽기 전용**, 쓰기는 서버 라우트(service_role)만 가능. 비밀번호는 손님이 못 읽는 `thehand_admin`에 해시로 저장됩니다.
 
 ## 2. API 키 확보
 
-대시보드 → **Project Settings → API**:
+대시보드 → **Project Settings → API Keys**:
 
 - `Project URL` → `NEXT_PUBLIC_SUPABASE_URL`
-- `anon public` 키 → `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-- `service_role` 키 → `SUPABASE_SERVICE_ROLE_KEY` (**비밀**, 절대 클라이언트/깃에 노출 금지)
+- **anon / publishable** 키(`sb_publishable_…` 또는 legacy `anon`) → `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- **service_role / secret** 키(`sb_secret_…` 또는 legacy `service_role`) → `SUPABASE_SERVICE_ROLE_KEY` (**비밀**, 절대 클라이언트/깃에 노출 금지)
+
+> 새 키 형식(`sb_publishable_`/`sb_secret_`)·구 형식(JWT) 모두 동작합니다.
 
 ## 3. 로컬 실행
 
