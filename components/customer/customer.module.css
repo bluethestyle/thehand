@@ -93,6 +93,38 @@
   color: var(--c-gold-text);
 }
 
+/* ───────────────────────── 테마 탭바 ───────────────────────── */
+.tabBar {
+  flex: none;
+  display: flex;
+  gap: 4px;
+  padding: 7px 16px;
+  overflow-x: auto;
+  background: var(--c-page);
+  border-bottom: 1px solid var(--c-border);
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.tabBar::-webkit-scrollbar {
+  display: none;
+}
+.tab {
+  flex: none;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: none;
+  background: none;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--c-muted-2);
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+.tabActive {
+  background: var(--c-dark);
+  color: #f3ede2;
+}
+
 /* ───────────────────────── 페이지 타이틀 밴드 ───────────────────────── */
 .titleBand {
   flex: none;
@@ -452,19 +484,58 @@
 }
 
 /* ───────────────────────── 원산지 표기 ───────────────────────── */
-.notice {
-  padding: 8px 36px;
-  color: var(--c-label);
+.originTable {
+  margin: 8px 8px 0;
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-card);
+  overflow: hidden;
+  background: #fff;
 }
-.notice h3 {
+.originRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--c-border);
+}
+.originRow:last-child {
+  border-bottom: none;
+}
+.originHead {
+  background: var(--c-sand);
+}
+.originHead .originName,
+.originHead .originPlace {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--c-muted-2);
+}
+.originName {
+  flex: 0 0 36%;
   font-family: var(--font-serif);
-  font-size: 18px;
-  margin: 12px 0;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--c-text);
 }
-.notice ul {
-  padding-left: 18px;
-  line-height: 1.9;
+.originPlace {
+  flex: 1;
   font-size: 13px;
+  color: var(--c-muted);
+}
+.originNote {
+  text-align: center;
+  margin: 18px 16px 0;
+  font-size: 11.5px;
+  color: var(--c-muted-2);
+  word-break: keep-all;
+}
+.originFoot {
+  text-align: center;
+  margin: 8px 0 0;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--c-label);
+  letter-spacing: 0.04em;
 }
 
 /* ───────────────────────── 이미지 / 이벤트 페이지 ───────────────────────── */

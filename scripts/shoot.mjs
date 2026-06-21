@@ -24,7 +24,7 @@ async function launch() {
 const browser = await launch();
 const ctx = await browser.newContext({
   viewport: { width: 768, height: 1024 },
-  deviceScaleFactor: 2,
+  deviceScaleFactor: Number(process.env.SHOOT_DSF || 1),
 });
 const page = await ctx.newPage();
 await page.goto(BASE + PATHNAME, { waitUntil: "domcontentloaded" });

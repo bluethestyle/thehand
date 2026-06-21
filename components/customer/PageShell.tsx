@@ -1,12 +1,20 @@
 import type { MenuPage } from "@/lib/types";
 import s from "./customer.module.css";
 
+export interface DeckTab {
+  id: string;
+  label: string;
+  index: number; // 이 섹션의 첫 렌더 페이지 인덱스
+}
+
 export interface DeckNav {
   index: number;
   total: number;
   onPrev: () => void;
   onNext: () => void;
   onDot: (i: number) => void;
+  tabs: DeckTab[];
+  activeTabId?: string;
 }
 
 export function PageShell({
@@ -55,6 +63,20 @@ export function PageShell({
         </div>
         {page.sectionTag && <span className={s.sectionTag}>{page.sectionTag}</span>}
       </header>
+
+      {nav.tabs.length > 1 && (
+        <nav className={s.tabBar} aria-label="메뉴 섹션">
+          {nav.tabs.map((t) => (
+            <button
+              key={t.id}
+              className={`${s.tab} ${t.id === nav.activeTabId ? s.tabActive : ""}`}
+              onClick={() => nav.onDot(t.index)}
+            >
+              {t.label}
+            </button>
+          ))}
+        </nav>
+      )}
 
       {showTitleBand && (page.title || page.subtitle) && (
         <div className={s.titleBand}>

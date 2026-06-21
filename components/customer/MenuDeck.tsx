@@ -3,7 +3,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { MenuData, RenderedPage } from "@/lib/types";
 import { buildRenderedPages, fontScale } from "@/lib/menu";
 import { browserClient } from "@/lib/supabase";
-import { PageShell, type DeckNav } from "./PageShell";
+import { PageShell, type DeckNav, type DeckTab } from "./PageShell";
+import type { MenuPage } from "@/lib/types";
 import { MenuPageView } from "./pages/MenuPageView";
 import { ImagePageView } from "./pages/ImagePageView";
 import { TasteMapView } from "./pages/TasteMapView";
@@ -35,6 +36,20 @@ export function MenuDeck({
 
   const pages: RenderedPage[] = useMemo(() => buildRenderedPages(data), [data]);
   const total = pages.length;
+
+  // 테마별 상단 탭 (표지·원산지표기 제외, 섹션별 첫 페이지로 점프)
+  const tabs: DeckTab[] = useMemo(() => {
+    const seen = new Set<string>();
+    const out: DeckTab[] = [];
+    pages.forEach((rp, idx) => {
+      const src = rp.source;
+      if (src.type === "cover" || src.type === "notice") return;
+      if (seen.has(src.id)) return;
+      seen.add(src.id);
+      out.push({ id: src.id, label: tabLabel(src), index: idx });
+    });
+    return out;
+  }, [pages]);
   const scale = fontScale(data.density.itemsPerPage, data.density.fontScaleOffset);
   // 렌더 단계에서 파생 → realtime 갱신/total 감소 시 한 프레임 어긋남 방지
   const safeIndex = Math.min(Math.max(0, index), Math.max(0, total - 1));
@@ -149,7 +164,15 @@ export function MenuDeck({
     drag.current.axis = null;
   };
 
-  const nav: DeckNav = { index: safeIndex, total, onPrev: prev, onNext: next, onDot: go };
+  const nav: DeckNav = {
+    index: safeIndex,
+    total,
+    onPrev: prev,
+    onNext: next,
+    onDot: go,
+    tabs,
+    activeTabId: pages[safeIndex]?.source.id,
+  };
 
   const trackStyle: React.CSSProperties = {
     transform: `translateX(${-safeIndex * deckW + dragX}px)`,
@@ -190,6 +213,13 @@ export function MenuDeck({
       </div>
     </div>
   );
+}
+
+function tabLabel(p: MenuPage): string {
+  if (p.categoryKey === "drinks") return "음료";
+  if (p.mapKind === "region") return "산지";
+  if (p.mapKind === "taste") return "취향";
+  return p.title ?? "";
 }
 
 function PageBody({ rp, data }: { rp: RenderedPage; data: MenuData }) {

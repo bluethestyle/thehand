@@ -14,19 +14,37 @@ export function CoverView({ page }: { page: MenuPage }) {
   );
 }
 
+// 원산지 표기 (식품위생법 의무 표기) — 원본 디자인(admin-03-wonsanji) 기준
+const ORIGINS: { ingredient: string; origin: string }[] = [
+  { ingredient: "쌀", origin: "국내산" },
+  { ingredient: "광어", origin: "국내산(양식)" },
+  { ingredient: "한치", origin: "국내산" },
+  { ingredient: "소고기(와규)", origin: "호주산" },
+  { ingredient: "새우", origin: "베트남산" },
+  { ingredient: "메밀", origin: "중국산" },
+  { ingredient: "배추김치", origin: "배추 국내산 · 고춧가루 중국산" },
+  { ingredient: "가지", origin: "국내산" },
+];
+
 export function NoticeView() {
   return (
     <div className={s.content}>
-      <div className={s.notice}>
-        <h3>원산지 표기</h3>
-        <ul>
-          <li>니혼슈 · 쇼츄 — 원산지: 일본 (현별 표기는 각 메뉴 참조)</li>
-          <li>모든 주류는 정식 수입 통관 제품입니다.</li>
-          <li>쌀 · 누룩 등 원재료 원산지는 양조장 표기를 따릅니다.</li>
-          <li>주류는 19세 미만 판매하지 않습니다.</li>
-          <li>∗ 주류 필수 주문 ∗</li>
-        </ul>
+      <div className={s.originTable}>
+        <div className={`${s.originRow} ${s.originHead}`}>
+          <span className={s.originName}>재료</span>
+          <span className={s.originPlace}>원산지</span>
+        </div>
+        {ORIGINS.map((o) => (
+          <div key={o.ingredient} className={s.originRow}>
+            <span className={s.originName}>{o.ingredient}</span>
+            <span className={s.originPlace}>{o.origin}</span>
+          </div>
+        ))}
       </div>
+      <p className={s.originNote}>
+        ∗ 수급 상황에 따라 원산지가 변경될 수 있으며, 변경 시 즉시 수정 표기합니다 ∗
+      </p>
+      <p className={s.originFoot}>∗ 주류 필수 주문 ∗</p>
     </div>
   );
 }
