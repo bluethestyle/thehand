@@ -20,9 +20,29 @@ export function PageShell({
   showTitleBand?: boolean;
   children: React.ReactNode;
 }) {
-  // 표지는 크롬 없이 풀블리드
+  // 표지는 크롬 없이 풀블리드 — 탭/화살표로 다음(메뉴)으로
   if (page.type === "cover") {
-    return <div className={s.frame}>{children}</div>;
+    return (
+      <div
+        className={s.frame}
+        style={{ position: "relative", cursor: "pointer" }}
+        onClick={nav.onNext}
+      >
+        {children}
+        {nav.index < nav.total - 1 && (
+          <button
+            className={`${s.arrow} ${s.arrowRight}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              nav.onNext();
+            }}
+            aria-label="다음 페이지"
+          >
+            ›
+          </button>
+        )}
+      </div>
+    );
   }
 
   return (

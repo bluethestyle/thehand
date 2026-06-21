@@ -176,7 +176,7 @@ insert into public.thehand_items
    polish, smv, acidity, abv, price_glass, price_tokkuri, price_bottle,
    status, badge, featured, heatable, flag_note, map_x, map_y, sort_order)
 values
-  ('emishiki-monsoon','nihonshu','junmai-daiginjo','에미시키 몬순','에미시키','준마이다이긴죠','후쿠시마','kunshu',
+  ('emishiki-monsoon','nihonshu','junmai-daiginjo','에미시키 몬순','에미시키','준마이다이긴죠',null,'kunshu',
    '트로피컬한 향과 달콤함, 열대과실의 화려함.',
    50,'비공개','비공개',17, 18500,53000,106000, 'selling','추천',true,false,null, 35,85, 1),
   ('zaku-nakadori','nihonshu','junmai-daiginjo','자쿠 나카도리','시미즈세이자부로','준마이다이긴죠','미에','kunshu',

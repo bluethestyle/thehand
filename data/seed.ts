@@ -43,7 +43,7 @@ export const SEED_ITEMS: MenuItem[] = [
     name: "에미시키 몬순",
     brewery: "에미시키",
     grade: "준마이다이긴죠",
-    region: "후쿠시마",
+    region: null, // 후쿠시마(민감) — 손님 화면 산지 비노출
     style: "kunshu",
     description: "트로피컬한 향과 달콤함, 열대과실의 화려함.",
     polish: 50,

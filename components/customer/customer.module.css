@@ -423,6 +423,22 @@
   color: #b8ae9c;
   letter-spacing: 0.04em;
 }
+.coverHint {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 36px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #c9a24b;
+  letter-spacing: 0.02em;
+  animation: coverHintPulse 1.8s var(--ease) infinite;
+}
+@keyframes coverHintPulse {
+  0%, 100% { opacity: 0.5; transform: translateX(0); }
+  50% { opacity: 1; transform: translateX(4px); }
+}
 
 /* ───────────────────────── 원산지 표기 ───────────────────────── */
 .notice {
@@ -688,7 +704,21 @@
   color: var(--c-muted-2);
 }
 
-/* 산지 지도(간이) */
+/* 산지 지도 (일본 지도) */
+.japanCard {
+  border: 1px solid var(--c-border);
+  border-radius: 14px;
+  background: linear-gradient(180deg, #eef4f6, #f8fbfc);
+  padding: 16px;
+  display: grid;
+  place-items: center;
+}
+.japanSvg {
+  width: min(300px, 76vw);
+  height: auto;
+}
+
+/* 산지 지도(간이, 미사용) */
 .regionGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
