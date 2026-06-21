@@ -1,0 +1,188 @@
+/* 메뉴 관리 (admin-01) */
+.bulkHead {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.bulkTitle {
+  font-size: 15px;
+  font-weight: 700;
+}
+.bulkScope {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: #8b8478;
+}
+.bulkScopeSel {
+  border: 1px solid #d8d3c9;
+  background: #edeae2;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 13px;
+  color: #3a3631;
+}
+.bulkBtns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+.bulkBtn {
+  border: 1px solid #d8d3c9;
+  background: #fff;
+  border-radius: 14px;
+  padding: 6px 14px;
+  font-size: 13px;
+  color: #3a3631;
+  cursor: pointer;
+}
+.bulkBtn:hover {
+  border-color: #c8902f;
+}
+.bulkHint {
+  margin-left: auto;
+  font-size: 12px;
+  color: #8b8478;
+}
+
+/* 카테고리 서브탭 */
+.subtabs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 6px 0 6px;
+}
+.subtab {
+  border: 1px solid #d8d3c9;
+  background: #fff;
+  border-radius: 13px;
+  padding: 6px 14px;
+  font-size: 13px;
+  color: #8b8478;
+  cursor: pointer;
+}
+.subtabActive {
+  background: #2b2722;
+  border-color: #2b2722;
+  color: #fff;
+  font-weight: 700;
+}
+.newBtn {
+  margin-left: auto;
+  background: #c8902f;
+  border: none;
+  border-radius: 13px;
+  padding: 7px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+}
+.listHint {
+  font-size: 12px;
+  color: #8b8478;
+  padding: 6px 0;
+  border-bottom: 1px solid #d8d3c9;
+}
+
+/* 행 */
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 4px;
+  border-bottom: 1px solid #d8d3c9;
+  background: #fff;
+}
+.rowSoldout {
+  background: #f3efe7;
+}
+.handle {
+  flex: none;
+  width: 20px;
+  text-align: center;
+  color: #b5afa3;
+  font-size: 16px;
+  cursor: grab;
+  touch-action: none;
+}
+.main {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.nameRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.name {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #3a3631;
+}
+.chip {
+  font-size: 11px;
+  font-weight: 700;
+  color: #c8902f;
+}
+.meta {
+  margin-top: 3px;
+  font-size: 12px;
+  color: #8b8478;
+}
+.prices {
+  flex: none;
+  display: flex;
+  gap: 12px;
+}
+.priceCell {
+  width: 80px;
+}
+.priceInput {
+  width: 100%;
+  border: 1px solid #d8d3c9;
+  border-radius: 5px;
+  padding: 4px 8px;
+  font-size: 13px;
+  text-align: right;
+  color: #3a3631;
+}
+.priceInput:focus {
+  outline: none;
+  border-color: #c8902f;
+}
+.priceVol {
+  margin-top: 3px;
+  font-size: 10.5px;
+  color: #8b8478;
+  text-align: center;
+}
+.editBtn {
+  flex: none;
+  border: 1px solid #d8d3c9;
+  background: #fff;
+  border-radius: 13px;
+  padding: 6px 16px;
+  font-size: 13px;
+  color: #3a3631;
+  cursor: pointer;
+}
+.note {
+  font-size: 12px;
+  color: #8b8478;
+  margin-top: 16px;
+}
+.addFooter {
+  width: 100%;
+  border: 1px dashed #d8d3c9;
+  background: transparent;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 13px;
+  color: #8b8478;
+  cursor: pointer;
+  margin-top: 12px;
+}

@@ -54,7 +54,7 @@ export function AdminGate() {
         setBusy(false);
         return;
       }
-      window.location.href = "/admin";
+      window.location.href = "/admin/items";
     } catch {
       setErr("네트워크 오류. 다시 시도하세요.");
       setBusy(false);

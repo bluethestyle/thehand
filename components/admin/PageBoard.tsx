@@ -19,7 +19,7 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import type { MenuPage, PageType } from "@/lib/types";
-import { AdminShell, useToast } from "./AdminShell";
+import { AdminFrame, useToast } from "./AdminFrame";
 import { EyeIcon, EyeOffIcon, PencilIcon } from "./icons";
 import s from "./admin.module.css";
 
@@ -311,7 +311,7 @@ export function PageBoard({
   const ids = order.map((p) => p.id);
 
   return (
-    <AdminShell title="메뉴 페이지 관리">
+    <AdminFrame tab="pages">
       <div className={s.toolbar}>
         <div className={s.toolbarText}>
           <span className={s.bannerMain}>{order.length}개 페이지 · ⠿ 끌어서 순서 변경</span>
@@ -328,7 +328,7 @@ export function PageBoard({
         </button>
       </div>
 
-      <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={onDragEnd}>
+      <DndContext id="dnd-pages" sensors={sensors} collisionDetection={closestCenter} onDragEnd={onDragEnd}>
         <SortableContext items={ids} strategy={verticalListSortingStrategy}>
           {order.map((page, i) => (
             <div key={page.id}>
@@ -400,6 +400,6 @@ export function PageBoard({
         </div>
       )}
       {node}
-    </AdminShell>
+    </AdminFrame>
   );
 }
