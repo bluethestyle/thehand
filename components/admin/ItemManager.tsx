@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { ItemStatus, MenuItem } from "@/lib/types";
 import { AdminShell, useToast } from "./AdminShell";
 import s from "./admin.module.css";
@@ -21,8 +21,48 @@ export function ItemManager({ items }: { items: MenuItem[] }) {
   const { show, node } = useToast();
   const [busy, setBusy] = useState(false);
 
+  const fileRef = useRef<HTMLInputElement>(null);
+  const targetRef = useRef<string | null>(null);
+
   const selling = items.filter((it) => it.status !== "closed");
   const archived = items.filter((it) => it.status === "closed");
+
+  function pickImage(itemId: string) {
+    targetRef.current = itemId;
+    fileRef.current?.click();
+  }
+  async function onImageFile(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    const id = targetRef.current;
+    if (!file || !id) return;
+    setBusy(true);
+    try {
+      const fd = new FormData();
+      fd.append("file", file);
+      fd.append("folder", "items");
+      const up = await fetch("/api/admin/upload", { method: "POST", body: fd });
+      const data = await up.json();
+      if (!up.ok) {
+        show(data.error ?? "업로드 실패");
+        return;
+      }
+      const res = await fetch("/api/admin/items", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, patch: { imageUrl: data.url } }),
+      });
+      if (!res.ok) {
+        show((await res.json()).error ?? "저장 실패");
+        return;
+      }
+      show("보틀 이미지 적용됨");
+      router.refresh();
+    } finally {
+      setBusy(false);
+      if (fileRef.current) fileRef.current.value = "";
+      targetRef.current = null;
+    }
+  }
 
   async function setStatus(item: MenuItem, status: ItemStatus) {
     if (item.status === status) return;
@@ -52,14 +92,28 @@ export function ItemManager({ items }: { items: MenuItem[] }) {
         sub: "닫아도 삭제되지 않아요 — 보관함에 남아 재입고 시 한 번에 되살립니다",
       }}
     >
+      <input ref={fileRef} type="file" accept="image/*" hidden onChange={onImageFile} />
+
       <div className={s.sectionHeader}>
         <span className={s.sectionTitle}>판매 중</span>
-        <span className={s.sectionMeta}>니혼슈 · {selling.length}종</span>
+        <span className={s.sectionMeta}>{selling.length}종</span>
       </div>
 
       {selling.map((item) => (
         <div className={s.itemCard} key={item.id}>
-          <div className={s.itemThumb} />
+          <button
+            className={s.itemThumbBtn}
+            onClick={() => pickImage(item.id)}
+            disabled={busy}
+            title="보틀 이미지 업로드"
+          >
+            {item.imageUrl ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={item.imageUrl} alt="" />
+            ) : (
+              <span>📷</span>
+            )}
+          </button>
           <div className={s.itemBody}>
             <div>
               <span className={s.itemName}>{item.name}</span>
