@@ -4,6 +4,14 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "더핸드 · 디지털 메뉴판",
   description: "사케 전문 이자카야 더핸드 — 페이지형 태블릿 메뉴판",
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true, // iOS: 홈 화면에서 실행 시 브라우저 UI 없이
+    title: "더핸드",
+    statusBarStyle: "black-translucent",
+  },
+  icons: { icon: "/icon.svg", apple: "/icon.svg" },
+  other: { "mobile-web-app-capable": "yes" },
 };
 
 export const viewport: Viewport = {
@@ -11,6 +19,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
+  viewportFit: "cover", // 노치/둥근 모서리 대응
   themeColor: "#111418",
 };
 
