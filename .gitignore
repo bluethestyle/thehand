@@ -22,3 +22,6 @@ design-reference/shots/
 # Local env
 .env
 .env.local
+
+# TypeScript incremental build info
+*.tsbuildinfo
