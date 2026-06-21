@@ -30,9 +30,10 @@ const page = await ctx.newPage();
 await page.goto(BASE + PATHNAME, { waitUntil: "domcontentloaded" });
 await page.waitForTimeout(1600);
 
+const FULL = process.env.SHOOT_FULL === "1";
 const n = CLICKS ? PAGES : 1;
 for (let i = 0; i < n; i++) {
-  await page.screenshot({ path: `${OUT}/${PREFIX}-${i}.png` });
+  await page.screenshot({ path: `${OUT}/${PREFIX}-${i}.png`, fullPage: FULL });
   console.log(`shot ${PREFIX}-${i}.png`);
   if (i < n - 1) {
     await page.keyboard.press("ArrowRight");

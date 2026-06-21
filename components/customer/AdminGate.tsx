@@ -82,11 +82,18 @@ export function AdminGate() {
                 <h3 className={s.modalTitle}>관리자 모드</h3>
                 <p className={s.modalSub}>
                   Supabase가 아직 연결되지 않았습니다. 환경변수(.env.local) 설정 후
-                  관리자 기능을 사용할 수 있어요.
+                  비밀번호로 보호되는 관리자 기능을 사용할 수 있어요. 지금은 데모로
+                  화면만 둘러볼 수 있습니다(저장은 되지 않음).
                 </p>
                 <div className={s.modalActions}>
                   <button className={`${s.btn} ${s.btnGhost}`} onClick={close}>
                     닫기
+                  </button>
+                  <button
+                    className={`${s.btn} ${s.btnPrimary}`}
+                    onClick={() => (window.location.href = "/admin")}
+                  >
+                    데모 둘러보기
                   </button>
                 </div>
               </>

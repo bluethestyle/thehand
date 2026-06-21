@@ -27,6 +27,23 @@ Pruf 디자인 시스템 기반 (warm neutral + amber). 4색 스타일 시스템
 
 자세한 사양은 `design-reference/` 의 원본 핸드오프 시안을 참조.
 
+## 기술 스택
+
+- **프론트/배포**: Next.js 16 (App Router, TS) → Vercel
+- **DB/실시간/인증**: Supabase (Postgres + Realtime), `thehand_` 접두사 + RLS(손님 읽기전용)
+- **관리자**: 메뉴 화면 ⚙ → 비밀번호(최초 설정/변경, scrypt 해시) → 서버 라우트(service_role) 쓰기
+
+## 실행
+
+Supabase 미연결 상태에서도 내장 시드로 미리보기가 됩니다.
+
+```bash
+npm install
+npm run dev        # http://localhost:3000
+```
+
+실제 DB 연결·배포는 [SETUP.md](SETUP.md) 참고.
+
 ## 상태
 
-🚧 구현 중. 스택/백엔드 확정 후 업데이트.
+✅ 손님 5개 화면 + 관리자 5개 화면 구현·검증 완료. Supabase 연결 시 실시간 운영.
