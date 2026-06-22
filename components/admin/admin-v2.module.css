@@ -13,6 +13,7 @@
   z-index: 30;
   display: flex;
   align-items: center;
+  justify-content: center; /* 로고+브랜드 가운데 */
   gap: 12px;
   height: 52px;
   padding: 0 24px;
@@ -43,7 +44,10 @@
   color: #3a3631;
 }
 .topRight {
-  margin-left: auto;
+  position: absolute;
+  right: 24px;
+  top: 0;
+  height: 52px;
   display: flex;
   align-items: center;
   gap: 14px;
@@ -65,6 +69,7 @@
 /* 탭 */
 .tabs {
   display: flex;
+  justify-content: center;
   gap: 28px;
   padding: 0 24px;
   background: transparent;

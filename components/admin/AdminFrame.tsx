@@ -44,7 +44,7 @@ export function AdminFrame({
         </div>
         <span className={s.brand}>더핸드 관리</span>
         <div className={s.topRight}>
-          <button onClick={() => router.push("/admin/password")}>PIN 재설정</button>
+          <button onClick={() => router.push("/admin/password")}>비밀번호 변경</button>
           <span>·</span>
           <button onClick={logout}>로그아웃</button>
         </div>

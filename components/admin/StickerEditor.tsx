@@ -4,8 +4,9 @@ import { useRouter } from "next/navigation";
 import type { MenuPage, Sticker, StickerKind } from "@/lib/types";
 import { stickerColor } from "@/lib/format";
 import { StickerBody } from "@/components/customer/Sticker";
-import { AdminShell, useToast } from "./AdminShell";
+import { AdminFrame, useToast } from "./AdminFrame";
 import s from "./admin.module.css";
+import f from "./admin-v2.module.css";
 
 let seq = 0;
 const newId = () => `st-${Date.now().toString(36)}-${seq++}`;
@@ -44,6 +45,7 @@ export function StickerEditor({ page }: { page: MenuPage }) {
   const { show, node } = useToast();
   const [stickers, setStickers] = useState<Sticker[]>(page.stickers ?? []);
   const [bgUrl, setBgUrl] = useState<string | null>(page.imageUrl ?? null);
+  const [title, setTitle] = useState(page.title ?? "");
   const [selected, setSelected] = useState<string | null>(null);
   const [dirty, setDirty] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -205,6 +207,17 @@ export function StickerEditor({ page }: { page: MenuPage }) {
     (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
   }
 
+  async function saveTitle() {
+    if (title.trim() === (page.title ?? "")) return;
+    await fetch("/api/admin/pages", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action: "update", id: page.id, patch: { title: title.trim() } }),
+    });
+    show("페이지 이름 저장됨");
+    router.refresh();
+  }
+
   async function save() {
     setBusy(true);
     const res = await fetch("/api/admin/stickers", {
@@ -220,7 +233,28 @@ export function StickerEditor({ page }: { page: MenuPage }) {
   }
 
   return (
-    <AdminShell title="이미지 페이지 편집 · 스티커">
+    <AdminFrame tab="notices">
+      <div className={f.pageHead}>
+        <div style={{ flex: 1 }}>
+          <div className={f.pageSub}>공지 · 이벤트 › 페이지 편집</div>
+          <input
+            className={f.input}
+            style={{ fontSize: 20, fontWeight: 800, marginTop: 4, maxWidth: 360 }}
+            value={title}
+            placeholder="페이지 이름 (예: 여름 한정주)"
+            onChange={(e) => setTitle(e.target.value)}
+            onBlur={saveTitle}
+          />
+        </div>
+        <div className={f.pageActions}>
+          <button className={f.btn} onClick={() => router.push("/admin/notices")}>
+            목록
+          </button>
+          <button className={`${f.btn} ${f.btnPrimary}`} onClick={save} disabled={busy || !dirty}>
+            저장
+          </button>
+        </div>
+      </div>
       <div className={s.editorCanvasWrap} ref={canvasRef} onPointerDown={() => setSelected(null)}>
         {bgUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
@@ -363,6 +397,6 @@ export function StickerEditor({ page }: { page: MenuPage }) {
         )}
       </div>
       {node}
-    </AdminShell>
+    </AdminFrame>
   );
 }

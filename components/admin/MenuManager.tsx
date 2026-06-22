@@ -30,11 +30,21 @@ const CATS: { key: string; label: string }[] = [
   { key: "drinks", label: "음료" },
 ];
 
-const PRICE_UNITS: { key: "priceGlass" | "priceTokkuri" | "priceBottle"; vol: string }[] = [
-  { key: "priceGlass", vol: "100㎖" },
-  { key: "priceTokkuri", vol: "300㎖" },
-  { key: "priceBottle", vol: "720㎖" },
-];
+type Unit = { key: "priceGlass" | "priceTokkuri" | "priceBottle"; vol: string };
+function unitsFor(cat: string): Unit[] {
+  if (cat === "shochu")
+    return [
+      { key: "priceGlass", vol: "80㎖" },
+      { key: "priceBottle", vol: "720㎖" },
+    ];
+  if (cat === "nihonshu")
+    return [
+      { key: "priceGlass", vol: "100㎖" },
+      { key: "priceTokkuri", vol: "300㎖" },
+      { key: "priceBottle", vol: "720㎖" },
+    ];
+  return [{ key: "priceGlass", vol: "가격" }]; // 요리·음료: 단일 가격
+}
 
 function chipOf(it: MenuItem): string | null {
   if (it.status === "soldout") return "품절";
@@ -56,12 +66,14 @@ async function patchItem(id: string, patch: Record<string, unknown>) {
 
 function ItemRow({
   item,
+  units,
   onPrice,
   onToggle,
   onEdit,
   busy,
 }: {
   item: MenuItem;
+  units: Unit[];
   onPrice: (id: string, key: string, val: number | null) => void;
   onToggle: (item: MenuItem, on: boolean) => void;
   onEdit: (id: string) => void;
@@ -94,7 +106,7 @@ function ItemRow({
         <div className={s.meta}>{[item.grade, item.region].filter(Boolean).join(" · ")}</div>
       </div>
       <div className={s.prices}>
-        {PRICE_UNITS.map((u) => (
+        {units.map((u) => (
           <div key={u.key} className={s.priceCell}>
             <input
               className={s.priceInput}
@@ -294,6 +306,7 @@ export function MenuManager({ items: initial }: { items: MenuItem[] }) {
             <ItemRow
               key={item.id}
               item={item}
+              units={unitsFor(cat)}
               onPrice={onPrice}
               onToggle={onToggle}
               onEdit={(id) => router.push(`/admin/items/${id}`)}

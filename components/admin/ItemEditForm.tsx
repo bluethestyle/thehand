@@ -29,8 +29,11 @@ export function ItemEditForm({ item }: { item: MenuItem }) {
   const fileRef = useRef<HTMLInputElement>(null);
 
   const set = (patch: Form) => setForm((p) => ({ ...p, ...patch }));
-  const isNihonshu = form.categoryKey === "nihonshu";
-  const isShochu = form.categoryKey === "shochu";
+  const cat = form.categoryKey;
+  const isNihonshu = cat === "nihonshu";
+  const isShochu = cat === "shochu";
+  const isAlcohol = isNihonshu || isShochu;
+  const isYori = cat === "yori";
 
   const UNITS: { key: "priceGlass" | "priceTokkuri" | "priceBottle"; name: string; vol: string }[] =
     isShochu
@@ -44,32 +47,46 @@ export function ItemEditForm({ item }: { item: MenuItem }) {
           { key: "priceBottle", name: "보틀", vol: "720" },
         ];
 
+  function back() {
+    if (window.history.length > 1) router.back();
+    else router.push("/admin/items");
+    router.refresh();
+  }
+
   async function save() {
     setBusy(true);
+    // 공통
     const patch: Record<string, unknown> = {
       name: form.name,
-      region: form.region ?? null,
-      brewery: form.brewery ?? null,
-      grade: form.grade ?? null,
       categoryKey: form.categoryKey,
-      ingredient: form.ingredient ?? null,
       description: form.description ?? null,
-      sommelier: form.sommelier ?? null,
-      pairing: form.pairing ?? null,
       badge: form.badge ?? null,
       featured: !!form.featured,
-      heatable: !!form.heatable,
-      flagNote: form.flagNote ?? null,
-      priceGlass: form.priceGlass ?? null,
-      priceTokkuri: form.priceTokkuri ?? null,
-      priceBottle: form.priceBottle ?? null,
       status: form.status,
     };
+    if (isAlcohol) {
+      patch.region = form.region ?? null;
+      patch.brewery = form.brewery ?? null;
+      patch.heatable = !!form.heatable;
+      patch.flagNote = form.flagNote ?? null;
+      patch.priceGlass = form.priceGlass ?? null;
+      patch.priceTokkuri = isShochu ? null : form.priceTokkuri ?? null;
+      patch.priceBottle = form.priceBottle ?? null;
+    }
     if (isNihonshu) {
+      patch.grade = form.grade ?? null;
+      patch.sommelier = form.sommelier ?? null;
+      patch.pairing = form.pairing ?? null;
       patch.polish = form.polish ?? null;
       patch.smv = form.smv ?? null;
       patch.acidity = form.acidity ?? null;
       patch.abv = form.abv ?? null;
+    }
+    if (isShochu) patch.ingredient = form.ingredient ?? null;
+    if (isYori || cat === "drinks") {
+      patch.priceGlass = form.priceGlass ?? null;
+      patch.originNote = isYori ? form.originNote ?? null : null;
+      patch.halfPrice = isYori ? form.halfPrice ?? null : null;
     }
     const res = await fetch("/api/admin/items", {
       method: "PATCH",
@@ -79,8 +96,7 @@ export function ItemEditForm({ item }: { item: MenuItem }) {
     setBusy(false);
     if (res.ok) {
       show("저장됨");
-      router.push("/admin/items");
-      router.refresh();
+      back();
     } else show((await res.json()).error ?? "저장 실패");
   }
 
@@ -93,10 +109,8 @@ export function ItemEditForm({ item }: { item: MenuItem }) {
       body: JSON.stringify({ id: item.id }),
     });
     setBusy(false);
-    if (res.ok) {
-      router.push("/admin/items");
-      router.refresh();
-    } else show("삭제 실패");
+    if (res.ok) back();
+    else show("삭제 실패");
   }
 
   async function onPhoto(e: React.ChangeEvent<HTMLInputElement>) {
@@ -152,16 +166,8 @@ export function ItemEditForm({ item }: { item: MenuItem }) {
             <input className={f.input} value={form.name ?? ""} onChange={(e) => set({ name: e.target.value })} />
           </div>
           <div className={f.field}>
-            <label>{isShochu ? "산지" : "산지 (현)"}</label>
-            <input className={f.input} value={form.region ?? ""} onChange={(e) => set({ region: e.target.value })} />
-          </div>
-          <div className={f.field}>
-            <label>{isShochu ? "양조장·도수" : "양조장"}</label>
-            <input className={f.input} value={form.brewery ?? ""} onChange={(e) => set({ brewery: e.target.value })} />
-          </div>
-          <div className={f.field}>
             <label>분류</label>
-            <select className={f.select} value={form.categoryKey ?? ""} onChange={(e) => set({ categoryKey: e.target.value })}>
+            <select className={f.select} value={cat ?? ""} onChange={(e) => set({ categoryKey: e.target.value })}>
               {CATS.map((c) => (
                 <option key={c.key} value={c.key}>
                   {c.label}
@@ -170,15 +176,7 @@ export function ItemEditForm({ item }: { item: MenuItem }) {
             </select>
           </div>
           <div className={f.field}>
-            <label>{isShochu ? "원료" : "등급"}</label>
-            {isShochu ? (
-              <input className={f.input} value={form.ingredient ?? ""} placeholder="보리·고구마·흑당…" onChange={(e) => set({ ingredient: e.target.value })} />
-            ) : (
-              <input className={f.input} value={form.grade ?? ""} onChange={(e) => set({ grade: e.target.value })} />
-            )}
-          </div>
-          <div className={f.field}>
-            <label>뱃지 / 플래그</label>
+            <label>뱃지</label>
             <select className={f.select} value={form.badge ?? ""} onChange={(e) => set({ badge: (e.target.value || null) as ItemBadge | null })}>
               {BADGES.map((b) => (
                 <option key={b.key} value={b.key}>
@@ -187,88 +185,176 @@ export function ItemEditForm({ item }: { item: MenuItem }) {
               ))}
             </select>
           </div>
+
+          {isAlcohol && (
+            <>
+              <div className={f.field}>
+                <label>{isShochu ? "산지" : "산지 (현)"}</label>
+                <input className={f.input} value={form.region ?? ""} onChange={(e) => set({ region: e.target.value })} />
+              </div>
+              <div className={f.field}>
+                <label>{isShochu ? "양조장 · 도수" : "양조장"}</label>
+                <input className={f.input} value={form.brewery ?? ""} onChange={(e) => set({ brewery: e.target.value })} />
+              </div>
+              <div className={f.field}>
+                <label>{isShochu ? "원료" : "등급"}</label>
+                {isShochu ? (
+                  <input className={f.input} value={form.ingredient ?? ""} placeholder="보리·고구마·흑당…" onChange={(e) => set({ ingredient: e.target.value })} />
+                ) : (
+                  <input className={f.input} value={form.grade ?? ""} onChange={(e) => set({ grade: e.target.value })} />
+                )}
+              </div>
+            </>
+          )}
+
+          {isYori && (
+            <div className={f.field} style={{ gridColumn: "1 / -1" }}>
+              <label>원산지 표기 (선택)</label>
+              <input className={f.input} value={form.originNote ?? ""} placeholder="예: 광어 국내산(양식)" onChange={(e) => set({ originNote: e.target.value })} />
+            </div>
+          )}
         </div>
-        <div className={s.tagRow}>
-          <label className={s.check}>
-            <input type="checkbox" checked={!!form.featured} onChange={(e) => set({ featured: e.target.checked })} /> ★ 추천 강조
-          </label>
-          <label className={s.check}>
-            <input type="checkbox" checked={!!form.heatable} onChange={(e) => set({ heatable: e.target.checked })} /> ♨ 데움 가능
-          </label>
-          <input
-            className={f.input}
-            style={{ maxWidth: 200 }}
-            value={form.flagNote ?? ""}
-            placeholder="우측 라벨 (예: 여름 한정)"
-            onChange={(e) => set({ flagNote: e.target.value })}
-          />
-        </div>
+
+        {isAlcohol && (
+          <div className={s.tagRow}>
+            <label className={s.check}>
+              <input type="checkbox" checked={!!form.featured} onChange={(e) => set({ featured: e.target.checked })} /> ★ 추천 강조
+            </label>
+            <label className={s.check}>
+              <input type="checkbox" checked={!!form.heatable} onChange={(e) => set({ heatable: e.target.checked })} /> ♨ 데움 가능
+            </label>
+            <input className={f.input} style={{ maxWidth: 200 }} value={form.flagNote ?? ""} placeholder="우측 라벨 (예: 여름 한정)" onChange={(e) => set({ flagNote: e.target.value })} />
+          </div>
+        )}
+        {!isAlcohol && (
+          <div className={s.tagRow}>
+            <label className={s.check}>
+              <input type="checkbox" checked={!!form.featured} onChange={(e) => set({ featured: e.target.checked })} /> ★ 추천 강조
+            </label>
+          </div>
+        )}
       </div>
 
       {/* 설명·코멘트 */}
       <div className={f.card}>
         <div className={f.cardTitle}>설명 · 코멘트</div>
-        <div className={f.field} style={{ marginBottom: 14 }}>
+        <div className={f.field} style={{ marginBottom: isNihonshu ? 14 : 0 }}>
           <label>메뉴 설명</label>
           <textarea className={f.textarea} value={form.description ?? ""} onChange={(e) => set({ description: e.target.value })} />
         </div>
-        <div className={`${f.fieldGrid} ${f.cols2}`}>
-          <div className={f.field}>
-            <label>소믈리에 코멘트 (선택)</label>
-            <input className={f.input} value={form.sommelier ?? ""} placeholder="비워두면 표시되지 않아요" onChange={(e) => set({ sommelier: e.target.value })} />
+        {isNihonshu && (
+          <div className={`${f.fieldGrid} ${f.cols2}`}>
+            <div className={f.field}>
+              <label>소믈리에 코멘트 (선택)</label>
+              <input className={f.input} value={form.sommelier ?? ""} placeholder="비워두면 표시되지 않아요" onChange={(e) => set({ sommelier: e.target.value })} />
+            </div>
+            <div className={f.field}>
+              <label>추천 페어링 (선택)</label>
+              <input className={f.input} value={form.pairing ?? ""} placeholder="예: 오뎅·전골" onChange={(e) => set({ pairing: e.target.value })} />
+            </div>
           </div>
-          <div className={f.field}>
-            <label>추천 페어링 (선택)</label>
-            <input className={f.input} value={form.pairing ?? ""} placeholder="예: 오뎅·전골" onChange={(e) => set({ pairing: e.target.value })} />
-          </div>
-        </div>
+        )}
       </div>
 
-      {/* 판매 단위·용량·가격 */}
+      {/* 가격 */}
       <div className={f.card}>
         <div className={f.cardTitleRow}>
           <span className={f.cardTitle} style={{ margin: 0 }}>
-            판매 단위 · 용량 · 가격
+            {isAlcohol ? "판매 단위 · 용량 · 가격" : "가격"}
           </span>
-          <span className={f.cardHint}>단위별로 켜고 끄세요</span>
+          {isAlcohol && <span className={f.cardHint}>단위별로 켜고 끄세요</span>}
         </div>
-        {UNITS.map((u) => {
-          const on = form[u.key] != null;
-          return (
-            <div key={u.key} className={f.unitRow}>
-              <div className={f.unitName}>
-                <Toggle on={on} onChange={(v) => set({ [u.key]: v ? form[u.key] ?? 0 : null } as Form)} />
-                {u.name}
+        {isAlcohol ? (
+          UNITS.map((u) => {
+            const on = form[u.key] != null;
+            return (
+              <div key={u.key} className={f.unitRow}>
+                <div className={f.unitName}>
+                  <Toggle on={on} onChange={(v) => set({ [u.key]: v ? form[u.key] ?? 0 : null } as Form)} />
+                  {u.name}
+                </div>
+                <span className={f.unitUnit}>{u.vol}㎖</span>
+                <input
+                  className={`${f.input} ${f.unitInput}`}
+                  value={form[u.key] ?? ""}
+                  placeholder="—"
+                  inputMode="numeric"
+                  disabled={!on}
+                  onChange={(e) => set({ [u.key]: e.target.value ? Number(e.target.value.replace(/[^\d]/g, "")) : null } as Form)}
+                />
+                <span className={f.unitUnit}>원</span>
               </div>
-              <span className={f.unitUnit}>{u.vol}㎖</span>
+            );
+          })
+        ) : (
+          <div className={`${f.fieldGrid} ${f.cols2}`}>
+            <div className={f.field}>
+              <label>가격</label>
               <input
-                className={`${f.input} ${f.unitInput}`}
-                value={form[u.key] ?? ""}
+                className={f.input}
+                value={form.priceGlass ?? ""}
                 placeholder="—"
                 inputMode="numeric"
-                disabled={!on}
-                onChange={(e) => set({ [u.key]: e.target.value ? Number(e.target.value.replace(/[^\d]/g, "")) : null } as Form)}
+                onChange={(e) => set({ priceGlass: e.target.value ? Number(e.target.value.replace(/[^\d]/g, "")) : null })}
               />
-              <span className={f.unitUnit}>원</span>
             </div>
-          );
-        })}
+            {isYori && (
+              <div className={f.field}>
+                <label>½ 하프 가격 (선택)</label>
+                <input
+                  className={f.input}
+                  value={form.halfPrice ?? ""}
+                  placeholder="없으면 비워두기"
+                  inputMode="numeric"
+                  onChange={(e) => set({ halfPrice: e.target.value ? Number(e.target.value.replace(/[^\d]/g, "")) : null })}
+                />
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
-      {/* 사진 + 상태 */}
-      <div className={s.twoCol}>
-        <div className={f.card} style={{ flex: 1 }}>
-          <div className={f.cardTitle}>{isNihonshu || isShochu ? "보틀 사진" : "사진"}</div>
-          <button className={s.photoBtn} onClick={() => fileRef.current?.click()} disabled={busy}>
-            {form.imageUrl ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={form.imageUrl} alt="" />
-            ) : (
-              <span>＋<br />탭하여 업로드</span>
-            )}
-          </button>
-          <div className={f.footNote}>권장: 세로형, 배경 제거</div>
+      {/* 스펙(니혼슈) */}
+      {isNihonshu && (
+        <div className={f.card}>
+          <div className={f.cardTitle}>스펙 (선택)</div>
+          <div className={`${f.fieldGrid} ${f.cols2}`}>
+            <div className={f.field}>
+              <label>정미보합 %</label>
+              <input className={f.input} value={form.polish ?? ""} inputMode="numeric" onChange={(e) => set({ polish: e.target.value ? Number(e.target.value.replace(/[^\d.]/g, "")) : null })} />
+            </div>
+            <div className={f.field}>
+              <label>일본주도</label>
+              <input className={f.input} value={form.smv ?? ""} placeholder="예: +6 / 비공개" onChange={(e) => set({ smv: e.target.value })} />
+            </div>
+            <div className={f.field}>
+              <label>산도</label>
+              <input className={f.input} value={form.acidity ?? ""} placeholder="예: 1.6 / 비공개" onChange={(e) => set({ acidity: e.target.value })} />
+            </div>
+            <div className={f.field}>
+              <label>도수 %</label>
+              <input className={f.input} value={form.abv ?? ""} inputMode="numeric" onChange={(e) => set({ abv: e.target.value ? Number(e.target.value.replace(/[^\d.]/g, "")) : null })} />
+            </div>
+          </div>
         </div>
+      )}
+
+      {/* 사진(주류) + 상태 */}
+      <div className={s.twoCol}>
+        {isAlcohol && (
+          <div className={f.card} style={{ flex: 1 }}>
+            <div className={f.cardTitle}>보틀 사진</div>
+            <button className={s.photoBtn} onClick={() => fileRef.current?.click()} disabled={busy}>
+              {form.imageUrl ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={form.imageUrl} alt="" />
+              ) : (
+                <span>＋<br />탭하여 업로드</span>
+              )}
+            </button>
+            <div className={f.footNote}>권장: 세로형, 배경 제거</div>
+          </div>
+        )}
         <div className={f.card} style={{ flex: 1 }}>
           <div className={f.cardTitle}>상태</div>
           <div className={s.statusRow}>
